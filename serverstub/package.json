@@ -1,0 +1,18 @@
+{
+  "name": "restaurant-frontend-stub",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "json-server stub for the menu_items API (see menu-items.md)",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "@tinyhttp/app": "3.0.7",
+    "@tinyhttp/cors": "2.0.1",
+    "json-server": "^1.0.0-beta.15",
+    "lowdb": "7.0.1",
+    "milliparsec": "5.1.1"
+  }
+}

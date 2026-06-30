@@ -1,0 +1,321 @@
+{
+  "menu_items": [
+    {
+      "id": "mongo_menu_item_001",
+      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "menuItemId": "665f9a8b-5e3f-4a1b-8c8d-9e0123456789",
+      "name": "Spicy Chicken Ramen",
+      "description": "Ramen with chicken, egg, scallions and spicy broth",
+      "price": 42.5,
+      "imageKey": "restaurants/64c1a2b3-0d4e-4f56-8901-234567890abc/menu/spicy-chicken-ramen.jpg",
+      "category": "Noodles",
+      "isAvailable": true,
+      "ingredients": [
+        "ramen noodles",
+        "chicken",
+        "spicy broth",
+        "scallions",
+        "egg"
+      ],
+      "labels": {
+        "spicy": true,
+        "vegetarian": false,
+        "vegan": false,
+        "kosher": false,
+        "glutenFree": false,
+        "lactoseFree": true,
+        "halal": false
+      },
+      "portion": {
+        "weightGrams": 420,
+        "description": "1 bowl"
+      },
+      "spicyLevel": 2,
+      "nutrition": {
+        "calories": 620,
+        "protein": 32,
+        "fat": 18,
+        "carbs": 72
+      },
+      "createdAt": "2026-06-27T10:00:00Z",
+      "updatedAt": "2026-06-27T10:00:00Z"
+    },
+    {
+      "id": "mongo_menu_item_002",
+      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "menuItemId": "7c1e2d3f-4a5b-6c7d-8e9f-0a1b2c3d4e5f",
+      "name": "Pork Gyoza",
+      "description": "Pan-fried dumplings filled with pork and cabbage, served with soy-vinegar dip",
+      "price": 18,
+      "imageKey": "restaurants/64c1a2b3-0d4e-4f56-8901-234567890abc/menu/pork-gyoza.jpg",
+      "category": "Starters",
+      "isAvailable": true,
+      "ingredients": [
+        "wheat wrapper",
+        "pork",
+        "cabbage",
+        "garlic",
+        "ginger"
+      ],
+      "labels": {
+        "spicy": false,
+        "vegetarian": false,
+        "vegan": false,
+        "kosher": false,
+        "glutenFree": false,
+        "lactoseFree": true,
+        "halal": false
+      },
+      "portion": {
+        "pieces": 6,
+        "weightGrams": 180,
+        "description": "6 pieces"
+      },
+      "spicyLevel": 0,
+      "nutrition": {
+        "calories": 310,
+        "protein": 12,
+        "fat": 14,
+        "carbs": 34
+      },
+      "createdAt": "2026-06-27T10:05:00Z",
+      "updatedAt": "2026-06-27T10:05:00Z"
+    },
+    {
+      "id": "mongo_menu_item_003",
+      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "menuItemId": "8d2f3e4a-5b6c-7d8e-9f0a-1b2c3d4e5f60",
+      "name": "Vegan Miso Ramen",
+      "description": "Plant-based ramen with miso broth, tofu, corn and seaweed",
+      "price": 39,
+      "imageKey": "restaurants/64c1a2b3-0d4e-4f56-8901-234567890abc/menu/vegan-miso-ramen.jpg",
+      "category": "Noodles",
+      "isAvailable": false,
+      "ingredients": [
+        "ramen noodles",
+        "miso",
+        "tofu",
+        "corn",
+        "seaweed",
+        "scallions"
+      ],
+      "labels": {
+        "spicy": false,
+        "vegetarian": true,
+        "vegan": true,
+        "kosher": false,
+        "glutenFree": false,
+        "lactoseFree": true,
+        "halal": true
+      },
+      "portion": {
+        "weightGrams": 410,
+        "description": "1 bowl"
+      },
+      "spicyLevel": 1,
+      "nutrition": {
+        "calories": 540,
+        "protein": 22,
+        "fat": 14,
+        "carbs": 80
+      },
+      "createdAt": "2026-06-27T10:10:00Z",
+      "updatedAt": "2026-06-27T10:10:00Z"
+    },
+    {
+      "id": "mongo_menu_item_004",
+      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "menuItemId": "9e3a4f5b-6c7d-8e9f-0a1b-2c3d4e5f6071",
+      "name": "Green Tea",
+      "description": "Hot Japanese sencha green tea",
+      "price": 9,
+      "category": "Drinks",
+      "isAvailable": true,
+      "ingredients": [
+        "green tea leaves",
+        "water"
+      ],
+      "labels": {
+        "spicy": false,
+        "vegetarian": true,
+        "vegan": true,
+        "kosher": true,
+        "glutenFree": true,
+        "lactoseFree": true,
+        "halal": true
+      },
+      "portion": {
+        "volumeMl": 300,
+        "description": "1 cup"
+      },
+      "spicyLevel": 0,
+      "nutrition": {
+        "calories": 2,
+        "protein": 0,
+        "fat": 0,
+        "carbs": 0
+      },
+      "createdAt": "2026-06-27T10:15:00Z",
+      "updatedAt": "2026-06-27T10:15:00Z"
+    },
+    {
+      "id": "mongo_menu_item_005",
+      "restaurantId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
+      "menuItemId": "a0f4b5c6-7d8e-9f0a-1b2c-3d4e5f607182",
+      "name": "Margherita Pizza",
+      "description": "Classic pizza with tomato sauce, mozzarella and fresh basil",
+      "price": 35,
+      "imageKey": "restaurants/7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d/menu/margherita.jpg",
+      "category": "Pizza",
+      "isAvailable": true,
+      "ingredients": [
+        "pizza dough",
+        "tomato sauce",
+        "mozzarella",
+        "basil",
+        "olive oil"
+      ],
+      "labels": {
+        "spicy": false,
+        "vegetarian": true,
+        "vegan": false,
+        "kosher": false,
+        "glutenFree": false,
+        "lactoseFree": false,
+        "halal": true
+      },
+      "portion": {
+        "weightGrams": 480,
+        "pieces": 8,
+        "description": "30 cm, 8 slices"
+      },
+      "spicyLevel": 0,
+      "nutrition": {
+        "calories": 1080,
+        "protein": 42,
+        "fat": 38,
+        "carbs": 138
+      },
+      "createdAt": "2026-06-27T11:00:00Z",
+      "updatedAt": "2026-06-27T11:00:00Z"
+    },
+    {
+      "id": "mongo_menu_item_006",
+      "restaurantId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
+      "menuItemId": "b1a5c6d7-8e9f-0a1b-2c3d-4e5f60718293",
+      "name": "Pepperoni Pizza",
+      "description": "Pizza with tomato sauce, mozzarella and spicy pepperoni",
+      "price": 41,
+      "imageKey": "restaurants/7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d/menu/pepperoni.jpg",
+      "category": "Pizza",
+      "isAvailable": true,
+      "ingredients": [
+        "pizza dough",
+        "tomato sauce",
+        "mozzarella",
+        "pepperoni"
+      ],
+      "labels": {
+        "spicy": true,
+        "vegetarian": false,
+        "vegan": false,
+        "kosher": false,
+        "glutenFree": false,
+        "lactoseFree": false,
+        "halal": false
+      },
+      "portion": {
+        "weightGrams": 520,
+        "pieces": 8,
+        "description": "30 cm, 8 slices"
+      },
+      "spicyLevel": 1,
+      "nutrition": {
+        "calories": 1320,
+        "protein": 54,
+        "fat": 56,
+        "carbs": 142
+      },
+      "createdAt": "2026-06-27T11:05:00Z",
+      "updatedAt": "2026-06-27T11:05:00Z"
+    },
+    {
+      "id": "mongo_menu_item_007",
+      "restaurantId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
+      "menuItemId": "c2b6d7e8-9f0a-1b2c-3d4e-5f6071829304",
+      "name": "Tiramisu",
+      "description": "Italian dessert with mascarpone, coffee-soaked ladyfingers and cocoa",
+      "price": 22,
+      "imageKey": "restaurants/7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d/menu/tiramisu.jpg",
+      "category": "Desserts",
+      "isAvailable": false,
+      "ingredients": [
+        "mascarpone",
+        "ladyfingers",
+        "coffee",
+        "egg",
+        "cocoa",
+        "sugar"
+      ],
+      "labels": {
+        "spicy": false,
+        "vegetarian": true,
+        "vegan": false,
+        "kosher": false,
+        "glutenFree": false,
+        "lactoseFree": false,
+        "halal": true
+      },
+      "portion": {
+        "weightGrams": 160,
+        "description": "1 portion"
+      },
+      "spicyLevel": 0,
+      "nutrition": {
+        "calories": 420,
+        "protein": 7,
+        "fat": 24,
+        "carbs": 42
+      },
+      "createdAt": "2026-06-27T11:10:00Z",
+      "updatedAt": "2026-06-27T11:10:00Z"
+    },
+    {
+      "id": "mongo_menu_item_008",
+      "restaurantId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
+      "menuItemId": "d3c7e8f9-0a1b-2c3d-4e5f-607182930415",
+      "name": "Cola",
+      "description": "Chilled cola, 0.5 L bottle",
+      "price": 8,
+      "category": "Drinks",
+      "isAvailable": true,
+      "ingredients": [
+        "carbonated water",
+        "sugar",
+        "caffeine"
+      ],
+      "labels": {
+        "spicy": false,
+        "vegetarian": true,
+        "vegan": true,
+        "kosher": true,
+        "glutenFree": true,
+        "lactoseFree": true,
+        "halal": true
+      },
+      "portion": {
+        "volumeMl": 500,
+        "description": "1 bottle"
+      },
+      "spicyLevel": 0,
+      "nutrition": {
+        "calories": 210,
+        "protein": 0,
+        "fat": 0,
+        "carbs": 53
+      },
+      "createdAt": "2026-06-27T11:15:00Z",
+      "updatedAt": "2026-06-27T11:15:00Z"
+    }
+  ]
+}
