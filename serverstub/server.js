@@ -46,23 +46,28 @@ app.get('/', (_req, res) =>
     ok: true,
     collection: COLLECTION,
     endpoints: [
+      'GET /restaurants/my/menu',
       'GET /restaurants/:restaurantId/menu',
       'GET /restaurants/:restaurantId/menu?available=true',
       'GET /menu-items/:menuItemId',
       'PATCH /menu-items/:menuItemId',
       'GET /menu_items',
+      'POST /menu_items/new'
     ],
   }),
 )
 
+const getMenu = (req, res) => {
+    const where = { restaurantId: eq(req.params.restaurantId) }
+    if (req.query.available === 'true') {
+        where.isAvailable = eq(true)
+    }
+    res.json(service.find(COLLECTION, { where }))
+}
+
 // All menu items for one restaurant (optionally only available ones).
-app.get('/restaurants/:restaurantId/menu', (req, res) => {
-  const where = { restaurantId: eq(req.params.restaurantId) }
-  if (req.query.available === 'true') {
-    where.isAvailable = eq(true)
-  }
-  res.json(service.find(COLLECTION, { where }))
-})
+app.get('/restaurants/:restaurantId/menu', getMenu)
+app.get('/restaurants/my/menu', getMenu)
 
 // One menu item by its SQL menuItemId (UUID), per the unique index in the doc.
 app.get('/menu-items/:menuItemId', (req, res) => {

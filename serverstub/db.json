@@ -7,9 +7,10 @@
       "name": "Spicy Chicken Ramen",
       "description": "Ramen with chicken, egg, scallions and spicy broth",
       "price": 42.5,
+      "currency": "ILS",
       "imageKey": "restaurants/64c1a2b3-0d4e-4f56-8901-234567890abc/menu/spicy-chicken-ramen.jpg",
       "category": "Noodles",
-      "isAvailable": true,
+      "isActive": true,
       "ingredients": [
         "ramen noodles",
         "chicken",
@@ -47,9 +48,10 @@
       "name": "Pork Gyoza",
       "description": "Pan-fried dumplings filled with pork and cabbage, served with soy-vinegar dip",
       "price": 18,
+      "currency": "ILS",
       "imageKey": "restaurants/64c1a2b3-0d4e-4f56-8901-234567890abc/menu/pork-gyoza.jpg",
       "category": "Starters",
-      "isAvailable": true,
+      "isActive": true,
       "ingredients": [
         "wheat wrapper",
         "pork",
@@ -88,9 +90,10 @@
       "name": "Vegan Miso Ramen",
       "description": "Plant-based ramen with miso broth, tofu, corn and seaweed",
       "price": 39,
+      "currency": "ILS",
       "imageKey": "restaurants/64c1a2b3-0d4e-4f56-8901-234567890abc/menu/vegan-miso-ramen.jpg",
       "category": "Noodles",
-      "isAvailable": false,
+      "isActive": false,
       "ingredients": [
         "ramen noodles",
         "miso",
@@ -130,7 +133,7 @@
       "description": "Hot Japanese sencha green tea",
       "price": 9,
       "category": "Drinks",
-      "isAvailable": true,
+      "isActive": true,
       "ingredients": [
         "green tea leaves",
         "water"
@@ -167,7 +170,7 @@
       "price": 35,
       "imageKey": "restaurants/7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d/menu/margherita.jpg",
       "category": "Pizza",
-      "isAvailable": true,
+      "isActive": true,
       "ingredients": [
         "pizza dough",
         "tomato sauce",
@@ -208,7 +211,7 @@
       "price": 41,
       "imageKey": "restaurants/7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d/menu/pepperoni.jpg",
       "category": "Pizza",
-      "isAvailable": true,
+      "isActive": true,
       "ingredients": [
         "pizza dough",
         "tomato sauce",
@@ -248,7 +251,7 @@
       "price": 22,
       "imageKey": "restaurants/7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d/menu/tiramisu.jpg",
       "category": "Desserts",
-      "isAvailable": false,
+      "isActive": false,
       "ingredients": [
         "mascarpone",
         "ladyfingers",
@@ -288,7 +291,7 @@
       "description": "Chilled cola, 0.5 L bottle",
       "price": 8,
       "category": "Drinks",
-      "isAvailable": true,
+      "isActive": true,
       "ingredients": [
         "carbonated water",
         "sugar",
