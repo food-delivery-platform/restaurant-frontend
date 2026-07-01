@@ -74,7 +74,7 @@ const getMenu = (req, res) => {
     }
 
     if (req.query.available === 'true') {
-        where.isAvailable = eq(true)
+        where.isActive = eq(true)
     }
 
     res.json(service.find(COLLECTION, { where }))
