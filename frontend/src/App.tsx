@@ -1,9 +1,15 @@
+import { Routes, Route } from 'react-router-dom'
 import { SuperMenuList } from './components/SuperMenuList'
+import { MenuEditPanel } from './components/MenuEditPanel'
 
 function App() {
     return (
-        <div>
-            <SuperMenuList />
+        <div style={{ maxWidth: 800, margin: '0 auto', padding: '20px' }}>
+            <Routes>
+                <Route path="/" element={<SuperMenuList />} />
+                <Route path="/new" element={<MenuEditPanel />} />
+                <Route path="/edit/:menuItemId" element={<MenuEditPanel />} />
+            </Routes>
         </div>
     )
 }

@@ -1,4 +1,4 @@
-import { apiGet } from './client'
+import { apiGet, apiPost, apiPatch } from './client'
 import type { MenuItem } from '../types/menu'
 
 export function getMenu(
@@ -10,5 +10,20 @@ export function getMenu(
     return apiGet<MenuItem[]>(
         `/restaurants/my/menu?${query}`
     )
-    // also `/restaurants/${restaurantId}/menu?${query}` possible
 }
+
+export function getMenuItem(menuItemId: string): Promise<MenuItem> {
+    return apiGet<MenuItem>(`/menu-items/${menuItemId}`)
+}
+
+export function createMenuItem(item: Partial<MenuItem>): Promise<MenuItem> {
+    return apiPost<MenuItem>('/menu_items/new', item)
+}
+
+export function updateMenuItem(
+    menuItemId: string,
+    item: Partial<MenuItem>
+): Promise<MenuItem> {
+    return apiPatch<MenuItem>(`/menu-items/${menuItemId}`, item)
+}
+

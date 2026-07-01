@@ -133,7 +133,7 @@
       "description": "Hot Japanese sencha green tea",
       "price": 9,
       "category": "Drinks",
-      "isActive": true,
+      "isActive": false,
       "ingredients": [
         "green tea leaves",
         "water"
@@ -319,6 +319,22 @@
       },
       "createdAt": "2026-06-27T11:15:00Z",
       "updatedAt": "2026-06-27T11:15:00Z"
+    },
+    {
+      "name": "Super-dish!",
+      "price": 23,
+      "category": "sandwich",
+      "description": "a good sandwich with cheese",
+      "isActive": true,
+      "spicyLevel": 1,
+      "ingredients": [
+        "cheese"
+      ],
+      "id": "mjVajP24RSk",
+      "menuItemId": "8ea01797-7a71-433f-bcc5-1566b966fd96",
+      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "createdAt": "2026-07-01T11:43:02.582Z",
+      "updatedAt": "2026-07-01T11:43:02.582Z"
     }
   ]
 }

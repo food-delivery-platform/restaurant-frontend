@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import type { MenuItem } from '../types/menu'
 
 type Props = {
@@ -28,9 +29,26 @@ const COLUMNS: Column[] = [
     },
     {
         title: 'Status',
+        width: 100,
         getValue: (item) => (item.isActive ? 'available' : 'off')
+    },
+    {
+        title: 'Actions',
+        getValue: (item) => (
+            <Link
+                to={`/edit/${item.menuItemId}`}
+                style={{
+                    color: '#0070f3',
+                    textDecoration: 'none',
+                    fontWeight: 600
+                }}
+            >
+                Edit
+            </Link>
+        )
     }
 ]
+
 
 const headerRowStyle: React.CSSProperties = {
     display: 'flex',
