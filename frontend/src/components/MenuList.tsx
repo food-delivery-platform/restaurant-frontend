@@ -27,8 +27,6 @@ export function MenuList({ items }) {
 
             {/* rows */}
             {items.map(item => {
-                // console.log(item.isAvailable, typeof item.isAvailable)
-
                 return (
                     <div
                         key={item.id}
