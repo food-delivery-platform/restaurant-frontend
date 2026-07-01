@@ -26,26 +26,30 @@ export function MenuList({ items }) {
             </div>
 
             {/* rows */}
-            {items.map(item => (
-                <div
-                    key={item.id}
-                    style={{
-                        display: 'flex',
-                        gap: 12,
-                        alignItems: 'center',
-                        marginBottom: 10,
-                        paddingBottom: 6,
-                        borderBottom: '1px solid #eee'
-                    }}
-                >
-                    <div style={{ width: 200 }}>{item.name}</div>
-                    <div style={{ width: 80 }}>{item.price}</div>
-                    <div style={{ width: 120 }}>{item.category}</div>
-                    <div>
-                        {item.isAvailable ? 'available' : 'off'}
+            {items.map(item => {
+                // console.log(item.isAvailable, typeof item.isAvailable)
+
+                return (
+                    <div
+                        key={item.id}
+                        style={{
+                            display: 'flex',
+                            gap: 12,
+                            alignItems: 'center',
+                            marginBottom: 10,
+                            paddingBottom: 6,
+                            borderBottom: '1px solid #eee'
+                        }}
+                    >
+                        <div style={{ width: 200 }}>{item.name}</div>
+                        <div style={{ width: 80 }}>{item.price}</div>
+                        <div style={{ width: 120 }}>{item.category}</div>
+                        <div>
+                            {item.isActive ? 'available' : 'off'}
+                        </div>
                     </div>
-                </div>
-            ))}
+                )
+            })}
         </div>
     )
 }
