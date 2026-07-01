@@ -57,11 +57,25 @@ app.get('/', (_req, res) =>
   }),
 )
 
+const DEFAULT_RESTAURANT_ID =
+    '64c1a2b3-0d4e-4f56-8901-234567890abc'
+
 const getMenu = (req, res) => {
-    const where = { restaurantId: eq(req.params.restaurantId) }
+    const rawId = req.params.restaurantId
+
+    const restaurantId =
+        !rawId || rawId === 'my'
+            ? DEFAULT_RESTAURANT_ID
+            : rawId
+
+    const where = {
+        restaurantId: eq(restaurantId)
+    }
+
     if (req.query.available === 'true') {
         where.isAvailable = eq(true)
     }
+
     res.json(service.find(COLLECTION, { where }))
 }
 
