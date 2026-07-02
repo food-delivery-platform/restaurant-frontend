@@ -12,10 +12,20 @@ import {
     Stack,
     Text,
     Textarea,
+    createListCollection
 } from '@chakra-ui/react'
 
 import { getMenuItem, createMenuItem, updateMenuItem } from '../api/menu'
 import type { MenuItem } from '../types/menu'
+
+const spicyOptions = createListCollection({
+    items: [
+        { label: "0 - Not Spicy", value: "0" },
+        { label: "1 - Mild", value: "1" },
+        { label: "2 - Medium", value: "2" },
+        { label: "3 - Hot", value: "3" },
+    ],
+})
 
 export function MenuEditPanel() {
     const { menuItemId } = useParams<{ menuItemId: string }>()
@@ -170,27 +180,42 @@ export function MenuEditPanel() {
                     </Box>
 
                     <Flex gap={6} align="center">
-                        <Checkbox
-                            isChecked={isActive}
-                            onChange={(e) => setIsActive(e.target.checked)}
+
+                        <Checkbox.Root
+                            checked={isActive}
+                            onCheckedChange={(e) => setIsActive(!!e.checked)}
                         >
-                            Active
-                        </Checkbox>
+                            <Checkbox.HiddenInput />
+                            <Checkbox.Control />
+                            <Checkbox.Label>
+                                Active
+                            </Checkbox.Label>
+                        </Checkbox.Root>
 
                         <Box>
                             <Text mb={1} fontWeight="semibold">
                                 Spicy
                             </Text>
-                            <Select
-                                value={spicyLevel}
-                                onChange={(e) => setSpicyLevel(Number(e.target.value))}
+
+                            <Select.Root
+                                collection={spicyOptions}
+                                value={[String(spicyLevel)]}
+                                onValueChange={(e) => setSpicyLevel(Number(e.value[0]))}
                             >
-                                <option value={0}>0</option>
-                                <option value={1}>1</option>
-                                <option value={2}>2</option>
-                                <option value={3}>3</option>
-                            </Select>
+                                <Select.Trigger>
+                                    <Select.ValueText />
+                                </Select.Trigger>
+
+                                <Select.Content>
+                                    <Select.Item item="0">0 - Not Spicy</Select.Item>
+                                    <Select.Item item="1">1 - Mild</Select.Item>
+                                    <Select.Item item="2">2 - Medium</Select.Item>
+                                    <Select.Item item="3">3 - Hot</Select.Item>
+                                </Select.Content>
+                            </Select.Root>
+
                         </Box>
+
                     </Flex>
 
                     <Flex gap={3} mt={3}>
@@ -209,6 +234,7 @@ export function MenuEditPanel() {
                     </Flex>
                 </Stack>
             </Box>
+
         </Box>
     )
 }
