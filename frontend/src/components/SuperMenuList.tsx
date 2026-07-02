@@ -1,54 +1,53 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Box, Flex, Heading, Checkbox, Button, Spinner, Text } from '@chakra-ui/react'
 import { useMenu } from '../hooks/useMenu'
-import { MenuList } from './MenuList'
+import {MenuList} from "./MenuList.tsx";
+
+
+
 
 export function SuperMenuList() {
     const [onlyAvailable, setOnlyAvailable] = useState(false)
 
     const { items, loading, error } = useMenu('my', onlyAvailable)
-
     return (
-        <div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
-                <h1 style={{ margin: 0 }}>Menu List</h1>
-                <Link
+        <Box>
+            <Flex justify="space-between" align="center" mb={5}>
+                <Heading size="md">Menu List</Heading>
+
+                <Button
+                    as={Link}
                     to="/new"
-                    style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        width: 40,
-                        height: 40,
-                        fontSize: '24px',
-                        fontWeight: 'bold',
-                        color: '#fff',
-                        backgroundColor: '#28a745',
-                        borderRadius: '50%',
-                        textDecoration: 'none',
-                        cursor: 'pointer',
-                        boxShadow: '0 2px 5px rgba(0,0,0,0.15)'
-                    }}
-                    title="Add new item"
+                    colorPalette="green"
+                    borderRadius="full"
+                    w="40px"
+                    h="40px"
+                    fontSize="20px"
+                    fontWeight="bold"
                 >
                     +
-                </Link>
-            </div>
+                </Button>
+            </Flex>
 
-            <label style={{ display: 'inline-flex', alignItems: 'center', gap: 6, marginBottom: 12 }}>
-                <input
-                    type="checkbox"
-                    checked={onlyAvailable}
-                    onChange={(e) => setOnlyAvailable(e.target.checked)}
-                />
-                available only
-            </label>
 
-            {loading && <div>loading...</div>}
-            {error && <div>{error}</div>}
+            <Checkbox.Root
+                mb={4}
+                checked={onlyAvailable}
+                onCheckedChange={(e) => setOnlyAvailable(!!e.checked)}
+            >
+                <Checkbox.HiddenInput />
+                <Checkbox.Control />
+                <Checkbox.Label>
+                    available only
+                </Checkbox.Label>
+            </Checkbox.Root>
 
-            <MenuList items={items} />
-        </div>
+            {loading && <Spinner />}
+            {error && <Text color="red.500">{error}</Text>}
+
+             <MenuList items={items} />
+
+        </Box>
     )
 }
-

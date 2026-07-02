@@ -1,5 +1,19 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import {
+    Box,
+    Button,
+    Checkbox,
+    Flex,
+    Heading,
+    Input,
+    Select,
+    Spinner,
+    Stack,
+    Text,
+    Textarea,
+} from '@chakra-ui/react'
+
 import { getMenuItem, createMenuItem, updateMenuItem } from '../api/menu'
 import type { MenuItem } from '../types/menu'
 
@@ -13,7 +27,6 @@ export function MenuEditPanel() {
     const [saving, setSaving] = useState(false)
     const [error, setError] = useState<string | null>(null)
 
-    // Form fields
     const [name, setName] = useState('')
     const [price, setPrice] = useState('')
     const [category, setCategory] = useState('')
@@ -38,12 +51,8 @@ export function MenuEditPanel() {
                 setSpicyLevel(item.spicyLevel ?? 0)
                 setIngredientsText(item.ingredients?.join(', ') || '')
             })
-            .catch((err) => {
-                setError(err.message || 'Failed to fetch menu item details')
-            })
-            .finally(() => {
-                setLoading(false)
-            })
+            .catch((err) => setError(err.message || 'Failed to fetch'))
+            .finally(() => setLoading(false))
     }, [menuItemId])
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -56,14 +65,14 @@ export function MenuEditPanel() {
 
         const priceNum = parseFloat(price)
         if (isNaN(priceNum) || priceNum < 0) {
-            setError('Price must be a valid non-negative number')
+            setError('Price must be valid')
             return
         }
 
         setSaving(true)
         setError(null)
 
-        const itemPayload: Partial<MenuItem> = {
+        const payload: Partial<MenuItem> = {
             name: name.trim(),
             price: priceNum,
             category: category.trim() || undefined,
@@ -73,153 +82,133 @@ export function MenuEditPanel() {
             ingredients: ingredientsText
                 .split(',')
                 .map((i) => i.trim())
-                .filter(Boolean)
+                .filter(Boolean),
         }
 
         try {
             if (isEditMode) {
-                await updateMenuItem(menuItemId!, itemPayload)
+                await updateMenuItem(menuItemId!, payload)
             } else {
-                await createMenuItem(itemPayload)
+                await createMenuItem(payload)
             }
             navigate('/')
         } catch (err: any) {
-            setError(err.message || 'Failed to save menu item')
+            setError(err.message || 'Save failed')
         } finally {
             setSaving(false)
         }
     }
 
     if (loading) {
-        return <div style={{ padding: 20 }}>Loading item details...</div>
+        return (
+            <Box p={5}>
+                <Spinner />
+            </Box>
+        )
     }
 
     return (
-        <div style={{ maxWidth: 500, margin: '0 auto', padding: 20 }}>
-            <h2>{isEditMode ? 'Edit Menu Item' : 'Add New Menu Item'}</h2>
+        <Box maxW="500px" mx="auto" p={5}>
+            <Heading size="md" mb={4}>
+                {isEditMode ? 'Edit Menu Item' : 'Add Menu Item'}
+            </Heading>
 
             {error && (
-                <div style={{ color: 'red', marginBottom: 12, fontWeight: 'bold' }}>
+                <Text color="red.500" fontWeight="bold" mb={3}>
                     {error}
-                </div>
+                </Text>
             )}
 
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-                <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                    <strong>Name:</strong>
-                    <input
-                        type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        required
-                        style={{ padding: 8, fontSize: '1rem', border: '1px solid #ccc', borderRadius: 4 }}
-                    />
-                </label>
+            <Box as="form" onSubmit={handleSubmit}>
+                <Stack gap={4}>
+                    <Box>
+                        <Text mb={1} fontWeight="semibold">
+                            Name
+                        </Text>
+                        <Input value={name} onChange={(e) => setName(e.target.value)} />
+                    </Box>
 
-                <div style={{ display: 'flex', gap: 16 }}>
-                    <label style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 6 }}>
-                        <strong>Price ($):</strong>
-                        <input
-                            type="number"
-                            step="0.01"
-                            value={price}
-                            onChange={(e) => setPrice(e.target.value)}
-                            required
-                            style={{ padding: 8, fontSize: '1rem', border: '1px solid #ccc', borderRadius: 4 }}
+                    <Flex gap={4}>
+                        <Box flex={1}>
+                            <Text mb={1} fontWeight="semibold">
+                                Price
+                            </Text>
+                            <Input
+                                type="number"
+                                step="0.01"
+                                value={price}
+                                onChange={(e) => setPrice(e.target.value)}
+                            />
+                        </Box>
+
+                        <Box flex={1}>
+                            <Text mb={1} fontWeight="semibold">
+                                Category
+                            </Text>
+                            <Input value={category} onChange={(e) => setCategory(e.target.value)} />
+                        </Box>
+                    </Flex>
+
+                    <Box>
+                        <Text mb={1} fontWeight="semibold">
+                            Description
+                        </Text>
+                        <Textarea
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
                         />
-                    </label>
+                    </Box>
 
-                    <label style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 6 }}>
-                        <strong>Category:</strong>
-                        <input
-                            type="text"
-                            value={category}
-                            onChange={(e) => setCategory(e.target.value)}
-                            style={{ padding: 8, fontSize: '1rem', border: '1px solid #ccc', borderRadius: 4 }}
+                    <Box>
+                        <Text mb={1} fontWeight="semibold">
+                            Ingredients
+                        </Text>
+                        <Input
+                            value={ingredientsText}
+                            onChange={(e) => setIngredientsText(e.target.value)}
                         />
-                    </label>
-                </div>
+                    </Box>
 
-                <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                    <strong>Description:</strong>
-                    <textarea
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                        style={{ padding: 8, fontSize: '1rem', border: '1px solid #ccc', borderRadius: 4, minHeight: 80 }}
-                    />
-                </label>
-
-                <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                    <strong>Ingredients (comma-separated):</strong>
-                    <input
-                        type="text"
-                        value={ingredientsText}
-                        onChange={(e) => setIngredientsText(e.target.value)}
-                        placeholder="e.g. rice, seaweed, tofu"
-                        style={{ padding: 8, fontSize: '1rem', border: '1px solid #ccc', borderRadius: 4 }}
-                    />
-                </label>
-
-                <div style={{ display: 'flex', gap: 24, alignItems: 'center' }}>
-                    <label style={{ display: 'flex', gap: 6, alignItems: 'center', fontWeight: 'bold' }}>
-                        <input
-                            type="checkbox"
-                            checked={isActive}
+                    <Flex gap={6} align="center">
+                        <Checkbox
+                            isChecked={isActive}
                             onChange={(e) => setIsActive(e.target.checked)}
-                        />
-                        Active / Available
-                    </label>
-
-                    <label style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
-                        <strong>Spicy Level (0-3):</strong>
-                        <select
-                            value={spicyLevel}
-                            onChange={(e) => setSpicyLevel(Number(e.target.value))}
-                            style={{ padding: 6, fontSize: '1rem' }}
                         >
-                            <option value={0}>0 - Not Spicy</option>
-                            <option value={1}>1 - Mild</option>
-                            <option value={2}>2 - Medium</option>
-                            <option value={3}>3 - Hot</option>
-                        </select>
-                    </label>
-                </div>
+                            Active
+                        </Checkbox>
 
-                <div style={{ display: 'flex', gap: 12, marginTop: 12 }}>
-                    <button
-                        type="submit"
-                        disabled={saving}
-                        style={{
-                            flex: 1,
-                            padding: '10px 20px',
-                            fontSize: '1rem',
-                            fontWeight: 'bold',
-                            backgroundColor: '#0070f3',
-                            color: '#fff',
-                            border: 'none',
-                            borderRadius: 4,
-                            cursor: 'pointer'
-                        }}
-                    >
-                        {saving ? 'Saving...' : isEditMode ? 'Save' : 'Add'}
-                    </button>
+                        <Box>
+                            <Text mb={1} fontWeight="semibold">
+                                Spicy
+                            </Text>
+                            <Select
+                                value={spicyLevel}
+                                onChange={(e) => setSpicyLevel(Number(e.target.value))}
+                            >
+                                <option value={0}>0</option>
+                                <option value={1}>1</option>
+                                <option value={2}>2</option>
+                                <option value={3}>3</option>
+                            </Select>
+                        </Box>
+                    </Flex>
 
-                    <button
-                        type="button"
-                        onClick={() => navigate('/')}
-                        style={{
-                            padding: '10px 20px',
-                            fontSize: '1rem',
-                            border: '1px solid #ccc',
-                            borderRadius: 4,
-                            backgroundColor: '#fff',
-                            cursor: 'pointer'
-                        }}
-                    >
-                        Cancel
-                    </button>
-                </div>
-            </form>
-        </div>
+                    <Flex gap={3} mt={3}>
+                        <Button
+                            type="submit"
+                            colorPalette="blue"
+                            flex={1}
+                            isLoading={saving}
+                        >
+                            {isEditMode ? 'Save' : 'Add'}
+                        </Button>
+
+                        <Button variant="outline" onClick={() => navigate('/')}>
+                            Cancel
+                        </Button>
+                    </Flex>
+                </Stack>
+            </Box>
+        </Box>
     )
 }
