@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import type { MenuItem } from '../types/menu'
 import { getMenu } from '../api/menu'
 
-export function useMenu(restaurantId: string, onlyAvailable: boolean) {
+export function useMenu(venueId: string, onlyAvailable: boolean) {
     const [items, setItems] = useState<MenuItem[]>([])
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState<string | null>(null)
@@ -12,7 +12,7 @@ export function useMenu(restaurantId: string, onlyAvailable: boolean) {
 
         setLoading(true)
 
-        getMenu(restaurantId, onlyAvailable)
+        getMenu(venueId, onlyAvailable)
             .then(data => {
                 if (!alive) return
                 setItems(data)
@@ -29,7 +29,7 @@ export function useMenu(restaurantId: string, onlyAvailable: boolean) {
         return () => {
             alive = false
         }
-    }, [restaurantId, onlyAvailable])
+    }, [venueId, onlyAvailable])
 
     return { items, loading, error }
 }
