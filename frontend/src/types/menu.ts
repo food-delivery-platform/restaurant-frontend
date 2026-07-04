@@ -1,6 +1,6 @@
 export type MenuItem = {
     id: string
-    restaurantId: string
+    venueId: string
     menuItemId: string
     name: string
     description?: string
