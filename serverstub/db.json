@@ -336,5 +336,105 @@
       "createdAt": "2026-07-01T11:43:02.582Z",
       "updatedAt": "2026-07-01T11:43:02.582Z"
     }
+  ],
+  "orders": [
+    {
+      "id": "order-001",
+      "customer_id": "customer-001",
+      "venue_id": "venue-001",
+      "delivery_address_id": "address-001",
+      "status": "DELIVERED",
+      "subtotal": 84.50,
+      "delivery_fee": 5.00,
+      "total": 89.50,
+      "currency": "USD",
+      "special_instructions": "Ring doorbell twice",
+      "estimated_delivery_at": "2026-07-02T18:30:00Z",
+      "restaurant_confirmation_deadline": "2026-07-02T18:00:00Z",
+      "created_at": "2026-07-02T17:30:00Z",
+      "updated_at": "2026-07-02T18:35:00Z",
+      "courier_id": "courier-001"
+    },
+    {
+      "id": "order-002",
+      "customer_id": "customer-002",
+      "venue_id": "venue-001",
+      "delivery_address_id": "address-002",
+      "status": "AWAITING_PAYMENT",
+      "subtotal": 35.00,
+      "delivery_fee": 0.00,
+      "total": 35.00,
+      "currency": "USD",
+      "special_instructions": null,
+      "estimated_delivery_at": "2026-07-02T19:00:00Z",
+      "restaurant_confirmation_deadline": "2026-07-02T18:30:00Z",
+      "created_at": "2026-07-02T18:00:00Z",
+      "updated_at": "2026-07-02T18:00:00Z",
+      "courier_id": null
+    },
+    {
+      "id": "order-003",
+      "customer_id": "customer-001",
+      "venue_id": "venue-002",
+      "delivery_address_id": "address-001",
+      "status": "CANCELLED",
+      "subtotal": 41.00,
+      "delivery_fee": 5.00,
+      "total": 46.00,
+      "currency": "USD",
+      "special_instructions": "No onions please",
+      "estimated_delivery_at": null,
+      "restaurant_confirmation_deadline": "2026-07-02T17:45:00Z",
+      "cancelled_reason": "Customer changed mind",
+      "created_at": "2026-07-02T17:15:00Z",
+      "updated_at": "2026-07-02T17:20:00Z",
+      "courier_id": null
+    }
+  ],
+  "order_items": [
+    {
+      "id": "order-item-001",
+      "order_id": "order-001",
+      "menu_item_id": "665f9a8b-5e3f-4a1b-8c8d-9e0123456789",
+      "quantity": 2,
+      "unit_price": 42.50,
+      "special_instructions": "Extra spicy",
+      "menu_item_name": "Spicy Chicken Ramen",
+      "created_at": "2026-07-02T17:30:00Z",
+      "line_total": 85.00
+    },
+    {
+      "id": "order-item-002",
+      "order_id": "order-001",
+      "menu_item_id": "7c1e2d3f-4a5b-6c7d-8e9f-0a1b2c3d4e5f",
+      "quantity": 3,
+      "unit_price": 18.00,
+      "special_instructions": null,
+      "menu_item_name": "Pork Gyoza",
+      "created_at": "2026-07-02T17:30:00Z",
+      "line_total": 54.00
+    },
+    {
+      "id": "order-item-003",
+      "order_id": "order-002",
+      "menu_item_id": "a0f4b5c6-7d8e-9f0a-1b2c-3d4e5f607182",
+      "quantity": 1,
+      "unit_price": 35.00,
+      "special_instructions": null,
+      "menu_item_name": "Margherita Pizza",
+      "created_at": "2026-07-02T18:00:00Z",
+      "line_total": 35.00
+    },
+    {
+      "id": "order-item-004",
+      "order_id": "order-003",
+      "menu_item_id": "b1a5c6d7-8e9f-0a1b-2c3d-4e5f60718293",
+      "quantity": 1,
+      "unit_price": 41.00,
+      "special_instructions": "No onions please",
+      "menu_item_name": "Pepperoni Pizza",
+      "created_at": "2026-07-02T17:15:00Z",
+      "line_total": 41.00
+    }
   ]
 }
