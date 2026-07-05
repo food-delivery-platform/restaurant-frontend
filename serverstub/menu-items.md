@@ -2,15 +2,15 @@
 
 ## Model Description
 
-The `menu_items` collection stores the current menu catalog for restaurants.
+The `menu_items` collection stores the current menu catalog for venues.
 
-One document represents one dish or product from a restaurant menu.
+One document represents one dish or product from a venue menu.
 
-`restaurantId` links the MongoDB document to a restaurant stored in PostgreSQL.
+`venueId` links the MongoDB document to a venue stored in PostgreSQL.
 
 `menuItemId` links the MongoDB document to a SQL `menu_items` record in PostgreSQL.
 
-Both `restaurantId` and `menuItemId` are UUID values from PostgreSQL. In MongoDB they are stored as strings.
+Both `venueId` and `menuItemId` are UUID values from PostgreSQL. In MongoDB they are stored as strings.
 
 Images are stored in S3. MongoDB stores only `imageKey`, not a public image URL.
 
@@ -20,7 +20,7 @@ Images are stored in S3. MongoDB stores only `imageKey`, not a public image URL.
 type MenuItem = {
   id: string;
 
-  restaurantId: string; // UUID string, references PostgreSQL restaurants.id
+  venueId: string; // UUID string, references PostgreSQL venues.id
   menuItemId: string;   // UUID string, references PostgreSQL menu_items.id
 
   name: string;
@@ -69,13 +69,13 @@ type MenuItem = {
 {
   "id": "mongo_menu_item_123",
 
-  "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+  "venueId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
   "menuItemId": "665f9a8b-5e3f-4a1b-8c8d-9e0123456789",
 
   "name": "Spicy Chicken Ramen",
   "description": "Ramen with chicken, egg, scallions and spicy broth",
   "price": 42.5,
-  "imageKey": "restaurants/64c1a2b3-0d4e-4f56-8901-234567890abc/menu/spicy-chicken-ramen.jpg",
+  "imageKey": "venues/64c1a2b3-0d4e-4f56-8901-234567890abc/menu/spicy-chicken-ramen.jpg",
   "category": "Noodles",
   "isAvailable": true,
 
@@ -138,38 +138,38 @@ PATCH /menu-items/:menuItemId
 
 ---
 
-### Restaurant menu
+### venue menu
 
 ```js
 db.menu_items.createIndex(
-  { restaurantId: 1 }
+  { venueId: 1 }
 );
 ```
 
-Used to load all menu items for one restaurant.
+Used to load all menu items for one venue.
 
 Example access pattern:
 
 ```text
-GET /restaurants/:restaurantId/menu
+GET /venues/:venueId/menu
 ```
 
 ---
 
-### Available restaurant menu
+### Available venue menu
 
 ```js
 db.menu_items.createIndex(
-  { restaurantId: 1, isAvailable: 1 }
+  { venueId: 1, isAvailable: 1 }
 );
 ```
 
-Used to load only currently available menu items for one restaurant.
+Used to load only currently available menu items for one venue.
 
 Example access pattern:
 
 ```text
-GET /restaurants/:restaurantId/menu?available=true
+GET /venues/:venueId/menu?available=true
 ```
 
 This index is also useful during checkout validation.

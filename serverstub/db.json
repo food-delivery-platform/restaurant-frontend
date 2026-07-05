@@ -2,13 +2,13 @@
   "menu_items": [
     {
       "id": "mongo_menu_item_001",
-      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "venueId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
       "menuItemId": "665f9a8b-5e3f-4a1b-8c8d-9e0123456789",
       "name": "Spicy Chicken Ramen",
       "description": "Ramen with chicken, egg, scallions and spicy broth",
       "price": 42.5,
       "currency": "ILS",
-      "imageKey": "restaurants/64c1a2b3-0d4e-4f56-8901-234567890abc/menu/spicy-chicken-ramen.jpg",
+      "imageKey": "venues/64c1a2b3-0d4e-4f56-8901-234567890abc/menu/spicy-chicken-ramen.jpg",
       "category": "Noodles",
       "isActive": true,
       "ingredients": [
@@ -43,13 +43,13 @@
     },
     {
       "id": "mongo_menu_item_002",
-      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "venueId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
       "menuItemId": "7c1e2d3f-4a5b-6c7d-8e9f-0a1b2c3d4e5f",
       "name": "Pork Gyoza",
       "description": "Pan-fried dumplings filled with pork and cabbage, served with soy-vinegar dip",
       "price": 18,
       "currency": "ILS",
-      "imageKey": "restaurants/64c1a2b3-0d4e-4f56-8901-234567890abc/menu/pork-gyoza.jpg",
+      "imageKey": "venues/64c1a2b3-0d4e-4f56-8901-234567890abc/menu/pork-gyoza.jpg",
       "category": "Starters",
       "isActive": true,
       "ingredients": [
@@ -85,13 +85,13 @@
     },
     {
       "id": "mongo_menu_item_003",
-      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "venueId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
       "menuItemId": "8d2f3e4a-5b6c-7d8e-9f0a-1b2c3d4e5f60",
       "name": "Vegan Miso Ramen",
       "description": "Plant-based ramen with miso broth, tofu, corn and seaweed",
       "price": 39,
       "currency": "ILS",
-      "imageKey": "restaurants/64c1a2b3-0d4e-4f56-8901-234567890abc/menu/vegan-miso-ramen.jpg",
+      "imageKey": "venues/64c1a2b3-0d4e-4f56-8901-234567890abc/menu/vegan-miso-ramen.jpg",
       "category": "Noodles",
       "isActive": false,
       "ingredients": [
@@ -127,7 +127,7 @@
     },
     {
       "id": "mongo_menu_item_004",
-      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "venueId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
       "menuItemId": "9e3a4f5b-6c7d-8e9f-0a1b-2c3d4e5f6071",
       "name": "Green Tea",
       "description": "Hot Japanese sencha green tea",
@@ -151,7 +151,7 @@
         "volumeMl": 300,
         "description": "1 cup"
       },
-      "spicyLevel": 0,
+      "spicyLevel": 1,
       "nutrition": {
         "calories": 2,
         "protein": 0,
@@ -163,12 +163,12 @@
     },
     {
       "id": "mongo_menu_item_005",
-      "restaurantId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
+      "venueId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
       "menuItemId": "a0f4b5c6-7d8e-9f0a-1b2c-3d4e5f607182",
       "name": "Margherita Pizza",
       "description": "Classic pizza with tomato sauce, mozzarella and fresh basil",
       "price": 35,
-      "imageKey": "restaurants/7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d/menu/margherita.jpg",
+      "imageKey": "venues/7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d/menu/margherita.jpg",
       "category": "Pizza",
       "isActive": true,
       "ingredients": [
@@ -204,12 +204,12 @@
     },
     {
       "id": "mongo_menu_item_006",
-      "restaurantId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
+      "venueId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
       "menuItemId": "b1a5c6d7-8e9f-0a1b-2c3d-4e5f60718293",
       "name": "Pepperoni Pizza",
       "description": "Pizza with tomato sauce, mozzarella and spicy pepperoni",
       "price": 41,
-      "imageKey": "restaurants/7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d/menu/pepperoni.jpg",
+      "imageKey": "venues/7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d/menu/pepperoni.jpg",
       "category": "Pizza",
       "isActive": true,
       "ingredients": [
@@ -244,12 +244,12 @@
     },
     {
       "id": "mongo_menu_item_007",
-      "restaurantId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
+      "venueId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
       "menuItemId": "c2b6d7e8-9f0a-1b2c-3d4e-5f6071829304",
       "name": "Tiramisu",
       "description": "Italian dessert with mascarpone, coffee-soaked ladyfingers and cocoa",
       "price": 22,
-      "imageKey": "restaurants/7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d/menu/tiramisu.jpg",
+      "imageKey": "venues/7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d/menu/tiramisu.jpg",
       "category": "Desserts",
       "isActive": false,
       "ingredients": [
@@ -285,7 +285,7 @@
     },
     {
       "id": "mongo_menu_item_008",
-      "restaurantId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
+      "venueId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
       "menuItemId": "d3c7e8f9-0a1b-2c3d-4e5f-607182930415",
       "name": "Cola",
       "description": "Chilled cola, 0.5 L bottle",
@@ -332,9 +332,113 @@
       ],
       "id": "mjVajP24RSk",
       "menuItemId": "8ea01797-7a71-433f-bcc5-1566b966fd96",
-      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "venueId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
       "createdAt": "2026-07-01T11:43:02.582Z",
       "updatedAt": "2026-07-01T11:43:02.582Z"
+    }
+  ],
+  "orders": [
+    {
+      "id": "111e12d3-b070-4cd7-9f7a-5297ac30edcd",
+      "customer_id": "35b75b2d-7574-4485-a7f9-5153a38c5499",
+      "venue_id": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "delivery_address_id": "address-001",
+      "status": "DELIVERED",
+      "subtotal": 84.5,
+      "delivery_fee": 5,
+      "total": 89.5,
+      "currency": "USD",
+      "special_instructions": "Ring doorbell twice",
+      "estimated_delivery_at": "2026-07-02T18:30:00Z",
+      "venue_confirmation_deadline": "2026-07-02T18:00:00Z",
+      "created_at": "2026-07-02T17:30:00Z",
+      "updated_at": "2026-07-02T18:35:00Z",
+      "courier_id": "courier-001",
+      "order_items": [
+        {
+          "id": "6c0de6ed-9640-49a7-ad53-ab021e2c2aeb",
+          "order_id": "111e12d3-b070-4cd7-9f7a-5297ac30edcd",
+          "menu_item_id": "665f9a8b-5e3f-4a1b-8c8d-9e0123456789",
+          "quantity": 2,
+          "unit_price": 42.5,
+          "special_instructions": "Extra spicy",
+          "menu_item_name": "Spicy Chicken Ramen",
+          "created_at": "2026-07-02T17:30:00Z",
+          "line_total": 85
+        },
+        {
+          "id": "9a200ef9-01b1-4ef5-8501-bc7f7d8b4ea5",
+          "order_id": "111e12d3-b070-4cd7-9f7a-5297ac30edcd",
+          "menu_item_id": "7c1e2d3f-4a5b-6c7d-8e9f-0a1b2c3d4e5f",
+          "quantity": 3,
+          "unit_price": 18,
+          "special_instructions": null,
+          "menu_item_name": "Pork Gyoza",
+          "created_at": "2026-07-02T17:30:00Z",
+          "line_total": 54
+        }
+      ]
+    },
+    {
+      "id": "222fa027-4d13-4bba-ab8b-1be7d6ee4caf",
+      "customer_id": "3e4b1209-9c83-4ce7-9f10-8a0d288437ff",
+      "venue_id": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "delivery_address_id": "address-002",
+      "status": "AWAITING_PAYMENT",
+      "subtotal": 35,
+      "delivery_fee": 0,
+      "total": 35,
+      "currency": "USD",
+      "special_instructions": null,
+      "estimated_delivery_at": "2026-07-02T19:00:00Z",
+      "venue_confirmation_deadline": "2026-07-02T18:30:00Z",
+      "created_at": "2026-07-02T18:00:00Z",
+      "updated_at": "2026-07-02T18:00:00Z",
+      "courier_id": null,
+      "order_items": [
+        {
+          "id": "5516af7f-0dc5-4b7a-97a2-2bc9f05bc8ac",
+          "order_id": "222fa027-4d13-4bba-ab8b-1be7d6ee4caf",
+          "menu_item_id": "a0f4b5c6-7d8e-9f0a-1b2c-3d4e5f607182",
+          "quantity": 1,
+          "unit_price": 35,
+          "special_instructions": null,
+          "menu_item_name": "Margherita Pizza",
+          "created_at": "2026-07-02T18:00:00Z",
+          "line_total": 35
+        }
+      ]
+    },
+    {
+      "id": "333d9c16-8575-4db3-8ad0-89e6dd785837",
+      "customer_id": "6b7f768c-3751-474a-97ec-a670ec73fe42",
+      "venue_id": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "delivery_address_id": "address-001",
+      "status": "CANCELLED",
+      "subtotal": 41,
+      "delivery_fee": 5,
+      "total": 46,
+      "currency": "USD",
+      "special_instructions": "No onions please",
+      "estimated_delivery_at": null,
+      "venue_confirmation_deadline": "2026-07-02T17:45:00Z",
+      "cancelled_reason": "Customer changed mind",
+      "created_at": "2026-07-02T17:15:00Z",
+      "updated_at": "2026-07-02T17:20:00Z",
+      "courier_id": null,
+      "order_items": [
+        {
+          "id": "772f88d5-7230-430c-a1f0-0d66f1149bfe",
+          "order_id": "333d9c16-8575-4db3-8ad0-89e6dd785837",
+          "menu_item_id": "b1a5c6d7-8e9f-0a1b-2c3d-4e5f60718293",
+          "quantity": 1,
+          "unit_price": 41,
+          "special_instructions": "No onions please",
+          "menu_item_name": "Pepperoni Pizza",
+          "created_at": "2026-07-02T17:15:00Z",
+          "line_total": 41
+        }
+      ]
     }
   ]
 }

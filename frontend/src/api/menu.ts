@@ -2,13 +2,13 @@ import { apiGet, apiPost, apiPatch } from './client'
 import type { MenuItem } from '../types/menu'
 
 export function getMenu(
-    restaurantId: string,
+    venueId: string,
     onlyAvailable = false
 ): Promise<MenuItem[]> {
     const query = onlyAvailable ? '&available=true' : ''
 
     return apiGet<MenuItem[]>(
-        `/restaurants/my/menu?${query}`
+        `/venues/my/menu?${query}`
     )
 }
 

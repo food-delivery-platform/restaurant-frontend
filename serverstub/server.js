@@ -4,8 +4,8 @@
 // stub stores/queries data the same way json-server does, while exposing the
 // exact routes documented in menu-items.md:
 //
-//   GET   /restaurants/:restaurantId/menu            -> all menu items of a restaurant
-//   GET   /restaurants/:restaurantId/menu?available=true  -> only available items
+//   GET   /venues/:venueId/menu            -> all menu items of a venue
+//   GET   /venues/:venueId/menu?available=true  -> only available items
 //   GET   /menu-items/:menuItemId                    -> one item by SQL menuItemId
 //   PATCH /menu-items/:menuItemId                    -> partial update by menuItemId
 //
@@ -29,7 +29,7 @@ await db.read()
 const service = new Service(db)
 
 // `Service.find` matches on a "where" tree using operator objects, e.g.
-// { restaurantId: { eq: "..." } }. Helper to keep call sites readable.
+// { venueId: { eq: "..." } }. Helper to keep call sites readable.
 const eq = (value) => ({ eq: value })
 
 function findByMenuItemId(menuItemId) {
@@ -47,9 +47,9 @@ app.get('/', (_req, res) =>
     ok: true,
     collection: COLLECTION,
     endpoints: [
-      'GET /restaurants/my/menu',
-      'GET /restaurants/:restaurantId/menu',
-      'GET /restaurants/:restaurantId/menu?available=true',
+      'GET /venues/my/menu',
+      'GET /venues/:venueId/menu',
+      'GET /venues/:venueId/menu?available=true',
       'GET /menu-items/:menuItemId',
       'PATCH /menu-items/:menuItemId',
       'GET /menu_items',
@@ -58,19 +58,19 @@ app.get('/', (_req, res) =>
   }),
 )
 
-const DEFAULT_RESTAURANT_ID =
+const DEFAULT_VENUE_ID =
     '64c1a2b3-0d4e-4f56-8901-234567890abc'
 
 const getMenu = (req, res) => {
-    const rawId = req.params.restaurantId
+    const rawId = req.params.venueId
 
-    const restaurantId =
+    const venueId =
         !rawId || rawId === 'my'
-            ? DEFAULT_RESTAURANT_ID
+            ? DEFAULT_VENUE_ID
             : rawId
 
     const where = {
-        restaurantId: eq(restaurantId)
+        venueId: eq(venueId)
     }
 
     if (req.query.available === 'true') {
@@ -80,9 +80,9 @@ const getMenu = (req, res) => {
     res.json(service.find(COLLECTION, { where }))
 }
 
-// All menu items for one restaurant (optionally only available ones).
-app.get('/restaurants/:restaurantId/menu', getMenu)
-app.get('/restaurants/my/menu', getMenu)
+// All menu items for one venue (optionally only available ones).
+app.get('/venues/:venueId/menu', getMenu)
+app.get('/venues/my/menu', getMenu)
 
 // One menu item by its SQL menuItemId (UUID), per the unique index in the doc.
 app.get('/menu-items/:menuItemId', (req, res) => {
@@ -114,7 +114,7 @@ app.post('/menu_items/new', async (req, res) => {
     ...data,
     id,
     menuItemId,
-    restaurantId: DEFAULT_RESTAURANT_ID,
+    venueId: DEFAULT_VENUE_ID,
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString()
   }
