@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { Box, Flex, Text } from '@chakra-ui/react'
 import type { MenuItem } from '../types/menu'
 
 type Props = {
@@ -15,88 +16,76 @@ const COLUMNS: Column[] = [
     {
         title: 'Name',
         width: 200,
-        getValue: (item) => item.name
+        getValue: (item) => item.name,
     },
     {
         title: 'Price',
         width: 80,
-        getValue: (item) => item.price
+        getValue: (item) => item.price,
     },
     {
         title: 'Category',
         width: 120,
-        getValue: (item) => item.category || ''
+        getValue: (item) => item.category || '',
     },
     {
         title: 'Status',
         width: 100,
-        getValue: (item) => (item.isActive ? 'available' : 'off')
+        getValue: (item) => (item.isActive ? 'available' : 'off'),
     },
     {
         title: 'Actions',
         getValue: (item) => (
-            <Link
+            <Box
+                as={Link}
                 to={`/edit/${item.menuItemId}`}
-                style={{
-                    color: '#0070f3',
-                    textDecoration: 'none',
-                    fontWeight: 600
-                }}
+                color="blue.500"
+                fontWeight="semibold"
+                _hover={{ textDecoration: 'underline' }}
             >
                 Edit
-            </Link>
-        )
-    }
+            </Box>
+        ),
+    },
 ]
-
-
-const headerRowStyle: React.CSSProperties = {
-    display: 'flex',
-    gap: 12,
-    alignItems: 'center',
-    fontWeight: 600,
-    borderBottom: '2px solid #000',
-    paddingBottom: 8,
-    marginBottom: 12
-}
-
-const itemRowStyle: React.CSSProperties = {
-    display: 'flex',
-    gap: 12,
-    alignItems: 'center',
-    marginBottom: 10,
-    paddingBottom: 6,
-    borderBottom: '1px solid #eee'
-}
-
-const getCellStyle = (width?: number | string): React.CSSProperties => {
-    return width !== undefined ? { width } : {}
-}
 
 export function MenuList({ items }: Props) {
     return (
-        <div>
+        <Box>
             {/* header */}
-            <div style={headerRowStyle}>
+            <Flex
+                fontWeight="600"
+                borderBottom="2px solid"
+                borderColor="blackAlpha.800"
+                pb={2}
+                mb={3}
+                gap={3}
+            >
                 {COLUMNS.map((col, idx) => (
-                    <div key={idx} style={getCellStyle(col.width)}>
+                    <Box key={idx} w={col.width}>
                         {col.title}
-                    </div>
+                    </Box>
                 ))}
-            </div>
+            </Flex>
 
             {/* rows */}
-            {items.map((item) => {
-                return (
-                    <div key={item.id} style={itemRowStyle}>
-                        {COLUMNS.map((col, idx) => (
-                            <div key={idx} style={getCellStyle(col.width)}>
-                                {col.getValue(item)}
-                            </div>
-                        ))}
-                    </div>
-                )
-            })}
-        </div>
+            {items.map((item) => (
+                <Flex
+                    key={item.id}
+                    gap={3}
+                    align="center"
+                    borderBottom="1px solid"
+                    borderColor="gray.200"
+                    pb={2}
+                    mb={2}
+                >
+                    {COLUMNS.map((col, idx) => (
+                        <Box key={idx} w={col.width}>
+                            <Text>{col.getValue(item)}</Text>
+                        </Box>
+                    ))}
+                </Flex>
+            ))}
+        </Box>
     )
 }
