@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
-import { SuperMenuList } from '../components/SuperMenuList'
-import { MenuEditPanel } from '../components/MenuEditPanel'
+import { SuperMenuList } from '../features/menu/components/SuperMenuList'
+import { MenuEditPanel } from '../features/menu/components/MenuEditPanel'
 
 function App() {
     return (
