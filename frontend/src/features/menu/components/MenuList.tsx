@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Box, Flex, Text } from '@chakra-ui/react'
-import type { MenuItem } from '../types/menu'
+import type { MenuItem } from '../model/menu'
 
 type Props = {
     items: MenuItem[]

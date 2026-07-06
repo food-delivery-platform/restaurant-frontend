@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import type { MenuItem } from '../types/menu'
-import { getMenu } from '../api/menu'
+import type { MenuItem } from '../model/menu'
+import { getMenu } from './menu.ts'
 
 export function useMenu(venueId: string, onlyAvailable: boolean) {
     const [items, setItems] = useState<MenuItem[]>([])
