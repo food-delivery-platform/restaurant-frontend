@@ -335,11 +335,31 @@
       "venueId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
       "createdAt": "2026-07-01T11:43:02.582Z",
       "updatedAt": "2026-07-01T11:43:02.582Z"
+    },
+    {
+      "name": "Mango Cheesecake",
+      "price": 27,
+      "category": "Desserts",
+      "description": "Creamy cheesecake topped with mango sauce",
+      "isActive": true,
+      "spicyLevel": 0,
+      "ingredients": [
+        "cream cheese",
+        "mango",
+        "biscuit base",
+        "sugar"
+      ],
+      "id": "mjVajP24RSl",
+      "menuItemId": "b2e11c19-cc2e-4f11-9f8f-9f2b4f9d1a77",
+      "venueId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "createdAt": "2026-07-01T11:45:02.582Z",
+      "updatedAt": "2026-07-01T11:45:02.582Z"
     }
   ],
   "orders": [
     {
       "id": "111e12d3-b070-4cd7-9f7a-5297ac30edcd",
+      "customerName": "Avi Cohen",
       "customer_id": "35b75b2d-7574-4485-a7f9-5153a38c5499",
       "venue_id": "64c1a2b3-0d4e-4f56-8901-234567890abc",
       "delivery_address_id": "address-001",
@@ -381,6 +401,7 @@
     },
     {
       "id": "222fa027-4d13-4bba-ab8b-1be7d6ee4caf",
+      "customerName": "Dana Levi",
       "customer_id": "3e4b1209-9c83-4ce7-9f10-8a0d288437ff",
       "venue_id": "64c1a2b3-0d4e-4f56-8901-234567890abc",
       "delivery_address_id": "address-002",
@@ -411,6 +432,7 @@
     },
     {
       "id": "333d9c16-8575-4db3-8ad0-89e6dd785837",
+      "customerName": "Noam Ben-David",
       "customer_id": "6b7f768c-3751-474a-97ec-a670ec73fe42",
       "venue_id": "64c1a2b3-0d4e-4f56-8901-234567890abc",
       "delivery_address_id": "address-001",
@@ -437,6 +459,110 @@
           "menu_item_name": "Pepperoni Pizza",
           "created_at": "2026-07-02T17:15:00Z",
           "line_total": 41
+        }
+      ]
+    },
+    {
+      "id": "444c3a0f-9d2d-4f20-bf0c-1d7b8f7d3d11",
+      "customerName": "Maya Rosen",
+      "customer_id": "d1d44f11-2f42-4f20-a4ff-7aa4d5c8d3aa",
+      "venue_id": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "delivery_address_id": "address-003",
+      "status": "PREPARING",
+      "subtotal": 60,
+      "delivery_fee": 5,
+      "total": 65,
+      "currency": "ILS",
+      "special_instructions": "Leave at reception",
+      "estimated_delivery_at": "2026-07-02T19:25:00Z",
+      "venue_confirmation_deadline": "2026-07-02T18:50:00Z",
+      "created_at": "2026-07-02T18:20:00Z",
+      "updated_at": "2026-07-02T18:22:00Z",
+      "courier_id": null,
+      "order_items": [
+        {
+          "id": "7a0d8d4c-6d02-4f4f-9a27-1a1a4db5d001",
+          "order_id": "444c3a0f-9d2d-4f20-bf0c-1d7b8f7d3d11",
+          "menu_item_id": "8ea01797-7a71-433f-bcc5-1566b966fd96",
+          "quantity": 1,
+          "unit_price": 23,
+          "special_instructions": null,
+          "menu_item_name": "Super-dish!",
+          "created_at": "2026-07-02T18:20:00Z",
+          "line_total": 23
+        },
+        {
+          "id": "7a0d8d4c-6d02-4f4f-9a27-1a1a4db5d002",
+          "order_id": "444c3a0f-9d2d-4f20-bf0c-1d7b8f7d3d11",
+          "menu_item_id": "b2e11c19-cc2e-4f11-9f8f-9f2b4f9d1a77",
+          "quantity": 1,
+          "unit_price": 27,
+          "special_instructions": null,
+          "menu_item_name": "Mango Cheesecake",
+          "created_at": "2026-07-02T18:20:00Z",
+          "line_total": 27
+        }
+      ]
+    },
+    {
+      "id": "555b7f44-0de3-4d77-9c18-5f7e8f0b6a22",
+      "customerName": "Tomer Shalev",
+      "customer_id": "f7c1b2a3-6d4e-4a11-9d31-11c9d8b6d4bb",
+      "venue_id": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
+      "delivery_address_id": "address-004",
+      "status": "DELIVERED",
+      "subtotal": 70,
+      "delivery_fee": 10,
+      "total": 80,
+      "currency": "ILS",
+      "special_instructions": null,
+      "estimated_delivery_at": "2026-07-02T20:10:00Z",
+      "venue_confirmation_deadline": "2026-07-02T19:20:00Z",
+      "created_at": "2026-07-02T19:00:00Z",
+      "updated_at": "2026-07-02T20:12:00Z",
+      "courier_id": "courier-002",
+      "order_items": [
+        {
+          "id": "8b1c9e5f-9e55-4a2d-8e88-2a2b2f5d1001",
+          "order_id": "555b7f44-0de3-4d77-9c18-5f7e8f0b6a22",
+          "menu_item_id": "a0f4b5c6-7d8e-9f0a-1b2c-3d4e5f607182",
+          "quantity": 2,
+          "unit_price": 35,
+          "special_instructions": null,
+          "menu_item_name": "Margherita Pizza",
+          "created_at": "2026-07-02T19:00:00Z",
+          "line_total": 70
+        }
+      ]
+    },
+    {
+      "id": "666a8c55-1ef4-4e88-8d29-6a8f9e1c7b33",
+      "customerName": "Yael Amir",
+      "customer_id": "0a9e8d7c-6b5a-4f33-a2b1-8f7e6d5c4b3a",
+      "venue_id": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "delivery_address_id": "address-005",
+      "status": "AWAITING_PAYMENT",
+      "subtotal": 18,
+      "delivery_fee": 5,
+      "total": 23,
+      "currency": "ILS",
+      "special_instructions": "Call on arrival",
+      "estimated_delivery_at": "2026-07-02T19:40:00Z",
+      "venue_confirmation_deadline": "2026-07-02T19:05:00Z",
+      "created_at": "2026-07-02T18:55:00Z",
+      "updated_at": "2026-07-02T18:55:00Z",
+      "courier_id": null,
+      "order_items": [
+        {
+          "id": "9c2d0f60-0f66-4b3c-9f99-3b3c3f6e2001",
+          "order_id": "666a8c55-1ef4-4e88-8d29-6a8f9e1c7b33",
+          "menu_item_id": "7c1e2d3f-4a5b-6c7d-8e9f-0a1b2c3d4e5f",
+          "quantity": 1,
+          "unit_price": 18,
+          "special_instructions": null,
+          "menu_item_name": "Pork Gyoza",
+          "created_at": "2026-07-02T18:55:00Z",
+          "line_total": 18
         }
       ]
     }
