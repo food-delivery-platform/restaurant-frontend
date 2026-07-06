@@ -1,4 +1,90 @@
 {
+  "venueProfile": {
+    "venue": {
+      "id": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "owner_id": "3f1d9b62-2c4e-4d9a-8f24-5d2f1f7c8a11",
+      "address_id": "address-venue-001",
+      "name": "Tokyo House",
+      "slug": "tokyo-house",
+      "description": "Modern Japanese kitchen with ramen, gyoza and pizza for the sample app.",
+      "cuisine_tags": [
+        "japanese",
+        "ramen",
+        "pizza",
+        "dessert"
+      ],
+      "is_active": true,
+      "rating": 4.8,
+      "image_url": "https://example.com/images/venues/tokyo-house.jpg",
+      "created_at": "2026-06-27T09:30:00Z",
+      "updated_at": "2026-07-02T18:00:00Z"
+    },
+    "opening_hours": [
+      {
+        "id": "oh-001",
+        "venue_id": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+        "day_of_week": 1,
+        "opens_at": "11:00:00",
+        "closes_at": "22:00:00",
+        "created_at": "2026-06-27T09:30:00Z",
+        "updated_at": "2026-06-27T09:30:00Z"
+      },
+      {
+        "id": "oh-002",
+        "venue_id": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+        "day_of_week": 2,
+        "opens_at": "11:00:00",
+        "closes_at": "22:00:00",
+        "created_at": "2026-06-27T09:30:00Z",
+        "updated_at": "2026-06-27T09:30:00Z"
+      },
+      {
+        "id": "oh-003",
+        "venue_id": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+        "day_of_week": 3,
+        "opens_at": "11:00:00",
+        "closes_at": "22:00:00",
+        "created_at": "2026-06-27T09:30:00Z",
+        "updated_at": "2026-06-27T09:30:00Z"
+      },
+      {
+        "id": "oh-004",
+        "venue_id": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+        "day_of_week": 4,
+        "opens_at": "11:00:00",
+        "closes_at": "22:00:00",
+        "created_at": "2026-06-27T09:30:00Z",
+        "updated_at": "2026-06-27T09:30:00Z"
+      },
+      {
+        "id": "oh-005",
+        "venue_id": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+        "day_of_week": 5,
+        "opens_at": "11:00:00",
+        "closes_at": "23:00:00",
+        "created_at": "2026-06-27T09:30:00Z",
+        "updated_at": "2026-06-27T09:30:00Z"
+      },
+      {
+        "id": "oh-006",
+        "venue_id": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+        "day_of_week": 6,
+        "opens_at": "12:00:00",
+        "closes_at": "23:00:00",
+        "created_at": "2026-06-27T09:30:00Z",
+        "updated_at": "2026-06-27T09:30:00Z"
+      },
+      {
+        "id": "oh-007",
+        "venue_id": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+        "day_of_week": 7,
+        "opens_at": "12:00:00",
+        "closes_at": "21:00:00",
+        "created_at": "2026-06-27T09:30:00Z",
+        "updated_at": "2026-06-27T09:30:00Z"
+      }
+    ]
+  },
   "menu_items": [
     {
       "id": "mongo_menu_item_001",
