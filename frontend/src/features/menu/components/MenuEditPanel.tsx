@@ -16,7 +16,7 @@ import {
 } from '@chakra-ui/react'
 
 import { getMenuItem, createMenuItem, updateMenuItem } from '../api/menu'
-import type { MenuItem } from '../types/menu'
+import type { MenuItem } from '../model/menu'
 
 const spicyOptions = createListCollection({
     items: [

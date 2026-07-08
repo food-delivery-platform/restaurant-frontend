@@ -1,5 +1,6 @@
-import { apiGet, apiPost, apiPatch } from './client'
-import type { MenuItem } from '../types/menu'
+import { apiGet, apiPost, apiPatch } from '../../../shared/api/client'
+import type { MenuItem } from '../model/menu'
+
 
 export function getMenu(
     venueId: string,
