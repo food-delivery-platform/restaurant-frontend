@@ -135,6 +135,64 @@ app.get('/menu_items/:id', (req, res) => {
   res.json(item)
 })
 
+// --- orders endpoints ---------------------------------------------------------
+const ORDERS_COLLECTION = 'orders'
+
+function findOrder(orderId) {
+  const list = service.find(ORDERS_COLLECTION, { where: { id: eq(orderId) } })
+  return Array.isArray(list) ? list[0] : undefined
+}
+
+function findOrderItem(order, itemId) {
+  return order.order_items?.find(i => i.id === itemId)
+}
+
+app.get('/orders', (_req, res) => {
+  res.json(service.find(ORDERS_COLLECTION, { where: {} }))
+})
+
+app.patch('/orders/:orderId/items/:itemId/ready', async (req, res) => {
+  const order = findOrder(req.params.orderId)
+  if (!order) {
+    res.status(404).json({ error: 'Order not found' })
+    return
+  }
+
+  const item = findOrderItem(order, req.params.itemId)
+  if (!item) {
+    res.status(404).json({ error: 'Order item not found' })
+    return
+  }
+
+  item.status = 'READY'
+  item.updated_at = new Date().toISOString()
+  order.updated_at = new Date().toISOString()
+
+  await db.write()
+
+  res.json(order)
+})
+
+app.patch('/orders/:orderId/deliver', async (req, res) => {
+  const order = findOrder(req.params.orderId)
+  if (!order) {
+    res.status(404).json({ error: 'Order not found' })
+    return
+  }
+
+  if (!order.order_items.every(i => i.status === 'READY')) {
+    res.status(400).json({ error: 'Not all items are ready yet' })
+    return
+  }
+
+  order.status = 'READY_FOR_PICKUP'
+  order.updated_at = new Date().toISOString()
+
+  await db.write()
+
+  res.json(order)
+})
+
 app.listen(PORT, () =>
   console.log(`Menu stub server running on http://localhost:${PORT}`),
 )
