@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link as RouterLink } from 'react-router-dom'
 import { Box, Flex, Heading, Checkbox, Button, Spinner, Text } from '@chakra-ui/react'
-import { useMenu } from '../hooks/useMenu'
+import { useMenu } from '../api/useMenu'
 import {MenuList} from "./MenuList.tsx";
 
 

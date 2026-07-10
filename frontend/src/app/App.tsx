@@ -1,5 +1,7 @@
-import { Container } from '@chakra-ui/react'
+import {Container} from "@chakra-ui/react";
 import { Routes, Route } from 'react-router-dom'
+import { SuperMenuList } from '../features/menu/components/SuperMenuList'
+import { MenuEditPanel } from '../features/menu/components/MenuEditPanel'
 
 import { SuperMenuList } from './components/SuperMenuList'
 import { MenuEditPanel } from './components/MenuEditPanel'
