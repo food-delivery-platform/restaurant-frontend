@@ -409,7 +409,7 @@
     {
       "name": "Super-dish!",
       "price": 23,
-      "category": "sandwich",
+      "category": "Sandwich",
       "description": "a good sandwich with cheese",
       "isActive": true,
       "spicyLevel": 1,
