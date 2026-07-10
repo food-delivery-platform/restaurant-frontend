@@ -18,7 +18,7 @@ export function SuperMenuList() {
 
                 <Button
                     as={Link}
-                    to="/new"
+                    to="/menu_items/new"
                     colorPalette="green"
                     borderRadius="full"
                     w="40px"
