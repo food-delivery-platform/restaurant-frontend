@@ -2,15 +2,17 @@ import {Container} from "@chakra-ui/react";
 import { Routes, Route } from 'react-router-dom'
 import { SuperMenuList } from '../features/menu/components/SuperMenuList'
 import { MenuEditPanel } from '../features/menu/components/MenuEditPanel'
-
-import { SuperMenuList } from './components/SuperMenuList'
-import { MenuEditPanel } from './components/MenuEditPanel'
-import { OrderList } from './features/orders/OrderList'
+import { OrderList } from '../features/orders/components/OrderList'
+import { HomePage } from '../features/home/HomePage'
+import { Navbar } from '../shared/components/Navbar'
 
 function App() {
     return (
         <Container py={3}>
+            <Navbar />
+
             <Routes>
+                <Route path="/" element={<HomePage />} />
                 <Route path="/menu_items" element={<SuperMenuList />} />
                 <Route path="/menu_items/new" element={<MenuEditPanel />} />
                 <Route path="/menu_items/edit/:menuItemId" element={<MenuEditPanel />} />
