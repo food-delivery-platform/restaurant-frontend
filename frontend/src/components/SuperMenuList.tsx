@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link as RouterLink } from 'react-router-dom'
 import { Box, Flex, Heading, Checkbox, Button, Spinner, Text } from '@chakra-ui/react'
 import { useMenu } from '../hooks/useMenu'
 import {MenuList} from "./MenuList.tsx";
@@ -16,17 +16,8 @@ export function SuperMenuList() {
             <Flex justify="space-between" align="center" mb={5}>
                 <Heading size="md">Menu List</Heading>
 
-                <Button
-                    as={Link}
-                    to="/menu_items/new"
-                    colorPalette="green"
-                    borderRadius="full"
-                    w="40px"
-                    h="40px"
-                    fontSize="20px"
-                    fontWeight="bold"
-                >
-                    +
+                <Button asChild colorPalette="green" borderRadius="full" w="40px" h="40px" fontSize="20px" fontWeight="bold">
+                    <RouterLink to="/menu_items/new">+</RouterLink>
                 </Button>
             </Flex>
 
