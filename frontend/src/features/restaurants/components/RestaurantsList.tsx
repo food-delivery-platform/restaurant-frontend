@@ -17,7 +17,17 @@ const COLUMNS: Column[] = [
     {
         title: 'Name',
         width: 200,
-        getValue: (restaurant) => restaurant.name,
+        getValue: (restaurant) => (
+            <Box
+                as={Link}
+                to={`/restaurants/view/${restaurant.id}`}
+                color="blue.500"
+                fontWeight="semibold"
+                _hover={{ textDecoration: 'underline' }}
+            >
+                {restaurant.name}
+            </Box>
+        ),
     },
     {
         title: 'Description',
