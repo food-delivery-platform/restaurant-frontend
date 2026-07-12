@@ -3,6 +3,7 @@ import { Link as RouterLink } from 'react-router-dom'
 import { Box, Flex, Heading, Checkbox, Button, Spinner, Text } from '@chakra-ui/react'
 import { useMenu } from '../api/useMenu'
 import { useRestaurants } from '../../restaurants/api/useRestaurants'
+import { useRestaurantCache } from '../../restaurants/api/useRestaurantCache'
 import {MenuList} from "./MenuList.tsx";
 
 export function SuperMenuList() {
@@ -17,6 +18,7 @@ export function SuperMenuList() {
     }, [restaurants])
 
     const { items, loading, error } = useMenu(restaurantId, onlyAvailable)
+    const { restaurant, loading: restaurantLoading } = useRestaurantCache(restaurantId)
 
     if (!restaurantId) {
         return <Text color="gray.500">No restaurants available</Text>
@@ -25,7 +27,14 @@ export function SuperMenuList() {
     return (
         <Box>
             <Flex justify="space-between" align="center" mb={5}>
-                <Heading size="md">Menu List</Heading>
+                <Box>
+                    <Heading size="md">
+                        {restaurantLoading ? '...' : restaurant?.name || 'Menu List'}
+                    </Heading>
+                    {restaurant?.description && (
+                        <Text fontSize="sm" color="gray.500">{restaurant.description}</Text>
+                    )}
+                </Box>
 
                 <Button asChild colorPalette="green" borderRadius="full" w="40px" h="40px" fontSize="20px" fontWeight="bold">
                     <RouterLink to="/menu_items/new">+</RouterLink>

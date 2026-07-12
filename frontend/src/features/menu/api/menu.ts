@@ -6,6 +6,10 @@ export function getMenu(
     restaurantId: string,
     onlyAvailable = false
 ): Promise<MenuItem[]> {
+    if (!restaurantId) {
+        return Promise.resolve([])
+    }
+
     const query = onlyAvailable ? '?available=true' : ''
 
     return apiGet<MenuItem[]>(
