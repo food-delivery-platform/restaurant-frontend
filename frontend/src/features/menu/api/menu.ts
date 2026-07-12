@@ -3,13 +3,13 @@ import type { MenuItem } from '../model/menu'
 
 
 export function getMenu(
-    venueId: string,
+    restaurantId: string,
     onlyAvailable = false
 ): Promise<MenuItem[]> {
-    const query = onlyAvailable ? '&available=true' : ''
+    const query = onlyAvailable ? '?available=true' : ''
 
     return apiGet<MenuItem[]>(
-        `/venues/my/menu?${query}`
+        `/api/restaurants/${restaurantId}/menu-items${query}`
     )
 }
 

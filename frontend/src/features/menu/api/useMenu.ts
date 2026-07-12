@@ -2,17 +2,22 @@ import { useEffect, useState } from 'react'
 import type { MenuItem } from '../model/menu'
 import { getMenu } from './menu.ts'
 
-export function useMenu(venueId: string, onlyAvailable: boolean) {
+export function useMenu(restaurantId: string, onlyAvailable: boolean) {
     const [items, setItems] = useState<MenuItem[]>([])
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState<string | null>(null)
 
     useEffect(() => {
+        if (!restaurantId) {
+            setItems([])
+            return
+        }
+
         let alive = true
 
         setLoading(true)
 
-        getMenu(venueId, onlyAvailable)
+        getMenu(restaurantId, onlyAvailable)
             .then(data => {
                 if (!alive) return
                 setItems(data)
@@ -29,7 +34,7 @@ export function useMenu(venueId: string, onlyAvailable: boolean) {
         return () => {
             alive = false
         }
-    }, [venueId, onlyAvailable])
+    }, [restaurantId, onlyAvailable])
 
     return { items, loading, error }
 }

@@ -61,7 +61,8 @@ app.get('/', (_req, res) =>
       'GET /api/restaurants',
       'GET /api/restaurants/:restaurantId',
       'POST /api/restaurants',
-      'PATCH /api/restaurants/:restaurantId'
+      'PATCH /api/restaurants/:restaurantId',
+      'GET /api/restaurants/:restaurantId/menu-items'
     ],
   }),
 )
@@ -88,7 +89,7 @@ const getMenu = (req, res) => {
     res.json(service.find(COLLECTION, { where }))
 }
 
-// All menu items for one venue (optionally only available ones).
+// Legacy endpoints - All menu items for one venue (optionally only available ones).
 app.get('/venues/:venueId/menu', getMenu)
 app.get('/venues/my/menu', getMenu)
 
@@ -247,6 +248,18 @@ app.patch('/api/restaurants/:restaurantId', async (req, res) => {
     updatedAt: new Date().toISOString()
   })
   res.json(updated)
+})
+
+app.get('/api/restaurants/:restaurantId/menu-items', (req, res) => {
+  const restaurantId = req.params.restaurantId
+  const where = { venueId: eq(restaurantId) }
+
+  if (req.query.available === 'true') {
+    where.isActive = eq(true)
+  }
+
+  const items = service.find(COLLECTION, { where })
+  res.json(items)
 })
 
 app.listen(PORT, () =>
