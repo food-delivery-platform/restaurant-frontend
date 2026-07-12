@@ -51,9 +51,10 @@ app.get('/', (_req, res) =>
       'GET /venues/my/menu',
       'GET /venues/:venueId/menu',
       'GET /venues/:venueId/menu?available=true',
-      'GET /menu-items/:menuItemId',
+      'GET /menu-items/:id',
       'GET /api/menu-items/:id',
-      'PATCH /menu-items/:menuItemId',
+      'POST /api/menu-items',
+      'PATCH /api/menu-items/:id',
       'GET /menu_items',
       'POST /menu_items/new',
       'GET /orders',
@@ -112,6 +113,37 @@ app.get('/api/menu-items/:id', (req, res) => {
     return
   }
   res.json(item)
+})
+
+// Add menu item (new API)
+app.post('/api/menu-items', async (req, res) => {
+  const data = req.body ?? {}
+  const id = crypto.randomUUID()
+
+  const newItem = {
+    id,
+    ...data,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  }
+
+  const created = await service.create(COLLECTION, newItem)
+  res.status(201).json(created)
+})
+
+// Edit menu item (new API)
+app.patch('/api/menu-items/:id', async (req, res) => {
+  const item = service.findById(COLLECTION, req.params.id, {})
+  if (!item) {
+    res.status(404).json({ error: 'Menu item not found' })
+    return
+  }
+
+  const updated = await service.patchById(COLLECTION, item.id, {
+    ...req.body,
+    updatedAt: new Date().toISOString()
+  })
+  res.json(updated)
 })
 
 // Partial update of a menu item by menuItemId (e.g. toggle isAvailable / price).

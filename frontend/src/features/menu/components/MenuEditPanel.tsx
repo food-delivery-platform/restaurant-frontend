@@ -16,6 +16,7 @@ import {
 } from '@chakra-ui/react'
 
 import { getMenuItem, createMenuItem, updateMenuItem } from '../api/menu'
+import { useRestaurants } from '../../restaurants/api/useRestaurants'
 import type { MenuItem } from '../model/menu'
 
 const spicyOptions = createListCollection({
@@ -30,8 +31,10 @@ const spicyOptions = createListCollection({
 export function MenuEditPanel() {
     const { menuItemId } = useParams<{ menuItemId: string }>()
     const navigate = useNavigate()
+    const { restaurants } = useRestaurants()
 
     const isEditMode = !!menuItemId
+    const restaurantId = restaurants[0]?.id || ''
 
     const [loading, setLoading] = useState(false)
     const [saving, setSaving] = useState(false)
@@ -84,20 +87,27 @@ export function MenuEditPanel() {
         const payload: Partial<MenuItem> = {
             name: name.trim(),
             price,
-            category: category.trim() ? { name: category.trim(), restaurantId: '', id: '' } : undefined,
+            currency: 'ILS',
+            category: category.trim() ? { name: category.trim(), restaurantId, id: '' } : undefined,
             description: description.trim() || undefined,
             isAvailable,
-            spicyLevel,
+            spicyLevel: spicyLevel as 0 | 1 | 2 | 3,
             ingredients: ingredientsText
                 .split(',')
                 .map((i) => i.trim())
                 .filter(Boolean),
+            ...(isEditMode ? {} : { restaurantId }),
         }
 
         try {
             if (isEditMode) {
                 await updateMenuItem(menuItemId!, payload)
             } else {
+                if (!restaurantId) {
+                    setError('No restaurant available')
+                    setSaving(false)
+                    return
+                }
                 await createMenuItem(payload)
             }
             navigate('/menu_items')

@@ -3,13 +3,13 @@ export type MenuItem = {
     restaurantId: string
     name: string
     description?: string
-    price: string
-    currency: string
     category?: {
         id: string
         restaurantId: string
         name: string
     }
+    price: string
+    currency: string
     isAvailable: boolean
     ingredients?: string[]
     allergens?: string[]
@@ -35,6 +35,6 @@ export type MenuItem = {
         fat?: number
         carbs?: number
     }
-    createdAt: string
-    updatedAt: string
+    createdAt?: string
+    updatedAt?: string
 }

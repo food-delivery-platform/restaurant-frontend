@@ -22,13 +22,13 @@ export function getMenuItem(menuItemId: string): Promise<MenuItem> {
 }
 
 export function createMenuItem(item: Partial<MenuItem>): Promise<MenuItem> {
-    return apiPost<MenuItem>('/menu_items/new', item)
+    return apiPost<MenuItem>('/api/menu-items', item)
 }
 
 export function updateMenuItem(
     menuItemId: string,
     item: Partial<MenuItem>
 ): Promise<MenuItem> {
-    return apiPatch<MenuItem>(`/menu-items/${menuItemId}`, item)
+    return apiPatch<MenuItem>(`/api/menu-items/${menuItemId}`, item)
 }
 
