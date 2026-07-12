@@ -10,6 +10,7 @@ type Props = {
 
 export function OrderCard({order, onItemReady, onDeliver}: Props) {
     const allItemsReady = order.order_items.every(item => item.status === 'READY')
+    const canDeliver = allItemsReady && (order.status === 'RESTAURANT_ACCEPTED' || order.status === 'PREPARING')
 
     return (
         <Card.Root p={4} variant="outline">
@@ -60,8 +61,8 @@ export function OrderCard({order, onItemReady, onDeliver}: Props) {
                 <Flex justify="flex-end">
                     <Button
                         colorPalette="blue"
-                        disabled={!allItemsReady}
-                        opacity={allItemsReady ? 1 : 0.5}
+                        disabled={!canDeliver}
+                        opacity={canDeliver ? 1 : 0.5}
                         onClick={() => onDeliver(order.id)}
                     >
                         Deliver
