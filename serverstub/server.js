@@ -58,7 +58,10 @@ app.get('/', (_req, res) =>
       'GET /orders',
       'PATCH /orders/:orderId/items/:itemId/ready',
       'PATCH /orders/:orderId/deliver',
-      'GET /api/restaurants'
+      'GET /api/restaurants',
+      'GET /api/restaurants/:restaurantId',
+      'POST /api/restaurants',
+      'PATCH /api/restaurants/:restaurantId'
     ],
   }),
 )
@@ -199,8 +202,51 @@ app.patch('/orders/:orderId/deliver', async (req, res) => {
 })
 
 // --- restaurants endpoints ---------------------------------------------------
+function findRestaurant(restaurantId) {
+  const list = service.find(RESTAURANTS_COLLECTION, { where: { id: eq(restaurantId) } })
+  return Array.isArray(list) ? list[0] : undefined
+}
+
 app.get('/api/restaurants', (_req, res) => {
   res.json(service.find(RESTAURANTS_COLLECTION, { where: {} }))
+})
+
+app.get('/api/restaurants/:restaurantId', (req, res) => {
+  const restaurant = findRestaurant(req.params.restaurantId)
+  if (!restaurant) {
+    res.status(404).json({ error: 'Restaurant not found' })
+    return
+  }
+  res.json(restaurant)
+})
+
+app.post('/api/restaurants', async (req, res) => {
+  const data = req.body ?? {}
+  const id = crypto.randomUUID()
+
+  const newRestaurant = {
+    id,
+    ...data,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  }
+
+  const created = await service.create(RESTAURANTS_COLLECTION, newRestaurant)
+  res.status(201).json(created)
+})
+
+app.patch('/api/restaurants/:restaurantId', async (req, res) => {
+  const restaurant = findRestaurant(req.params.restaurantId)
+  if (!restaurant) {
+    res.status(404).json({ error: 'Restaurant not found' })
+    return
+  }
+
+  const updated = await service.patchById(RESTAURANTS_COLLECTION, restaurant.id, {
+    ...req.body,
+    updatedAt: new Date().toISOString()
+  })
+  res.json(updated)
 })
 
 app.listen(PORT, () =>
