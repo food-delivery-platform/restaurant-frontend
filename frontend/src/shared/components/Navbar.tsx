@@ -4,6 +4,7 @@ import { Flex, Link, Heading, HStack } from '@chakra-ui/react'
 const navItems = [
     { label: 'Menu Items', path: '/menu_items' },
     { label: 'Orders', path: '/orders' },
+    { label: 'Restaurants', path: '/restaurants' },
 ]
 
 export function Navbar() {

@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 import { SuperMenuList } from '../features/menu/components/SuperMenuList'
 import { MenuEditPanel } from '../features/menu/components/MenuEditPanel'
 import { OrderList } from '../features/orders/components/OrderList'
+import { RestaurantsPage } from '../features/restaurants/components/RestaurantsPage'
 import { HomePage } from '../features/home/HomePage'
 import { Navbar } from '../shared/components/Navbar'
 
@@ -18,6 +19,7 @@ function App() {
                 <Route path="/menu_items/edit/:menuItemId" element={<MenuEditPanel />} />
 
                 <Route path="/orders" element={<OrderList />} />
+                <Route path="/restaurants" element={<RestaurantsPage />} />
             </Routes>
         </Container>
     )

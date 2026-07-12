@@ -20,6 +20,7 @@ import { JSONFile } from 'lowdb/node'
 import { Service } from 'json-server/lib/service.js'
 
 const COLLECTION = 'menu_items'
+const RESTAURANTS_COLLECTION = 'restaurants'
 const PORT = Number(process.env.PORT || 3001)
 
 // --- json-server data engine -------------------------------------------------
@@ -53,7 +54,11 @@ app.get('/', (_req, res) =>
       'GET /menu-items/:menuItemId',
       'PATCH /menu-items/:menuItemId',
       'GET /menu_items',
-      'POST /menu_items/new'
+      'POST /menu_items/new',
+      'GET /orders',
+      'PATCH /orders/:orderId/items/:itemId/ready',
+      'PATCH /orders/:orderId/deliver',
+      'GET /api/restaurants'
     ],
   }),
 )
@@ -191,6 +196,11 @@ app.patch('/orders/:orderId/deliver', async (req, res) => {
   await db.write()
 
   res.json(order)
+})
+
+// --- restaurants endpoints ---------------------------------------------------
+app.get('/api/restaurants', (_req, res) => {
+  res.json(service.find(RESTAURANTS_COLLECTION, { where: {} }))
 })
 
 app.listen(PORT, () =>

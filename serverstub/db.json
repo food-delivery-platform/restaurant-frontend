@@ -1,4 +1,32 @@
 {
+  "restaurants": [
+    {
+      "id": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "ownerId": "3f1d9b62-2c4e-4d9a-8f24-5d2f1f7c8a11",
+      "addressId": "address-venue-001",
+      "name": "Tokyo House",
+      "slug": "tokyo-house",
+      "description": "Modern Japanese kitchen with ramen, gyoza and pizza for the sample app.",
+      "isOpen": true,
+      "rating": 4.8,
+      "imageUrl": "https://example.com/images/venues/tokyo-house.jpg",
+      "createdAt": "2026-06-27T09:30:00Z",
+      "updatedAt": "2026-07-02T18:00:00Z"
+    },
+    {
+      "id": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
+      "ownerId": "4g2e9c21-3f5g-5d4c-0d5e-6f8g9h0i1j2k",
+      "addressId": "address-venue-002",
+      "name": "Pasta Paradise",
+      "slug": "pasta-paradise",
+      "description": "Authentic Italian restaurant with fresh pasta, pizzas and desserts.",
+      "isOpen": true,
+      "rating": 4.6,
+      "imageUrl": "https://example.com/images/venues/pasta-paradise.jpg",
+      "createdAt": "2026-06-28T10:00:00Z",
+      "updatedAt": "2026-07-02T19:00:00Z"
+    }
+  ],
   "venueProfile": {
     "venue": {
       "id": "64c1a2b3-0d4e-4f56-8901-234567890abc",
