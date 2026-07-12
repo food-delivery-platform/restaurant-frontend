@@ -35,12 +35,7 @@
       "name": "Tokyo House",
       "slug": "tokyo-house",
       "description": "Modern Japanese kitchen with ramen, gyoza and pizza for the sample app.",
-      "cuisine_tags": [
-        "japanese",
-        "ramen",
-        "pizza",
-        "dessert"
-      ],
+      "cuisine_tags": ["japanese", "ramen", "pizza", "dessert"],
       "is_active": true,
       "rating": 4.8,
       "image_url": "https://example.com/images/venues/tokyo-house.jpg",
@@ -115,23 +110,19 @@
   },
   "menu_items": [
     {
-      "id": "mongo_menu_item_001",
-      "venueId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
-      "menuItemId": "665f9a8b-5e3f-4a1b-8c8d-9e0123456789",
+      "id": "665f9a8b-5e3f-4a1b-8c8d-9e0123456789",
+      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
       "name": "Spicy Chicken Ramen",
       "description": "Ramen with chicken, egg, scallions and spicy broth",
-      "price": 42.5,
+      "price": "42.50",
       "currency": "ILS",
-      "imageKey": "venues/64c1a2b3-0d4e-4f56-8901-234567890abc/menu/spicy-chicken-ramen.jpg",
-      "category": "Noodles",
-      "isActive": true,
-      "ingredients": [
-        "ramen noodles",
-        "chicken",
-        "spicy broth",
-        "scallions",
-        "egg"
-      ],
+      "category": {
+        "id": "cat-001",
+        "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+        "name": "Noodles"
+      },
+      "isAvailable": true,
+      "ingredients": ["ramen noodles", "chicken", "spicy broth", "scallions", "egg"],
       "labels": {
         "spicy": true,
         "vegetarian": false,
@@ -156,23 +147,19 @@
       "updatedAt": "2026-06-27T10:00:00Z"
     },
     {
-      "id": "mongo_menu_item_002",
-      "venueId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
-      "menuItemId": "7c1e2d3f-4a5b-6c7d-8e9f-0a1b2c3d4e5f",
+      "id": "7c1e2d3f-4a5b-6c7d-8e9f-0a1b2c3d4e5f",
+      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
       "name": "Pork Gyoza",
       "description": "Pan-fried dumplings filled with pork and cabbage, served with soy-vinegar dip",
-      "price": 18,
+      "price": "18.00",
       "currency": "ILS",
-      "imageKey": "venues/64c1a2b3-0d4e-4f56-8901-234567890abc/menu/pork-gyoza.jpg",
-      "category": "Starters",
-      "isActive": true,
-      "ingredients": [
-        "wheat wrapper",
-        "pork",
-        "cabbage",
-        "garlic",
-        "ginger"
-      ],
+      "category": {
+        "id": "cat-002",
+        "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+        "name": "Starters"
+      },
+      "isAvailable": true,
+      "ingredients": ["wheat wrapper", "pork", "cabbage", "garlic", "ginger"],
       "labels": {
         "spicy": false,
         "vegetarian": false,
@@ -198,24 +185,19 @@
       "updatedAt": "2026-06-27T10:05:00Z"
     },
     {
-      "id": "mongo_menu_item_003",
-      "venueId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
-      "menuItemId": "8d2f3e4a-5b6c-7d8e-9f0a-1b2c3d4e5f60",
+      "id": "8d2f3e4a-5b6c-7d8e-9f0a-1b2c3d4e5f60",
+      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
       "name": "Vegan Miso Ramen",
       "description": "Plant-based ramen with miso broth, tofu, corn and seaweed",
-      "price": 39,
+      "price": "39.00",
       "currency": "ILS",
-      "imageKey": "venues/64c1a2b3-0d4e-4f56-8901-234567890abc/menu/vegan-miso-ramen.jpg",
-      "category": "Noodles",
-      "isActive": false,
-      "ingredients": [
-        "ramen noodles",
-        "miso",
-        "tofu",
-        "corn",
-        "seaweed",
-        "scallions"
-      ],
+      "category": {
+        "id": "cat-001",
+        "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+        "name": "Noodles"
+      },
+      "isAvailable": false,
+      "ingredients": ["ramen noodles", "miso", "tofu", "corn", "seaweed", "scallions"],
       "labels": {
         "spicy": false,
         "vegetarian": true,
@@ -240,18 +222,19 @@
       "updatedAt": "2026-06-27T10:10:00Z"
     },
     {
-      "id": "mongo_menu_item_004",
-      "venueId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
-      "menuItemId": "9e3a4f5b-6c7d-8e9f-0a1b-2c3d4e5f6071",
+      "id": "9e3a4f5b-6c7d-8e9f-0a1b-2c3d4e5f6071",
+      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
       "name": "Green Tea",
       "description": "Hot Japanese sencha green tea",
-      "price": 9,
-      "category": "Drinks",
-      "isActive": false,
-      "ingredients": [
-        "green tea leaves",
-        "water"
-      ],
+      "price": "9.00",
+      "currency": "ILS",
+      "category": {
+        "id": "cat-003",
+        "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+        "name": "Drinks"
+      },
+      "isAvailable": false,
+      "ingredients": ["green tea leaves", "water"],
       "labels": {
         "spicy": false,
         "vegetarian": true,
@@ -265,7 +248,7 @@
         "volumeMl": 300,
         "description": "1 cup"
       },
-      "spicyLevel": 1,
+      "spicyLevel": 0,
       "nutrition": {
         "calories": 2,
         "protein": 0,
@@ -276,22 +259,19 @@
       "updatedAt": "2026-06-27T10:15:00Z"
     },
     {
-      "id": "mongo_menu_item_005",
-      "venueId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
-      "menuItemId": "a0f4b5c6-7d8e-9f0a-1b2c-3d4e5f607182",
+      "id": "a0f4b5c6-7d8e-9f0a-1b2c-3d4e5f607182",
+      "restaurantId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
       "name": "Margherita Pizza",
       "description": "Classic pizza with tomato sauce, mozzarella and fresh basil",
-      "price": 35,
-      "imageKey": "venues/7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d/menu/margherita.jpg",
-      "category": "Pizza",
-      "isActive": true,
-      "ingredients": [
-        "pizza dough",
-        "tomato sauce",
-        "mozzarella",
-        "basil",
-        "olive oil"
-      ],
+      "price": "35.00",
+      "currency": "ILS",
+      "category": {
+        "id": "cat-004",
+        "restaurantId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
+        "name": "Pizza"
+      },
+      "isAvailable": true,
+      "ingredients": ["pizza dough", "tomato sauce", "mozzarella", "basil", "olive oil"],
       "labels": {
         "spicy": false,
         "vegetarian": true,
@@ -317,21 +297,19 @@
       "updatedAt": "2026-06-27T11:00:00Z"
     },
     {
-      "id": "mongo_menu_item_006",
-      "venueId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
-      "menuItemId": "b1a5c6d7-8e9f-0a1b-2c3d-4e5f60718293",
+      "id": "b1a5c6d7-8e9f-0a1b-2c3d-4e5f60718293",
+      "restaurantId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
       "name": "Pepperoni Pizza",
       "description": "Pizza with tomato sauce, mozzarella and spicy pepperoni",
-      "price": 41,
-      "imageKey": "venues/7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d/menu/pepperoni.jpg",
-      "category": "Pizza",
-      "isActive": true,
-      "ingredients": [
-        "pizza dough",
-        "tomato sauce",
-        "mozzarella",
-        "pepperoni"
-      ],
+      "price": "41.00",
+      "currency": "ILS",
+      "category": {
+        "id": "cat-004",
+        "restaurantId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
+        "name": "Pizza"
+      },
+      "isAvailable": true,
+      "ingredients": ["pizza dough", "tomato sauce", "mozzarella", "pepperoni"],
       "labels": {
         "spicy": true,
         "vegetarian": false,
@@ -357,23 +335,19 @@
       "updatedAt": "2026-06-27T11:05:00Z"
     },
     {
-      "id": "mongo_menu_item_007",
-      "venueId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
-      "menuItemId": "c2b6d7e8-9f0a-1b2c-3d4e-5f6071829304",
+      "id": "c2b6d7e8-9f0a-1b2c-3d4e-5f6071829304",
+      "restaurantId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
       "name": "Tiramisu",
       "description": "Italian dessert with mascarpone, coffee-soaked ladyfingers and cocoa",
-      "price": 22,
-      "imageKey": "venues/7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d/menu/tiramisu.jpg",
-      "category": "Desserts",
-      "isActive": false,
-      "ingredients": [
-        "mascarpone",
-        "ladyfingers",
-        "coffee",
-        "egg",
-        "cocoa",
-        "sugar"
-      ],
+      "price": "22.00",
+      "currency": "ILS",
+      "category": {
+        "id": "cat-005",
+        "restaurantId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
+        "name": "Desserts"
+      },
+      "isAvailable": false,
+      "ingredients": ["mascarpone", "ladyfingers", "coffee", "egg", "cocoa", "sugar"],
       "labels": {
         "spicy": false,
         "vegetarian": true,
@@ -398,19 +372,19 @@
       "updatedAt": "2026-06-27T11:10:00Z"
     },
     {
-      "id": "mongo_menu_item_008",
-      "venueId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
-      "menuItemId": "d3c7e8f9-0a1b-2c3d-4e5f-607182930415",
+      "id": "d3c7e8f9-0a1b-2c3d-4e5f-607182930415",
+      "restaurantId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
       "name": "Cola",
       "description": "Chilled cola, 0.5 L bottle",
-      "price": 8,
-      "category": "Drinks",
-      "isActive": true,
-      "ingredients": [
-        "carbonated water",
-        "sugar",
-        "caffeine"
-      ],
+      "price": "8.00",
+      "currency": "ILS",
+      "category": {
+        "id": "cat-003",
+        "restaurantId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
+        "name": "Drinks"
+      },
+      "isAvailable": true,
+      "ingredients": ["carbonated water", "sugar", "caffeine"],
       "labels": {
         "spicy": false,
         "vegetarian": true,
@@ -435,37 +409,38 @@
       "updatedAt": "2026-06-27T11:15:00Z"
     },
     {
+      "id": "e4d8f9a0-1b2c-3d4e-5f60-71829304c516",
+      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
       "name": "Super-dish!",
-      "price": 23,
-      "category": "Sandwich",
-      "description": "a good sandwich with cheese",
-      "isActive": true,
+      "description": "A good sandwich with cheese",
+      "price": "23.00",
+      "currency": "ILS",
+      "category": {
+        "id": "cat-006",
+        "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+        "name": "Sandwich"
+      },
+      "isAvailable": true,
+      "ingredients": ["cheese"],
       "spicyLevel": 1,
-      "ingredients": [
-        "cheese"
-      ],
-      "id": "mjVajP24RSk",
-      "menuItemId": "8ea01797-7a71-433f-bcc5-1566b966fd96",
-      "venueId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
       "createdAt": "2026-07-01T11:43:02.582Z",
       "updatedAt": "2026-07-01T11:43:02.582Z"
     },
     {
+      "id": "f5e9a0b1-2c3d-4e5f-6071-829304c516d7",
+      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
       "name": "Mango Cheesecake",
-      "price": 27,
-      "category": "Desserts",
       "description": "Creamy cheesecake topped with mango sauce",
-      "isActive": true,
+      "price": "27.00",
+      "currency": "ILS",
+      "category": {
+        "id": "cat-005",
+        "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+        "name": "Desserts"
+      },
+      "isAvailable": true,
+      "ingredients": ["cream cheese", "mango", "biscuit base", "sugar"],
       "spicyLevel": 0,
-      "ingredients": [
-        "cream cheese",
-        "mango",
-        "biscuit base",
-        "sugar"
-      ],
-      "id": "mjVajP24RSl",
-      "menuItemId": "b2e11c19-cc2e-4f11-9f8f-9f2b4f9d1a77",
-      "venueId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
       "createdAt": "2026-07-01T11:45:02.582Z",
       "updatedAt": "2026-07-01T11:45:02.582Z"
     }
@@ -601,7 +576,7 @@
         {
           "id": "7a0d8d4c-6d02-4f4f-9a27-1a1a4db5d001",
           "order_id": "444c3a0f-9d2d-4f20-bf0c-1d7b8f7d3d11",
-          "menu_item_id": "8ea01797-7a71-433f-bcc5-1566b966fd96",
+          "menu_item_id": "e4d8f9a0-1b2c-3d4e-5f60-71829304c516",
           "quantity": 1,
           "unit_price": 23,
           "special_instructions": null,
@@ -613,7 +588,7 @@
         {
           "id": "7a0d8d4c-6d02-4f4f-9a27-1a1a4db5d002",
           "order_id": "444c3a0f-9d2d-4f20-bf0c-1d7b8f7d3d11",
-          "menu_item_id": "b2e11c19-cc2e-4f11-9f8f-9f2b4f9d1a77",
+          "menu_item_id": "f5e9a0b1-2c3d-4e5f-6071-829304c516d7",
           "quantity": 1,
           "unit_price": 27,
           "special_instructions": null,

@@ -16,7 +16,17 @@ const COLUMNS: Column[] = [
     {
         title: 'Name',
         width: 200,
-        getValue: (item) => item.name,
+        getValue: (item) => (
+            <Box
+                as={Link}
+                to={`/menu_items/view/${item.id}`}
+                color="blue.500"
+                fontWeight="semibold"
+                _hover={{ textDecoration: 'underline' }}
+            >
+                {item.name}
+            </Box>
+        ),
     },
     {
         title: 'Price',
@@ -26,12 +36,12 @@ const COLUMNS: Column[] = [
     {
         title: 'Category',
         width: 120,
-        getValue: (item) => item.category || '',
+        getValue: (item) => item.category?.name || '—',
     },
     {
         title: 'Status',
         width: 100,
-        getValue: (item) => (item.isActive ? 'available' : 'off'),
+        getValue: (item) => (item.isAvailable ? 'available' : 'unavailable'),
     },
     {
         title: 'Actions',

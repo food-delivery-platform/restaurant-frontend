@@ -2,6 +2,7 @@ import {Container} from "@chakra-ui/react";
 import { Routes, Route } from 'react-router-dom'
 import { SuperMenuList } from '../features/menu/components/SuperMenuList'
 import { MenuEditPanel } from '../features/menu/components/MenuEditPanel'
+import { MenuItemDetail } from '../features/menu/components/MenuItemDetail'
 import { OrderList } from '../features/orders/components/OrderList'
 import { RestaurantsPage } from '../features/restaurants/components/RestaurantsPage'
 import { RestaurantEditPanel } from '../features/restaurants/components/RestaurantEditPanel'
@@ -16,6 +17,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/menu_items" element={<SuperMenuList />} />
+                <Route path="/menu_items/view/:menuItemId" element={<MenuItemDetail />} />
                 <Route path="/menu_items/new" element={<MenuEditPanel />} />
                 <Route path="/menu_items/edit/:menuItemId" element={<MenuEditPanel />} />
 

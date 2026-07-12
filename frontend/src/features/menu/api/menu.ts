@@ -18,7 +18,7 @@ export function getMenu(
 }
 
 export function getMenuItem(menuItemId: string): Promise<MenuItem> {
-    return apiGet<MenuItem>(`/menu-items/${menuItemId}`)
+    return apiGet<MenuItem>(`/api/menu-items/${menuItemId}`)
 }
 
 export function createMenuItem(item: Partial<MenuItem>): Promise<MenuItem> {

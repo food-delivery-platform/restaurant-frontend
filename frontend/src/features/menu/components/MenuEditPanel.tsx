@@ -41,7 +41,7 @@ export function MenuEditPanel() {
     const [price, setPrice] = useState('')
     const [category, setCategory] = useState('')
     const [description, setDescription] = useState('')
-    const [isActive, setIsActive] = useState(true)
+    const [isAvailable, setIsAvailable] = useState(true)
     const [spicyLevel, setSpicyLevel] = useState(0)
     const [ingredientsText, setIngredientsText] = useState('')
 
@@ -54,10 +54,10 @@ export function MenuEditPanel() {
         getMenuItem(menuItemId)
             .then((item) => {
                 setName(item.name)
-                setPrice(String(item.price))
-                setCategory(item.category || '')
+                setPrice(item.price)
+                setCategory(item.category?.name || '')
                 setDescription(item.description || '')
-                setIsActive(item.isActive)
+                setIsAvailable(item.isAvailable)
                 setSpicyLevel(item.spicyLevel ?? 0)
                 setIngredientsText(item.ingredients?.join(', ') || '')
             })
@@ -73,9 +73,8 @@ export function MenuEditPanel() {
             return
         }
 
-        const priceNum = parseFloat(price)
-        if (isNaN(priceNum) || priceNum < 0) {
-            setError('Price must be valid')
+        if (!price.match(/^\d+(\.\d{1,2})?$/)) {
+            setError('Price must be a valid decimal (e.g., 12.99)')
             return
         }
 
@@ -84,10 +83,10 @@ export function MenuEditPanel() {
 
         const payload: Partial<MenuItem> = {
             name: name.trim(),
-            price: priceNum,
-            category: category.trim() || undefined,
+            price,
+            category: category.trim() ? { name: category.trim(), restaurantId: '', id: '' } : undefined,
             description: description.trim() || undefined,
-            isActive,
+            isAvailable,
             spicyLevel,
             ingredients: ingredientsText
                 .split(',')
@@ -101,7 +100,7 @@ export function MenuEditPanel() {
             } else {
                 await createMenuItem(payload)
             }
-            navigate('/')
+            navigate('/menu_items')
         } catch (err: any) {
             setError(err.message || 'Save failed')
         } finally {
@@ -182,13 +181,13 @@ export function MenuEditPanel() {
                     <Flex gap={6} align="center">
 
                         <Checkbox.Root
-                            checked={isActive}
-                            onCheckedChange={(e) => setIsActive(!!e.checked)}
+                            checked={isAvailable}
+                            onCheckedChange={(e) => setIsAvailable(!!e.checked)}
                         >
                             <Checkbox.HiddenInput />
                             <Checkbox.Control />
                             <Checkbox.Label>
-                                Active
+                                Available
                             </Checkbox.Label>
                         </Checkbox.Root>
 

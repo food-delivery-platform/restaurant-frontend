@@ -1,19 +1,40 @@
 export type MenuItem = {
     id: string
-    venueId: string
-    menuItemId: string
+    restaurantId: string
     name: string
     description?: string
-    price: number
-    currency?: string
-    imageKey?: string
-    category?: string
-    isActive: boolean
-    ingredients: string[]
-    labels?: Record<string, boolean>
-    portion?: Record<string, any>
-    spicyLevel: number
-    nutrition?: Record<string, number>
+    price: string
+    currency: string
+    category?: {
+        id: string
+        restaurantId: string
+        name: string
+    }
+    isAvailable: boolean
+    ingredients?: string[]
+    allergens?: string[]
+    labels?: {
+        spicy?: boolean
+        vegetarian?: boolean
+        vegan?: boolean
+        kosher?: boolean
+        glutenFree?: boolean
+        lactoseFree?: boolean
+        halal?: boolean
+    }
+    portion?: {
+        weightGrams?: number
+        volumeMl?: number
+        pieces?: number
+        description?: string
+    }
+    spicyLevel?: 0 | 1 | 2 | 3
+    nutrition?: {
+        calories?: number
+        protein?: number
+        fat?: number
+        carbs?: number
+    }
     createdAt: string
     updatedAt: string
 }

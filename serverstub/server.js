@@ -52,6 +52,7 @@ app.get('/', (_req, res) =>
       'GET /venues/:venueId/menu',
       'GET /venues/:venueId/menu?available=true',
       'GET /menu-items/:menuItemId',
+      'GET /api/menu-items/:id',
       'PATCH /menu-items/:menuItemId',
       'GET /menu_items',
       'POST /menu_items/new',
@@ -73,17 +74,17 @@ const DEFAULT_VENUE_ID =
 const getMenu = (req, res) => {
     const rawId = req.params.venueId
 
-    const venueId =
+    const restaurantId =
         !rawId || rawId === 'my'
             ? DEFAULT_VENUE_ID
             : rawId
 
     const where = {
-        venueId: eq(venueId)
+        restaurantId: eq(restaurantId)
     }
 
     if (req.query.available === 'true') {
-        where.isActive = eq(true)
+        where.isAvailable = eq(true)
     }
 
     res.json(service.find(COLLECTION, { where }))
@@ -93,9 +94,19 @@ const getMenu = (req, res) => {
 app.get('/venues/:venueId/menu', getMenu)
 app.get('/venues/my/menu', getMenu)
 
-// One menu item by its SQL menuItemId (UUID), per the unique index in the doc.
-app.get('/menu-items/:menuItemId', (req, res) => {
-  const item = findByMenuItemId(req.params.menuItemId)
+// Legacy endpoint - One menu item by ID
+app.get('/menu-items/:id', (req, res) => {
+  const item = service.findById(COLLECTION, req.params.id, {})
+  if (!item) {
+    res.status(404).json({ error: 'Menu item not found' })
+    return
+  }
+  res.json(item)
+})
+
+// Get menu item by mongo id (new API)
+app.get('/api/menu-items/:id', (req, res) => {
+  const item = service.findById(COLLECTION, req.params.id, {})
   if (!item) {
     res.status(404).json({ error: 'Menu item not found' })
     return
@@ -252,10 +263,10 @@ app.patch('/api/restaurants/:restaurantId', async (req, res) => {
 
 app.get('/api/restaurants/:restaurantId/menu-items', (req, res) => {
   const restaurantId = req.params.restaurantId
-  const where = { venueId: eq(restaurantId) }
+  const where = { restaurantId: eq(restaurantId) }
 
   if (req.query.available === 'true') {
-    where.isActive = eq(true)
+    where.isAvailable = eq(true)
   }
 
   const items = service.find(COLLECTION, { where })
