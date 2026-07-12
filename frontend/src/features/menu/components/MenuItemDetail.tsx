@@ -98,8 +98,8 @@ export function MenuItemDetail() {
 
                 <Flex justify="space-between" align="center">
                     <Text fontWeight="semibold">Status</Text>
-                    <Badge colorPalette={item.isActive ? 'green' : 'red'}>
-                        {item.isActive ? 'Available' : 'Unavailable'}
+                    <Badge colorPalette={item.isAvailable ? 'green' : 'red'}>
+                        {item.isAvailable ? 'Available' : 'Unavailable'}
                     </Badge>
                 </Flex>
 
@@ -107,13 +107,6 @@ export function MenuItemDetail() {
                     <Flex justify="space-between" align="center">
                         <Text fontWeight="semibold">Spicy Level</Text>
                         <Text>{item.spicyLevel} / 3 🌶️</Text>
-                    </Flex>
-                )}
-
-                {item.rating !== undefined && (
-                    <Flex justify="space-between" align="center">
-                        <Text fontWeight="semibold">Rating</Text>
-                        <Text>⭐ {item.rating}</Text>
                     </Flex>
                 )}
             </Stack>
