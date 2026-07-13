@@ -65,7 +65,10 @@ app.get('/', (_req, res) =>
       'GET /api/restaurants/:restaurantId',
       'POST /api/restaurants',
       'PATCH /api/restaurants/:restaurantId',
-      'GET /api/restaurants/:restaurantId/menu-items'
+      'GET /api/restaurants/:restaurantId/menu-items',
+      'GET /api/restaurants/:restaurantId/menu-item-categories',
+      'POST /api/restaurants/:restaurantId/menu-item-categories',
+      'POST /api/menu-item-categories/batch'
     ],
   }),
 )
@@ -338,6 +341,62 @@ app.get('/api/restaurants/:restaurantId/menu-items', (req, res) => {
 
   const items = service.find(COLLECTION, { where })
   res.json(items)
+})
+
+// --- category endpoints ---
+const CATEGORIES_COLLECTION = 'menu-item-categories'
+
+app.get('/api/restaurants/:restaurantId/menu-item-categories', (req, res) => {
+  const restaurantId = req.params.restaurantId
+  const where = { restaurantId: eq(restaurantId) }
+
+  const categories = service.find(CATEGORIES_COLLECTION, { where })
+  res.json(categories)
+})
+
+app.post('/api/restaurants/:restaurantId/menu-item-categories', async (req, res) => {
+  const restaurantId = req.params.restaurantId
+  const data = req.body ?? {}
+  const id = crypto.randomUUID()
+
+  const newCategory = {
+    id,
+    restaurantId,
+    ...data
+  }
+
+  const created = await service.create(CATEGORIES_COLLECTION, newCategory)
+  res.status(201).json(created)
+})
+
+app.post('/api/menu-item-categories/batch', async (req, res) => {
+  const restaurantId = req.body?.restaurantId
+  const names = req.body?.names ?? []
+
+  if (!restaurantId) {
+    res.status(400).json({ error: 'restaurantId is required' })
+    return
+  }
+
+  if (!Array.isArray(names)) {
+    res.status(400).json({ error: 'names must be an array' })
+    return
+  }
+
+  const categories = []
+
+  for (const name of names) {
+    const id = crypto.randomUUID()
+    const newCategory = {
+      id,
+      restaurantId,
+      name
+    }
+    const created = await service.create(CATEGORIES_COLLECTION, newCategory)
+    categories.push(created)
+  }
+
+  res.status(201).json(categories)
 })
 
 app.listen(PORT, () =>
