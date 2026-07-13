@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useRestaurantCache } from '../../restaurants/api/useRestaurantCache'
+import { useCart } from '../../cart/context/CartContext'
 import { getMenuItem } from '../api/menu'
 import type { MenuItem } from '../model/menu'
 import {
@@ -17,10 +18,12 @@ import {
 export function MenuItemDetail() {
     const { menuItemId } = useParams<{ menuItemId: string }>()
     const navigate = useNavigate()
+    const { addItem } = useCart()
 
     const [item, setItem] = useState<MenuItem | null>(null)
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState<string | null>(null)
+    const [addedToCart, setAddedToCart] = useState(false)
 
     const { restaurant } = useRestaurantCache(item?.restaurantId || '')
 
@@ -160,15 +163,28 @@ export function MenuItemDetail() {
 
             <Flex gap={3}>
                 <Button
-                    colorPalette="blue"
+                    colorPalette={addedToCart ? 'green' : 'blue'}
                     flex={1}
+                    disabled={!item.isAvailable}
+                    opacity={item.isAvailable ? 1 : 0.5}
+                    onClick={() => {
+                        addItem(item.id)
+                        setAddedToCart(true)
+                        setTimeout(() => setAddedToCart(false), 2000)
+                    }}
+                    title={!item.isAvailable ? 'This item is unavailable' : ''}
+                >
+                    {!item.isAvailable ? '❌ Unavailable' : (addedToCart ? '✓ Added to Cart' : '🛒 Add to Cart')}
+                </Button>
+                <Button
+                    colorPalette="blue"
+                    variant="outline"
                     onClick={() => navigate(`/menu_items/edit/${item.id}`)}
                 >
                     Edit
                 </Button>
                 <Button
                     variant="outline"
-                    flex={1}
                     onClick={() => navigate('/menu_items')}
                 >
                     Close

@@ -5,6 +5,7 @@ const navItems = [
     { label: 'Menu Items', path: '/menu_items' },
     { label: 'Orders', path: '/orders' },
     { label: 'Restaurants', path: '/restaurants' },
+    { label: '🛒 Cart', path: '/cart' },
 ]
 
 export function Navbar() {
