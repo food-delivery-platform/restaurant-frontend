@@ -54,6 +54,7 @@ app.get('/', (_req, res) =>
       'GET /menu-items/:id',
       'GET /api/menu-items/:id',
       'POST /api/menu-items',
+      'POST /api/menu-items/by-ids',
       'PATCH /api/menu-items/:id',
       'GET /menu_items',
       'POST /menu_items/new',
@@ -144,6 +145,40 @@ app.patch('/api/menu-items/:id', async (req, res) => {
     updatedAt: new Date().toISOString()
   })
   res.json(updated)
+})
+
+// Get menu items by IDs
+app.post('/api/menu-items/by-ids', (req, res) => {
+  const menuItemIds = req.body?.menuItemIds ?? []
+
+  if (!Array.isArray(menuItemIds)) {
+    res.status(400).json({ error: 'menuItemIds must be an array' })
+    return
+  }
+
+  const items = []
+  const unavailableItemIds = []
+  let totalPrice = '0.00'
+
+  for (const id of menuItemIds) {
+    const item = service.findById(COLLECTION, id, {})
+    if (!item) {
+      unavailableItemIds.push(id)
+    } else if (item.isAvailable) {
+      items.push(item)
+      // Add price to total
+      const itemPrice = parseFloat(item.price)
+      totalPrice = (parseFloat(totalPrice) + itemPrice).toFixed(2)
+    } else {
+      unavailableItemIds.push(id)
+    }
+  }
+
+  res.json({
+    items,
+    unavailableItemIds,
+    totalPrice
+  })
 })
 
 // Partial update of a menu item by menuItemId (e.g. toggle isAvailable / price).
