@@ -124,9 +124,14 @@ app.post('/api/menu-items', async (req, res) => {
   const data = req.body ?? {}
   const id = crypto.randomUUID()
 
+  const restaurantId = !data.restaurantId || data.restaurantId === 'my'
+    ? DEFAULT_VENUE_ID
+    : data.restaurantId
+
   const newItem = {
     id,
     ...data,
+    restaurantId,
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString()
   }
