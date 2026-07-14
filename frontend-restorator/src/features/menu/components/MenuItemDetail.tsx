@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { useRestaurantCache } from '../../restaurants/api/useRestaurantCache'
 import { getMenuItem } from '../api/menu'
 import type { MenuItem } from '../model/menu'
 import {
@@ -20,8 +19,6 @@ export function MenuItemDetail() {
     const [item, setItem] = useState<MenuItem | null>(null)
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState<string | null>(null)
-
-    const { restaurant } = useRestaurantCache(item?.restaurantId || '')
 
     useEffect(() => {
         if (!menuItemId) return
@@ -65,12 +62,6 @@ export function MenuItemDetail() {
             <Button variant="ghost" mb={4} onClick={() => navigate('/menu_items')}>
                 ← Back to Menu
             </Button>
-
-            {restaurant && (
-                <Text fontSize="sm" color="gray.500" mb={3}>
-                    {restaurant.name}
-                </Text>
-            )}
 
             <Heading size="lg" mb={4}>{item.name}</Heading>
 
