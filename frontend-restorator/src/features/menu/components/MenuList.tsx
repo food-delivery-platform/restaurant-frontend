@@ -48,7 +48,7 @@ const COLUMNS: Column[] = [
         getValue: (item) => (
             <Box
                 as={Link}
-                to={`/edit/${item.menuItemId}`}
+                to={`/menu_items/edit/${item.id}`}
                 color="blue.500"
                 fontWeight="semibold"
                 _hover={{ textDecoration: 'underline' }}
