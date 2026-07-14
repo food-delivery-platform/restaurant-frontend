@@ -2,6 +2,7 @@ import { Link as RouterLink, useLocation } from 'react-router-dom'
 import { Flex, Link, Heading, HStack } from '@chakra-ui/react'
 
 const navItems = [
+    { label: 'Restaurant', path: '/restaurant' },
     { label: 'Menu Items', path: '/menu_items' },
     { label: 'Orders', path: '/orders' },
 ]

@@ -9,7 +9,16 @@ export function HomePage() {
                 Manage your restaurant operations from one place.
             </Text>
 
-            <SimpleGrid columns={{ base: 1, md: 2 }} gap={4}>
+            <SimpleGrid columns={{ base: 1, md: 3 }} gap={4}>
+                <Card.Root as={RouterLink} to="/restaurant" p={5} _hover={{ shadow: 'md' }}>
+                    <Card.Body>
+                        <Heading size="sm" mb={2}>🏪 Restaurant Info</Heading>
+                        <Text color="gray.500" fontSize="sm">
+                            View and manage restaurant details and categories.
+                        </Text>
+                    </Card.Body>
+                </Card.Root>
+
                 <Card.Root as={RouterLink} to="/menu_items" p={5} _hover={{ shadow: 'md' }}>
                     <Card.Body>
                         <Heading size="sm" mb={2}>🍽️ Menu Items</Heading>

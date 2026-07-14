@@ -354,11 +354,28 @@ app.get('/api/restaurants/:restaurantId/menu-items', (req, res) => {
   res.json(items)
 })
 
+// --- restaurant info endpoint ---
+app.get('/api/restaurants/:restaurantId/info', (req, res) => {
+  const rawId = req.params.restaurantId
+  const restaurantId = !rawId || rawId === 'my' ? DEFAULT_VENUE_ID : rawId
+
+  const venueProfile = db.data?.venueProfile
+  if (!venueProfile) {
+    res.status(404).json({ error: 'Restaurant info not found' })
+    return
+  }
+
+  res.json({
+    venue: venueProfile.venue
+  })
+})
+
 // --- category endpoints ---
 const CATEGORIES_COLLECTION = 'menu-item-categories'
 
 app.get('/api/restaurants/:restaurantId/menu-item-categories', (req, res) => {
-  const restaurantId = req.params.restaurantId
+  const rawId = req.params.restaurantId
+  const restaurantId = !rawId || rawId === 'my' ? DEFAULT_VENUE_ID : rawId
   const where = { restaurantId: eq(restaurantId) }
 
   const categories = service.find(CATEGORIES_COLLECTION, { where })
@@ -366,7 +383,8 @@ app.get('/api/restaurants/:restaurantId/menu-item-categories', (req, res) => {
 })
 
 app.post('/api/restaurants/:restaurantId/menu-item-categories', async (req, res) => {
-  const restaurantId = req.params.restaurantId
+  const rawId = req.params.restaurantId
+  const restaurantId = !rawId || rawId === 'my' ? DEFAULT_VENUE_ID : rawId
   const data = req.body ?? {}
   const id = crypto.randomUUID()
 

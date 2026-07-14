@@ -4,6 +4,7 @@ import { SuperMenuList } from '../features/menu/components/SuperMenuList'
 import { MenuEditPanel } from '../features/menu/components/MenuEditPanel'
 import { MenuItemDetail } from '../features/menu/components/MenuItemDetail'
 import { OrderList } from '../features/orders/components/OrderList'
+import { RestaurantInfoPage } from '../features/restaurant/components/RestaurantInfoPage'
 import { HomePage } from '../features/home/HomePage'
 import { Navbar } from '../shared/components/Navbar'
 
@@ -14,6 +15,7 @@ function App() {
 
             <Routes>
                 <Route path="/" element={<HomePage />} />
+                <Route path="/restaurant" element={<RestaurantInfoPage />} />
                 <Route path="/menu_items" element={<SuperMenuList />} />
                 <Route path="/menu_items/view/:menuItemId" element={<MenuItemDetail />} />
                 <Route path="/menu_items/new" element={<MenuEditPanel />} />
