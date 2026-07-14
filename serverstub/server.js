@@ -332,7 +332,13 @@ app.patch('/api/restaurants/:restaurantId', async (req, res) => {
 })
 
 app.get('/api/restaurants/:restaurantId/menu-items', (req, res) => {
-  const restaurantId = req.params.restaurantId
+  const rawId = req.params.restaurantId
+
+  const restaurantId =
+      !rawId || rawId === 'my'
+          ? DEFAULT_VENUE_ID
+          : rawId
+
   const where = { restaurantId: eq(restaurantId) }
 
   if (req.query.available === 'true') {

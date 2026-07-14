@@ -16,7 +16,6 @@ import {
 } from '@chakra-ui/react'
 
 import { getMenuItem, createMenuItem, updateMenuItem } from '../api/menu'
-import { useRestaurants } from '../../restaurants/api/useRestaurants'
 import type { MenuItem } from '../model/menu'
 
 const spicyOptions = createListCollection({
@@ -31,10 +30,9 @@ const spicyOptions = createListCollection({
 export function MenuEditPanel() {
     const { menuItemId } = useParams<{ menuItemId: string }>()
     const navigate = useNavigate()
-    const { restaurants } = useRestaurants()
 
     const isEditMode = !!menuItemId
-    const restaurantId = restaurants[0]?.id || ''
+    const restaurantId = 'my'
 
     const [loading, setLoading] = useState(false)
     const [saving, setSaving] = useState(false)
