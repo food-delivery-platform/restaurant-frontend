@@ -8,15 +8,12 @@ export const revalidate = 60
 export async function generateStaticParams() {
   try {
     const restaurants = await getRestaurants()
-    const params: Array<{ id: string; menuItemId: string }> = []
+    const params: Array<{ menuItemId: string }> = []
 
     for (const restaurant of restaurants) {
       const menuItems = await getMenu(restaurant.id)
       menuItems.forEach((item) => {
-        params.push({ id: restaurant.id, menuItemId: item.id })
-        if (restaurant.slug) {
-          params.push({ id: restaurant.slug, menuItemId: item.id })
-        }
+        params.push({ menuItemId: item.id })
       })
     }
 
