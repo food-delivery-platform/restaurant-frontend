@@ -88,7 +88,7 @@ export default async function MenuPage({
   const { available } = await searchParams
   const onlyAvailable = available === 'true'
   let restaurant = null
-  let items = []
+  let items: Awaited<ReturnType<typeof getMenu>> = []
   let error = null
 
   try {

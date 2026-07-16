@@ -46,7 +46,7 @@ async function RestaurantsList({ restaurants }: { restaurants: any[] }) {
 }
 
 export default async function RestaurantsPage() {
-  let restaurants = []
+  let restaurants: Awaited<ReturnType<typeof getRestaurants>> = []
   let error = null
 
   try {

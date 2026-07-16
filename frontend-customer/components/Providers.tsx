@@ -2,11 +2,14 @@
 
 import { ChakraProvider, defaultSystem } from '@chakra-ui/react'
 import { ReactNode } from 'react'
+import { EmotionRegistry } from './EmotionRegistry'
 
 export function Providers({ children }: { children: ReactNode }) {
   return (
-    <ChakraProvider value={defaultSystem}>
-      {children}
-    </ChakraProvider>
+    <EmotionRegistry>
+      <ChakraProvider value={defaultSystem}>
+        {children}
+      </ChakraProvider>
+    </EmotionRegistry>
   )
 }
