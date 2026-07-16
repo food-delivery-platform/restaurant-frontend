@@ -8,10 +8,9 @@ import type { MenuItem } from '../model/menu'
 
 interface MenuItemDetailClientProps {
   menuItem: MenuItem
-  restaurantId?: string
 }
 
-export function MenuItemDetailClient({ menuItem, restaurantId }: MenuItemDetailClientProps) {
+export function MenuItemDetailClient({ menuItem }: MenuItemDetailClientProps) {
   const { addItem } = useCart()
   const [addedToCart, setAddedToCart] = useState(false)
 
@@ -20,10 +19,6 @@ export function MenuItemDetailClient({ menuItem, restaurantId }: MenuItemDetailC
     setAddedToCart(true)
     setTimeout(() => setAddedToCart(false), 2000)
   }
-
-  const backLink = restaurantId
-    ? `/restaurants/${restaurantId}/menu`
-    : '/cart'
 
   return (
     <Flex gap={3}>
@@ -42,7 +37,7 @@ export function MenuItemDetailClient({ menuItem, restaurantId }: MenuItemDetailC
             : '🛒 Add to Cart'}
       </Button>
       <Button variant="outline" asChild>
-        <Link href={backLink}>Close</Link>
+        <Link href={`/restaurants/${menuItem.restaurantId}/menu`}>Close</Link>
       </Button>
     </Flex>
   )

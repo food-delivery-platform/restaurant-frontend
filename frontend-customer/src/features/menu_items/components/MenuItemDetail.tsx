@@ -7,16 +7,14 @@ import { MenuItemDetailClient } from './MenuItemDetailClient'
 export function MenuItemDetail({
   item,
   restaurant,
-  restaurantId,
 }: {
   item: MenuItem
   restaurant: Restaurant
-  restaurantId: string
 }) {
   return (
     <Box maxW="600px" mx="auto" p={5}>
       <Button variant="ghost" mb={4} asChild>
-        <Link href={`/restaurants/${restaurantId}/menu`}>← Back to Menu</Link>
+        <Link href={`/restaurants/${restaurant.id}/menu`}>← Back to Menu</Link>
       </Button>
 
       <Text fontSize="sm" color="gray.500" mb={3}>
@@ -126,7 +124,7 @@ export function MenuItemDetail({
         </Box>
       )}
 
-      <MenuItemDetailClient menuItem={item} restaurantId={restaurantId} />
+      <MenuItemDetailClient menuItem={item} />
     </Box>
   )
 }

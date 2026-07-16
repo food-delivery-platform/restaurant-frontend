@@ -85,7 +85,11 @@ export function CartPage() {
         <Table.Body>
           {itemsWithDetails.map((item) => (
             <Table.Row key={item.id}>
-              <Table.Cell>{item.name}</Table.Cell>
+              <Table.Cell>
+                <Link href={`/menu_items/${item.id}`}>
+                  {item.name}
+                </Link>
+              </Table.Cell>
               <Table.Cell textAlign="right">
                 {item.price} {item.currency}
               </Table.Cell>

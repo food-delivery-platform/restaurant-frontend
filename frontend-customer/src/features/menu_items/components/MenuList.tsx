@@ -42,7 +42,7 @@ export function MenuList({ items }: { items: MenuItem[] }) {
             <Box display="flex" gap={2}>
               <MenuItemCardClient menuItem={item} />
               <Button variant="outline" asChild flex={1}>
-                <Link href={`/restaurants/${item.restaurantId}/menu/${item.id}`}>
+                <Link href={`/menu_items/${item.id}`}>
                   View
                 </Link>
               </Button>
