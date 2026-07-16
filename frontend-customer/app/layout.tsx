@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import { Container } from '@chakra-ui/react'
-import { Providers } from '@/components/Providers'
-import { Navbar } from '@/components/Navbar'
-import { CartProvider } from '@/components/CartProvider'
+import { Providers } from '@/src/shared/components/Providers'
+import { Navbar } from '@/src/shared/components/Navbar'
+import { CartProvider } from '@/src/features/cart/components/CartProvider'
 
 export const metadata: Metadata = {
   title: 'TastyFood - Order from your favorite restaurants',

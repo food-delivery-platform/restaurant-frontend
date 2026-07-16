@@ -1,16 +1,8 @@
 import Link from 'next/link'
-import {
-  Box,
-  Heading,
-  SimpleGrid,
-  Card,
-  Badge,
-  Button,
-  Text,
-} from '@chakra-ui/react'
-import { getMenu } from '@/lib/services/menu'
-import { getRestaurant, getRestaurants } from '@/lib/services/restaurants'
-import { MenuItemCardClient } from '@/components/MenuItemCardClient'
+import { Box, Heading, Button, Text } from '@chakra-ui/react'
+import { getMenu } from '@/src/features/menu_items/api/menu'
+import { getRestaurant, getRestaurants } from '@/src/features/restaurants/api/restaurants'
+import { MenuList } from '@/src/features/menu_items/components/MenuList'
 
 export const revalidate = 60
 
@@ -24,57 +16,6 @@ export async function generateStaticParams() {
   } catch {
     return []
   }
-}
-
-async function MenuList({ items }: { items: any[] }) {
-  return (
-    <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={4}>
-      {items.map((item) => (
-        <Card.Root key={item.id} _hover={{ shadow: 'lg' }}>
-          <Card.Body>
-            <Heading size="sm" mb={2}>
-              {item.name}
-            </Heading>
-            {item.description && (
-              <Text fontSize="sm" color="gray.600" mb={2}>
-                {item.description}
-              </Text>
-            )}
-            {item.category && (
-              <Text fontSize="xs" color="gray.500" mb={2}>
-                {item.category.name}
-              </Text>
-            )}
-            <Box display="flex" gap={2} mb={3} flexWrap="wrap">
-              <Badge colorPalette={item.isAvailable ? 'green' : 'red'}>
-                {item.isAvailable ? 'Available' : 'Unavailable'}
-              </Badge>
-              {item.spicyLevel && (
-                <Badge colorPalette="orange">🌶️ {item.spicyLevel}/3</Badge>
-              )}
-              {item.labels?.vegetarian && (
-                <Badge colorPalette="green">Vegetarian</Badge>
-              )}
-              {item.labels?.vegan && (
-                <Badge colorPalette="green">Vegan</Badge>
-              )}
-            </Box>
-            <Heading size="md" mb={3}>
-              {item.price} {item.currency}
-            </Heading>
-            <Box display="flex" gap={2}>
-              <MenuItemCardClient menuItem={item} />
-              <Button variant="outline" asChild flex={1}>
-                <Link href={`/restaurants/${item.restaurantId}/menu/${item.id}`}>
-                  View
-                </Link>
-              </Button>
-            </Box>
-          </Card.Body>
-        </Card.Root>
-      ))}
-    </SimpleGrid>
-  )
 }
 
 export default async function MenuPage({

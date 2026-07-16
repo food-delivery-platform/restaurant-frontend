@@ -38,8 +38,3 @@ export type MenuItem = {
   createdAt?: string
   updatedAt?: string
 }
-
-export type CartItem = {
-  id: string
-  quantity: number
-}

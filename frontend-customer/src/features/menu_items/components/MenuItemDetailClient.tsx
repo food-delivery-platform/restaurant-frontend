@@ -3,8 +3,8 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { Flex, Button } from '@chakra-ui/react'
-import { useCart } from '@/components/CartProvider'
-import type { MenuItem } from '@/lib/models/menu'
+import { useCart } from '@/src/features/cart/components/CartProvider'
+import type { MenuItem } from '../model/menu'
 
 interface MenuItemDetailClientProps {
   menuItem: MenuItem

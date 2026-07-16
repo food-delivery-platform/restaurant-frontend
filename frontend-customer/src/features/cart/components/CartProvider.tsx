@@ -1,7 +1,7 @@
 'use client'
 
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
-import type { CartItem } from '@/lib/models/menu'
+import type { CartItem } from '../model/cart'
 
 const CART_STORAGE_KEY = 'cart'
 

@@ -1,5 +1,5 @@
-import { serverApiGet } from '@/lib/api/server'
-import type { Restaurant } from '@/lib/models/restaurant'
+import { serverApiGet } from '@/src/shared/api/server'
+import type { Restaurant } from '../model/restaurant'
 
 export async function getRestaurants(): Promise<Restaurant[]> {
   return serverApiGet<Restaurant[]>('/api/restaurants')

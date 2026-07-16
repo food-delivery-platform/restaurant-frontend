@@ -2,8 +2,8 @@
 
 import { useState } from 'react'
 import { Button } from '@chakra-ui/react'
-import { useCart } from '@/components/CartProvider'
-import type { MenuItem } from '@/lib/models/menu'
+import { useCart } from '@/src/features/cart/components/CartProvider'
+import type { MenuItem } from '../model/menu'
 
 export function MenuItemCardClient({ menuItem }: { menuItem: MenuItem }) {
   const { addItem } = useCart()

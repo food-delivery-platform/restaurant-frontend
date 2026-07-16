@@ -1,5 +1,5 @@
-import { serverApiGet } from '@/lib/api/server'
-import type { MenuItem } from '@/lib/models/menu'
+import { serverApiGet } from '@/src/shared/api/server'
+import type { MenuItem } from '../model/menu'
 
 export async function getMenu(
   restaurantId: string,
