@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import {
     Box,
@@ -11,6 +12,7 @@ import {
     Textarea,
     createListCollection
 } from '@chakra-ui/react'
+import { useCategories } from '../../restaurant/api/useCategories'
 
 const spicyOptions = createListCollection({
     items: [
@@ -54,6 +56,15 @@ export function MenuItemForm({ defaultValues, isEditMode, saving, onSubmit, onCa
         MenuItemFormValues
     >({ defaultValues })
 
+    const { categories, loading: categoriesLoading, error: categoriesError } = useCategories()
+
+    const categoryOptions = useMemo(
+        () => createListCollection({
+            items: categories.map((cat) => ({ label: cat.name, value: cat.name })),
+        }),
+        [categories]
+    )
+
     return (
         <Box as="form" onSubmit={handleSubmit(onSubmit)}>
             <Stack gap={4}>
@@ -92,7 +103,33 @@ export function MenuItemForm({ defaultValues, isEditMode, saving, onSubmit, onCa
                         <Text mb={1} fontWeight="semibold">
                             Category
                         </Text>
-                        <Input {...register<'category'>('category')} />
+                        <Controller
+                            name="category"
+                            control={control}
+                            render={({ field }) => (
+                                <Select.Root
+                                    collection={categoryOptions}
+                                    value={field.value ? [field.value] : []}
+                                    onValueChange={(e) => field.onChange(e.value[0] ?? '')}
+                                    disabled={categoriesLoading}
+                                >
+                                    <Select.Trigger>
+                                        <Select.ValueText placeholder="No category" />
+                                    </Select.Trigger>
+
+                                    <Select.Content>
+                                        {categories.map((cat) => (
+                                            <Select.Item key={cat.id} item={cat.name}>
+                                                {cat.name}
+                                            </Select.Item>
+                                        ))}
+                                    </Select.Content>
+                                </Select.Root>
+                            )}
+                        />
+                        {categoriesError && (
+                            <Text color="red.500" fontSize="sm" mt={1}>{categoriesError}</Text>
+                        )}
                     </Box>
                 </Flex>
 
