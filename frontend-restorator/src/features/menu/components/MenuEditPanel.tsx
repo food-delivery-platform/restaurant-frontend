@@ -1,31 +1,10 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import {
-    Box,
-    Button,
-    Checkbox,
-    Flex,
-    Heading,
-    Input,
-    Select,
-    Spinner,
-    Stack,
-    Text,
-    Textarea,
-    createListCollection
-} from '@chakra-ui/react'
+import { Box, Heading, Spinner, Text } from '@chakra-ui/react'
 
 import { getMenuItem, createMenuItem, updateMenuItem } from '../api/menu'
 import type { MenuItem } from '../model/menu'
-
-const spicyOptions = createListCollection({
-    items: [
-        { label: "0 - Not Spicy", value: "0" },
-        { label: "1 - Mild", value: "1" },
-        { label: "2 - Medium", value: "2" },
-        { label: "3 - Hot", value: "3" },
-    ],
-})
+import { MenuItemForm } from './MenuItemForm'
 
 export function MenuEditPanel() {
     const { menuItemId } = useParams<{ menuItemId: string }>()
@@ -136,112 +115,26 @@ export function MenuEditPanel() {
                 </Text>
             )}
 
-            <Box as="form" onSubmit={handleSubmit}>
-                <Stack gap={4}>
-                    <Box>
-                        <Text mb={1} fontWeight="semibold">
-                            Name
-                        </Text>
-                        <Input value={name} onChange={(e) => setName(e.target.value)} />
-                    </Box>
-
-                    <Flex gap={4}>
-                        <Box flex={1}>
-                            <Text mb={1} fontWeight="semibold">
-                                Price
-                            </Text>
-                            <Input
-                                type="number"
-                                step="0.01"
-                                value={price}
-                                onChange={(e) => setPrice(e.target.value)}
-                            />
-                        </Box>
-
-                        <Box flex={1}>
-                            <Text mb={1} fontWeight="semibold">
-                                Category
-                            </Text>
-                            <Input value={category} onChange={(e) => setCategory(e.target.value)} />
-                        </Box>
-                    </Flex>
-
-                    <Box>
-                        <Text mb={1} fontWeight="semibold">
-                            Description
-                        </Text>
-                        <Textarea
-                            value={description}
-                            onChange={(e) => setDescription(e.target.value)}
-                        />
-                    </Box>
-
-                    <Box>
-                        <Text mb={1} fontWeight="semibold">
-                            Ingredients
-                        </Text>
-                        <Input
-                            value={ingredientsText}
-                            onChange={(e) => setIngredientsText(e.target.value)}
-                        />
-                    </Box>
-
-                    <Flex gap={6} align="center">
-
-                        <Checkbox.Root
-                            checked={isAvailable}
-                            onCheckedChange={(e) => setIsAvailable(!!e.checked)}
-                        >
-                            <Checkbox.HiddenInput />
-                            <Checkbox.Control />
-                            <Checkbox.Label>
-                                Available
-                            </Checkbox.Label>
-                        </Checkbox.Root>
-
-                        <Box>
-                            <Text mb={1} fontWeight="semibold">
-                                Spicy
-                            </Text>
-
-                            <Select.Root
-                                collection={spicyOptions}
-                                value={[String(spicyLevel)]}
-                                onValueChange={(e) => setSpicyLevel(Number(e.value[0]))}
-                            >
-                                <Select.Trigger>
-                                    <Select.ValueText />
-                                </Select.Trigger>
-
-                                <Select.Content>
-                                    <Select.Item item="0">0 - Not Spicy</Select.Item>
-                                    <Select.Item item="1">1 - Mild</Select.Item>
-                                    <Select.Item item="2">2 - Medium</Select.Item>
-                                    <Select.Item item="3">3 - Hot</Select.Item>
-                                </Select.Content>
-                            </Select.Root>
-
-                        </Box>
-
-                    </Flex>
-
-                    <Flex gap={3} mt={3}>
-                        <Button
-                            type="submit"
-                            colorPalette="blue"
-                            flex={1}
-                            isLoading={saving}
-                        >
-                            {isEditMode ? 'Save' : 'Add'}
-                        </Button>
-
-                        <Button variant="outline" onClick={() => navigate('/')}>
-                            Cancel
-                        </Button>
-                    </Flex>
-                </Stack>
-            </Box>
-
+            <MenuItemForm
+                name={name}
+                onNameChange={setName}
+                price={price}
+                onPriceChange={setPrice}
+                category={category}
+                onCategoryChange={setCategory}
+                description={description}
+                onDescriptionChange={setDescription}
+                ingredientsText={ingredientsText}
+                onIngredientsTextChange={setIngredientsText}
+                isAvailable={isAvailable}
+                onIsAvailableChange={setIsAvailable}
+                spicyLevel={spicyLevel}
+                onSpicyLevelChange={setSpicyLevel}
+                isEditMode={isEditMode}
+                saving={saving}
+                onSubmit={handleSubmit}
+                onCancel={() => navigate('/')}
+            />
         </Box>
     )
 }

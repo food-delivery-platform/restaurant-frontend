@@ -1,33 +1,9 @@
 import { useState, useEffect } from 'react'
-import {
-    Box,
-    Button,
-    Heading,
-    Input,
-    Spinner,
-    Stack,
-    Text,
-    VStack,
-    HStack,
-    Badge,
-} from '@chakra-ui/react'
+import { Box, Heading, Spinner, Text } from '@chakra-ui/react'
 import { apiGet, apiPost } from '../../../shared/api/client'
-
-interface Venue {
-    id: string
-    name: string
-    slug: string
-    description: string
-    is_active: boolean
-    rating: number
-    image_url: string
-}
-
-interface Category {
-    id: string
-    restaurantId: string
-    name: string
-}
+import { RestaurantDetailsCard, type Venue } from './RestaurantDetailsCard'
+import { CategoryList, type Category } from './CategoryList'
+import { AddCategoryForm } from './AddCategoryForm'
 
 export function RestaurantInfoPage() {
     const restaurantId = 'my'
@@ -47,8 +23,8 @@ export function RestaurantInfoPage() {
             setLoading(true)
             setError(null)
             const [venueData, categoriesData] = await Promise.all([
-                apiGet('/api/restaurants/my/info'),
-                apiGet('/api/restaurants/my/menu-item-categories')
+                apiGet<{ venue: Venue }>('/api/restaurants/my/info'),
+                apiGet<Category[]>('/api/restaurants/my/menu-item-categories')
             ])
             setVenue(venueData.venue)
             setCategories(categoriesData)
@@ -105,79 +81,19 @@ export function RestaurantInfoPage() {
 
             {error && <Text color="red.500" mb={4}>{error}</Text>}
 
-            {/* Venue Info */}
-            <Box mb={8} p={5} border="1px solid" borderColor="gray.200" borderRadius="md">
-                <Heading size="md" mb={4}>Restaurant Details</Heading>
+            <RestaurantDetailsCard venue={venue} />
 
-                <Stack gap={4}>
-                    <Box>
-                        <Text fontWeight="semibold" mb={1}>Name</Text>
-                        <Text>{venue.name}</Text>
-                    </Box>
-
-                    <Box>
-                        <Text fontWeight="semibold" mb={1}>Description</Text>
-                        <Text>{venue.description}</Text>
-                    </Box>
-
-                    <HStack>
-                        <Box>
-                            <Text fontWeight="semibold" mb={1}>Rating</Text>
-                            <Text>⭐ {venue.rating}</Text>
-                        </Box>
-
-                        <Box>
-                            <Text fontWeight="semibold" mb={1}>Status</Text>
-                            <Badge colorPalette={venue.is_active ? 'green' : 'red'}>
-                                {venue.is_active ? 'Active' : 'Inactive'}
-                            </Badge>
-                        </Box>
-                    </HStack>
-                </Stack>
-            </Box>
-
-            {/* Categories */}
             <Box p={5} border="1px solid" borderColor="gray.200" borderRadius="md">
                 <Heading size="md" mb={4}>Menu Item Categories</Heading>
 
-                <VStack align="stretch" gap={3} mb={6}>
-                    {categories && categories.length > 0 ? (
-                        categories.map((cat) => (
-                            <Box
-                                key={cat.id}
-                                p={3}
-                                border="1px solid"
-                                borderColor="gray.100"
-                                borderRadius="md"
-                                bg="gray.50"
-                            >
-                                <Text fontWeight="semibold">{cat.name}</Text>
-                            </Box>
-                        ))
-                    ) : (
-                        <Text color="gray.500">No categories yet</Text>
-                    )}
-                </VStack>
+                <CategoryList categories={categories} />
 
-                {/* Add Category Form */}
-                <Box as="form" onSubmit={handleAddCategory}>
-                    <Text fontWeight="semibold" mb={2}>Add New Category</Text>
-                    <HStack gap={2}>
-                        <Input
-                            placeholder="Category name"
-                            value={newCategoryName}
-                            onChange={(e) => setNewCategoryName(e.target.value)}
-                            disabled={savingCategory}
-                        />
-                        <Button
-                            type="submit"
-                            colorPalette="green"
-                            disabled={savingCategory || !newCategoryName.trim()}
-                        >
-                            {savingCategory ? <Spinner size="sm" /> : 'Add'}
-                        </Button>
-                    </HStack>
-                </Box>
+                <AddCategoryForm
+                    value={newCategoryName}
+                    onChange={setNewCategoryName}
+                    onSubmit={handleAddCategory}
+                    saving={savingCategory}
+                />
             </Box>
         </Box>
     )

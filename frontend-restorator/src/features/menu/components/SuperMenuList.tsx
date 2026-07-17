@@ -1,8 +1,9 @@
 import { useState } from 'react'
-import { Link as RouterLink } from 'react-router-dom'
-import { Box, Heading, Checkbox, Button, Spinner, Text } from '@chakra-ui/react'
+import { Box, Spinner, Text } from '@chakra-ui/react'
 import { useMenu } from '../api/useMenu'
-import {MenuList} from "./MenuList.tsx";
+import { MenuList } from './MenuList'
+import { MenuItemsHeader } from './MenuItemsHeader'
+import { AvailabilityFilter } from './AvailabilityFilter'
 
 export function SuperMenuList() {
     const [onlyAvailable, setOnlyAvailable] = useState(false)
@@ -12,24 +13,9 @@ export function SuperMenuList() {
 
     return (
         <Box>
-            <Box mb={5}>
-                <Heading size="md">Menu Items</Heading>
-                <Button asChild colorPalette="green" borderRadius="full" w="40px" h="40px" fontSize="20px" fontWeight="bold" mt={3}>
-                    <RouterLink to="/menu_items/new">+</RouterLink>
-                </Button>
-            </Box>
+            <MenuItemsHeader />
 
-            <Checkbox.Root
-                mb={4}
-                checked={onlyAvailable}
-                onCheckedChange={(e) => setOnlyAvailable(!!e.checked)}
-            >
-                <Checkbox.HiddenInput />
-                <Checkbox.Control />
-                <Checkbox.Label>
-                    available only
-                </Checkbox.Label>
-            </Checkbox.Root>
+            <AvailabilityFilter checked={onlyAvailable} onChange={setOnlyAvailable} />
 
             {loading && <Spinner />}
             {error && <Text color="red.500">{error}</Text>}
