@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Box, Heading, Spinner, Text } from '@chakra-ui/react'
 
 import { getMenuItem, createMenuItem, updateMenuItem } from '../api/menu'
@@ -16,8 +16,11 @@ const DEFAULT_VALUES: MenuItemFormValues = {
     spicyLevel: 0,
 }
 
-export function MenuEditPanel() {
-    const { menuItemId } = useParams<{ menuItemId: string }>()
+type Props = {
+    menuItemId?: string
+}
+
+export function MenuEditPanel({ menuItemId }: Props) {
     const navigate = useNavigate()
 
     const isEditMode = !!menuItemId

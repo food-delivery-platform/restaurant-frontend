@@ -1,20 +1,21 @@
 import { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { getMenuItem } from '../api/menu'
 import type { MenuItem } from '../model/menu'
 import { Box, Button, Spinner, Text } from '@chakra-ui/react'
 import { MenuItemDetailView } from './MenuItemDetailView'
 
-export function MenuItemDetail() {
-    const { menuItemId } = useParams<{ menuItemId: string }>()
+type Props = {
+    menuItemId: string
+}
+
+export function MenuItemDetail({ menuItemId }: Props) {
     const navigate = useNavigate()
     const [item, setItem] = useState<MenuItem | null>(null)
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState<string | null>(null)
 
     useEffect(() => {
-        if (!menuItemId) return
-
         // Standard fetch-on-param-change reset (react.dev/learn/you-might-not-need-an-effect#fetching-data).
         // eslint-disable-next-line react-hooks/set-state-in-effect
         setLoading(true)
