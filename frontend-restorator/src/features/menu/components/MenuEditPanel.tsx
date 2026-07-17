@@ -43,7 +43,7 @@ export function MenuEditPanel() {
                 setSpicyLevel(item.spicyLevel ?? 0)
                 setIngredientsText(item.ingredients?.join(', ') || '')
             })
-            .catch((err) => setError(err.message || 'Failed to fetch'))
+            .catch((err: unknown) => setError(err instanceof Error ? err.message : 'Failed to fetch'))
             .finally(() => setLoading(false))
     }, [menuItemId])
 

@@ -24,8 +24,8 @@ export function MenuItemDetail() {
             .then((data) => {
                 setItem(data)
             })
-            .catch((err) => {
-                setError(err.message || 'Failed to fetch item')
+            .catch((err: unknown) => {
+                setError(err instanceof Error ? err.message : 'Failed to fetch item')
             })
             .finally(() => {
                 setLoading(false)

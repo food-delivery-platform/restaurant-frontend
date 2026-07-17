@@ -18,9 +18,9 @@ export function useOrders() {
                 if (!alive) return
                 setOrders(data)
             })
-            .catch(e => {
+            .catch((e: unknown) => {
                 if (!alive) return
-                setError(e.message)
+                setError(e instanceof Error ? e.message : 'Failed to fetch orders')
             })
             .finally(() => {
                 if (!alive) return

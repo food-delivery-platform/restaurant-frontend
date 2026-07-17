@@ -24,9 +24,9 @@ export function useMenu(restaurantId: string, onlyAvailable: boolean) {
                 if (!alive) return
                 setItems(data)
             })
-            .catch(e => {
+            .catch((e: unknown) => {
                 if (!alive) return
-                setError(e.message)
+                setError(e instanceof Error ? e.message : 'Failed to fetch menu')
             })
             .finally(() => {
                 if (!alive) return
