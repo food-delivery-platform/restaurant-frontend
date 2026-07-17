@@ -1,4 +1,5 @@
 import { useMemo } from 'react'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { Controller, useForm } from 'react-hook-form'
 import {
     Box,
@@ -13,6 +14,9 @@ import {
     createListCollection
 } from '@chakra-ui/react'
 import { useCategories } from '../../restaurant/api/useCategories'
+import { MenuItemFormSchema, type MenuItemFormValues } from '../model/menu'
+
+export type { MenuItemFormValues }
 
 const spicyOptions = createListCollection({
     items: [
@@ -22,16 +26,6 @@ const spicyOptions = createListCollection({
         { label: "3 - Hot", value: "3" },
     ],
 })
-
-export type MenuItemFormValues = {
-    name: string
-    price: string
-    category: string
-    description: string
-    ingredientsText: string
-    isAvailable: boolean
-    spicyLevel: number
-}
 
 type Props = {
     defaultValues: MenuItemFormValues
@@ -54,7 +48,10 @@ export function MenuItemForm({ defaultValues, isEditMode, saving, onSubmit, onCa
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         any,
         MenuItemFormValues
-    >({ defaultValues })
+    >({
+        defaultValues,
+        resolver: zodResolver(MenuItemFormSchema),
+    })
 
     const { categories, loading: categoriesLoading, error: categoriesError } = useCategories()
 
@@ -72,7 +69,7 @@ export function MenuItemForm({ defaultValues, isEditMode, saving, onSubmit, onCa
                     <Text mb={1} fontWeight="semibold">
                         Name
                     </Text>
-                    <Input {...register<'name'>('name', { required: 'Name is required' })} />
+                    <Input {...register<'name'>('name')} />
                     {errors.name && (
                         <Text color="red.500" fontSize="sm" mt={1}>{errors.name.message}</Text>
                     )}
@@ -86,13 +83,7 @@ export function MenuItemForm({ defaultValues, isEditMode, saving, onSubmit, onCa
                         <Input
                             type="number"
                             step="0.01"
-                            {...register<'price'>('price', {
-                                required: 'Price is required',
-                                pattern: {
-                                    value: /^\d+(\.\d{1,2})?$/,
-                                    message: 'Price must be a valid decimal (e.g., 12.99)',
-                                },
-                            })}
+                            {...register<'price'>('price')}
                         />
                         {errors.price && (
                             <Text color="red.500" fontSize="sm" mt={1}>{errors.price.message}</Text>

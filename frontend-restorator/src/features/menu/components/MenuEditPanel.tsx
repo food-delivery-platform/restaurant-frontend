@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { Box, Heading, Spinner, Text } from '@chakra-ui/react'
 
 import { getMenuItem, createMenuItem, updateMenuItem } from '../api/menu'
-import type { MenuItem } from '../model/menu'
+import type { CreateMenuItemRequest, UpdateMenuItemRequest } from '../model/menu'
 import { MenuItemForm, type MenuItemFormValues } from './MenuItemForm'
 
 const DEFAULT_VALUES: MenuItemFormValues = {
@@ -56,31 +56,44 @@ export function MenuEditPanel() {
         setSaving(true)
         setError(null)
 
-        const payload: Partial<MenuItem> = {
-            name: values.name.trim(),
-            price: values.price,
-            currency: 'ILS',
-            category: values.category.trim()
-                ? { name: values.category.trim(), restaurantId, id: '' }
-                : undefined,
-            description: values.description.trim() || undefined,
-            isAvailable: values.isAvailable,
-            spicyLevel: values.spicyLevel as 0 | 1 | 2 | 3,
-            ingredients: values.ingredientsText
-                .split(',')
-                .map((i) => i.trim())
-                .filter(Boolean),
-            ...(isEditMode ? {} : { restaurantId }),
-        }
+        const category = values.category.trim()
+            ? { name: values.category.trim(), restaurantId, id: '' }
+            : undefined
+
+        const ingredients = values.ingredientsText
+            .split(',')
+            .map((i) => i.trim())
+            .filter(Boolean)
 
         try {
             if (isEditMode) {
+                const payload: UpdateMenuItemRequest = {
+                    name: values.name.trim(),
+                    price: values.price,
+                    currency: 'ILS',
+                    category,
+                    description: values.description.trim() || undefined,
+                    isAvailable: values.isAvailable,
+                    spicyLevel: values.spicyLevel as 0 | 1 | 2 | 3,
+                    ingredients,
+                }
                 await updateMenuItem(menuItemId!, payload)
             } else {
                 if (!restaurantId) {
                     setError('No restaurant available')
                     setSaving(false)
                     return
+                }
+                const payload: CreateMenuItemRequest = {
+                    restaurantId,
+                    name: values.name.trim(),
+                    price: values.price,
+                    currency: 'ILS',
+                    category,
+                    description: values.description.trim() || undefined,
+                    isAvailable: values.isAvailable,
+                    spicyLevel: values.spicyLevel as 0 | 1 | 2 | 3,
+                    ingredients,
                 }
                 await createMenuItem(payload)
             }
