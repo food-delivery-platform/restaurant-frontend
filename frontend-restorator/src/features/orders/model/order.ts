@@ -15,6 +15,7 @@ export type OrderItem = {
 
 export type OrderStatus =
     | 'AWAITING_PAYMENT'
+    | 'RESTAURANT_ACCEPTED'
     | 'PREPARING'
     | 'READY_FOR_PICKUP'
     | 'DELIVERED'

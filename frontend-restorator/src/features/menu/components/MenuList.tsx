@@ -17,14 +17,10 @@ const COLUMNS: Column[] = [
         title: 'Name',
         width: 200,
         getValue: (item) => (
-            <Box
-                as={Link}
-                to={`/menu_items/view/${item.id}`}
-                color="blue.500"
-                fontWeight="semibold"
-                _hover={{ textDecoration: 'underline' }}
-            >
-                {item.name}
+            <Box asChild color="blue.500" fontWeight="semibold" _hover={{ textDecoration: 'underline' }}>
+                <Link to={`/menu_items/view/${item.id}`}>
+                    {item.name}
+                </Link>
             </Box>
         ),
     },
@@ -46,14 +42,10 @@ const COLUMNS: Column[] = [
     {
         title: 'Actions',
         getValue: (item) => (
-            <Box
-                as={Link}
-                to={`/menu_items/edit/${item.id}`}
-                color="blue.500"
-                fontWeight="semibold"
-                _hover={{ textDecoration: 'underline' }}
-            >
-                Edit
+            <Box asChild color="blue.500" fontWeight="semibold" _hover={{ textDecoration: 'underline' }}>
+                <Link to={`/menu_items/edit/${item.id}`}>
+                    Edit
+                </Link>
             </Box>
         ),
     },

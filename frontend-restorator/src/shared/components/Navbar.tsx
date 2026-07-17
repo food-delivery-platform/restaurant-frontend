@@ -13,8 +13,8 @@ export function Navbar() {
     return (
         <Flex as="nav" justify="space-between" align="center" mb={5} pb={3} borderBottom="1px solid" borderColor="gray.200">
             <Heading size="md">
-                <Link as={RouterLink} to="/" _hover={{ textDecoration: 'none' }}>
-                    TastyFood
+                <Link asChild _hover={{ textDecoration: 'none' }}>
+                    <RouterLink to="/">TastyFood</RouterLink>
                 </Link>
             </Heading>
 
@@ -22,12 +22,11 @@ export function Navbar() {
                 {navItems.map((item) => (
                     <Link
                         key={item.path}
-                        as={RouterLink}
-                        to={item.path}
+                        asChild
                         fontWeight={pathname.startsWith(item.path) ? 'bold' : 'normal'}
                         color={pathname.startsWith(item.path) ? 'blue.600' : 'gray.600'}
                     >
-                        {item.label}
+                        <RouterLink to={item.path}>{item.label}</RouterLink>
                     </Link>
                 ))}
             </HStack>
