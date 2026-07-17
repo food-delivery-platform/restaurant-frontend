@@ -1,41 +1,55 @@
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback, useRef } from 'react'
 import type { Order } from '../model/order'
 import { getOrders, markItemReady, markOrderDeliver } from './orders'
+import { ORDERS_POLL_INTERVAL_MS } from '../../../shared/config'
 
 export function useOrders() {
     const [orders, setOrders] = useState<Order[]>([])
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState<string | null>(null)
+    const aliveRef = useRef(true)
 
-    const fetchOrders = useCallback(() => {
-        let alive = true
+    const fetchOrders = useCallback((options?: { silent?: boolean }) => {
+        const silent = options?.silent ?? false
 
-        setLoading(true)
+        if (!silent) {
+            setLoading(true)
+        }
         setError(null)
 
-        getOrders()
+        return getOrders()
             .then(data => {
-                if (!alive) return
+                if (!aliveRef.current) return
                 setOrders(data)
             })
             .catch((e: unknown) => {
-                if (!alive) return
+                if (!aliveRef.current) return
                 setError(e instanceof Error ? e.message : 'Failed to fetch orders')
             })
             .finally(() => {
-                if (!alive) return
-                setLoading(false)
+                if (!aliveRef.current) return
+                if (!silent) {
+                    setLoading(false)
+                }
             })
-
-        return () => {
-            alive = false
-        }
     }, [])
 
     useEffect(() => {
+        aliveRef.current = true
+
         // Standard fetch-on-mount pattern (react.dev/learn/you-might-not-need-an-effect#fetching-data).
         // eslint-disable-next-line react-hooks/set-state-in-effect
-        return fetchOrders()
+        fetchOrders()
+
+        // Poll for new/updated orders so the dashboard stays current without a manual refresh.
+        const intervalId = setInterval(() => {
+            fetchOrders({ silent: true })
+        }, ORDERS_POLL_INTERVAL_MS)
+
+        return () => {
+            aliveRef.current = false
+            clearInterval(intervalId)
+        }
     }, [fetchOrders])
 
     const setItemReady = useCallback(async (orderId: string, itemId: string) => {
