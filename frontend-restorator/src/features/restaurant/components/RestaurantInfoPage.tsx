@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import { Box, Heading, Spinner, Text } from '@chakra-ui/react'
-import { apiGet, apiPost } from '../../../shared/api/client'
-import { RestaurantDetailsCard, type Venue } from './RestaurantDetailsCard'
-import { CategoryList, type Category } from './CategoryList'
+import { getRestaurantInfo, getCategories, addCategory } from '../api/restaurant'
+import type { Venue, Category } from '../model/restaurant'
+import { RestaurantDetailsCard } from './RestaurantDetailsCard'
+import { CategoryList } from './CategoryList'
 import { AddCategoryForm } from './AddCategoryForm'
 
 export function RestaurantInfoPage() {
@@ -18,8 +19,8 @@ export function RestaurantInfoPage() {
         try {
             setLoading(true)
             setError(null)
-            const venuePromise = apiGet<{ venue: Venue }>('/api/restaurants/my/info')
-            const categoriesPromise = apiGet<Category[]>('/api/restaurants/my/menu-item-categories')
+            const venuePromise = getRestaurantInfo()
+            const categoriesPromise = getCategories()
             const venueData = await venuePromise
             const categoriesData = await categoriesPromise
             setVenue(venueData.venue)
@@ -49,9 +50,7 @@ export function RestaurantInfoPage() {
         setError(null)
 
         try {
-            await apiPost(`/api/restaurants/${restaurantId}/menu-item-categories`, {
-                name: newCategoryName.trim(),
-            })
+            await addCategory(restaurantId, newCategoryName.trim())
             setNewCategoryName('')
             await loadData()
         } catch (err) {

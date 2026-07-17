@@ -1,10 +1,5 @@
 import { Box, Text, VStack } from '@chakra-ui/react'
-
-type Category = {
-    id: string
-    restaurantId: string
-    name: string
-}
+import type { Category } from '../model/restaurant'
 
 type Props = {
     categories: Category[]
@@ -32,5 +27,3 @@ export function CategoryList({ categories }: Props) {
         </VStack>
     )
 }
-
-export type { Category }

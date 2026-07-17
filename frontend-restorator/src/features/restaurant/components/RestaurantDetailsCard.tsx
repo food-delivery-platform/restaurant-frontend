@@ -1,14 +1,5 @@
 import { Badge, Box, Heading, HStack, Stack, Text } from '@chakra-ui/react'
-
-type Venue = {
-    id: string
-    name: string
-    slug: string
-    description: string
-    is_active: boolean
-    rating: number
-    image_url: string
-}
+import type { Venue } from '../model/restaurant'
 
 type Props = {
     venue: Venue
@@ -47,5 +38,3 @@ export function RestaurantDetailsCard({ venue }: Props) {
         </Box>
     )
 }
-
-export type { Venue }
