@@ -45,7 +45,14 @@ export function MenuItemForm({ defaultValues, isEditMode, saving, onSubmit, onCa
         handleSubmit,
         control,
         formState: { errors },
-    } = useForm<MenuItemFormValues>({ defaultValues })
+    } = useForm<
+        MenuItemFormValues,
+        // react-hook-form's Controller defaults its own TContext to `any`; matching it here
+        // (instead of `unknown`) keeps `control` assignable to Controller's `control` prop.
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        any,
+        MenuItemFormValues
+    >({ defaultValues })
 
     return (
         <Box as="form" onSubmit={handleSubmit(onSubmit)}>
@@ -54,7 +61,7 @@ export function MenuItemForm({ defaultValues, isEditMode, saving, onSubmit, onCa
                     <Text mb={1} fontWeight="semibold">
                         Name
                     </Text>
-                    <Input {...register('name', { required: 'Name is required' })} />
+                    <Input {...register<'name'>('name', { required: 'Name is required' })} />
                     {errors.name && (
                         <Text color="red.500" fontSize="sm" mt={1}>{errors.name.message}</Text>
                     )}
@@ -68,7 +75,7 @@ export function MenuItemForm({ defaultValues, isEditMode, saving, onSubmit, onCa
                         <Input
                             type="number"
                             step="0.01"
-                            {...register('price', {
+                            {...register<'price'>('price', {
                                 required: 'Price is required',
                                 pattern: {
                                     value: /^\d+(\.\d{1,2})?$/,
@@ -85,7 +92,7 @@ export function MenuItemForm({ defaultValues, isEditMode, saving, onSubmit, onCa
                         <Text mb={1} fontWeight="semibold">
                             Category
                         </Text>
-                        <Input {...register('category')} />
+                        <Input {...register<'category'>('category')} />
                     </Box>
                 </Flex>
 
@@ -93,14 +100,14 @@ export function MenuItemForm({ defaultValues, isEditMode, saving, onSubmit, onCa
                     <Text mb={1} fontWeight="semibold">
                         Description
                     </Text>
-                    <Textarea {...register('description')} />
+                    <Textarea {...register<'description'>('description')} />
                 </Box>
 
                 <Box>
                     <Text mb={1} fontWeight="semibold">
                         Ingredients
                     </Text>
-                    <Input {...register('ingredientsText')} />
+                    <Input {...register<'ingredientsText'>('ingredientsText')} />
                 </Box>
 
                 <Flex gap={6} align="center">
