@@ -28,6 +28,8 @@ export function MenuEditPanel() {
     useEffect(() => {
         if (!menuItemId) return
 
+        // Standard fetch-on-param-change reset (react.dev/learn/you-might-not-need-an-effect#fetching-data).
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setLoading(true)
         setError(null)
 
@@ -88,8 +90,8 @@ export function MenuEditPanel() {
                 await createMenuItem(payload)
             }
             navigate('/menu_items')
-        } catch (err: any) {
-            setError(err.message || 'Save failed')
+        } catch (err) {
+            setError(err instanceof Error ? err.message : 'Save failed')
         } finally {
             setSaving(false)
         }

@@ -14,10 +14,6 @@ export function RestaurantInfoPage() {
     const [newCategoryName, setNewCategoryName] = useState('')
     const [savingCategory, setSavingCategory] = useState(false)
 
-    useEffect(() => {
-        loadData()
-    }, [])
-
     const loadData = async () => {
         try {
             setLoading(true)
@@ -28,12 +24,18 @@ export function RestaurantInfoPage() {
             ])
             setVenue(venueData.venue)
             setCategories(categoriesData)
-        } catch (err: any) {
-            setError(err.message || 'Failed to load restaurant info')
+        } catch (err) {
+            setError(err instanceof Error ? err.message : 'Failed to load restaurant info')
         } finally {
             setLoading(false)
         }
     }
+
+    useEffect(() => {
+        // Standard fetch-on-mount pattern (react.dev/learn/you-might-not-need-an-effect#fetching-data).
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        loadData()
+    }, [])
 
     const handleAddCategory = async (e: React.FormEvent) => {
         e.preventDefault()
@@ -52,8 +54,8 @@ export function RestaurantInfoPage() {
             })
             setNewCategoryName('')
             await loadData()
-        } catch (err: any) {
-            setError(err.message || 'Failed to add category')
+        } catch (err) {
+            setError(err instanceof Error ? err.message : 'Failed to add category')
         } finally {
             setSavingCategory(false)
         }

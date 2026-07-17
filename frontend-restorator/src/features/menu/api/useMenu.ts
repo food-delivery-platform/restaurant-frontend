@@ -9,6 +9,8 @@ export function useMenu(restaurantId: string, onlyAvailable: boolean) {
 
     useEffect(() => {
         if (!restaurantId) {
+            // Standard fetch-on-param-change reset (react.dev/learn/you-might-not-need-an-effect#fetching-data).
+            // eslint-disable-next-line react-hooks/set-state-in-effect
             setItems([])
             return
         }

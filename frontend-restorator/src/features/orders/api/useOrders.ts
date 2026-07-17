@@ -33,6 +33,8 @@ export function useOrders() {
     }, [])
 
     useEffect(() => {
+        // Standard fetch-on-mount pattern (react.dev/learn/you-might-not-need-an-effect#fetching-data).
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         return fetchOrders()
     }, [fetchOrders])
 
@@ -42,8 +44,8 @@ export function useOrders() {
             setOrders(prev =>
                 prev.map(o => (o.id === orderId ? updated : o))
             )
-        } catch (e: any) {
-            setError(e.message)
+        } catch (e) {
+            setError(e instanceof Error ? e.message : 'Failed to mark item ready')
         }
     }, [])
 
@@ -53,8 +55,8 @@ export function useOrders() {
             setOrders(prev =>
                 prev.map(o => (o.id === orderId ? updated : o))
             )
-        } catch (e: any) {
-            setError(e.message)
+        } catch (e) {
+            setError(e instanceof Error ? e.message : 'Failed to deliver order')
         }
     }, [])
 

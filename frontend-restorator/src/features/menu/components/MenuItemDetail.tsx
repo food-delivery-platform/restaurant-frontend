@@ -15,6 +15,8 @@ export function MenuItemDetail() {
     useEffect(() => {
         if (!menuItemId) return
 
+        // Standard fetch-on-param-change reset (react.dev/learn/you-might-not-need-an-effect#fetching-data).
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setLoading(true)
         setError(null)
 
