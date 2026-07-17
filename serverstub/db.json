@@ -142,6 +142,16 @@
       "id": "cat-112",
       "restaurantId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
       "name": "Breakfast"
+    },
+    {
+      "id": "pvEOELHb5No",
+      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "name": "Alcohol"
+    },
+    {
+      "id": "LAPmpOb37FI",
+      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "name": "Test Category Hook"
     }
   ],
   "venueProfile": {
@@ -152,7 +162,12 @@
       "name": "Tokyo House",
       "slug": "tokyo-house",
       "description": "Modern Japanese kitchen with ramen, gyoza and pizza for the sample app.",
-      "cuisine_tags": ["japanese", "ramen", "pizza", "dessert"],
+      "cuisine_tags": [
+        "japanese",
+        "ramen",
+        "pizza",
+        "dessert"
+      ],
       "is_active": true,
       "rating": 4.8,
       "image_url": "https://example.com/images/venues/tokyo-house.jpg",
@@ -239,7 +254,13 @@
         "name": "Noodles"
       },
       "isAvailable": true,
-      "ingredients": ["ramen noodles", "chicken", "spicy broth", "scallions", "egg"],
+      "ingredients": [
+        "ramen noodles",
+        "chicken",
+        "spicy broth",
+        "scallions",
+        "egg"
+      ],
       "labels": {
         "spicy": true,
         "vegetarian": false,
@@ -276,7 +297,13 @@
         "name": "Starters"
       },
       "isAvailable": true,
-      "ingredients": ["wheat wrapper", "pork", "cabbage", "garlic", "ginger"],
+      "ingredients": [
+        "wheat wrapper",
+        "pork",
+        "cabbage",
+        "garlic",
+        "ginger"
+      ],
       "labels": {
         "spicy": false,
         "vegetarian": false,
@@ -314,7 +341,14 @@
         "name": "Noodles"
       },
       "isAvailable": false,
-      "ingredients": ["ramen noodles", "miso", "tofu", "corn", "seaweed", "scallions"],
+      "ingredients": [
+        "ramen noodles",
+        "miso",
+        "tofu",
+        "corn",
+        "seaweed",
+        "scallions"
+      ],
       "labels": {
         "spicy": false,
         "vegetarian": true,
@@ -351,7 +385,10 @@
         "name": "Drinks"
       },
       "isAvailable": false,
-      "ingredients": ["green tea leaves", "water"],
+      "ingredients": [
+        "green tea leaves",
+        "water"
+      ],
       "labels": {
         "spicy": false,
         "vegetarian": true,
@@ -388,7 +425,13 @@
         "name": "Pizza"
       },
       "isAvailable": true,
-      "ingredients": ["pizza dough", "tomato sauce", "mozzarella", "basil", "olive oil"],
+      "ingredients": [
+        "pizza dough",
+        "tomato sauce",
+        "mozzarella",
+        "basil",
+        "olive oil"
+      ],
       "labels": {
         "spicy": false,
         "vegetarian": true,
@@ -426,7 +469,12 @@
         "name": "Pizza"
       },
       "isAvailable": true,
-      "ingredients": ["pizza dough", "tomato sauce", "mozzarella", "pepperoni"],
+      "ingredients": [
+        "pizza dough",
+        "tomato sauce",
+        "mozzarella",
+        "pepperoni"
+      ],
       "labels": {
         "spicy": true,
         "vegetarian": false,
@@ -464,7 +512,14 @@
         "name": "Desserts"
       },
       "isAvailable": false,
-      "ingredients": ["mascarpone", "ladyfingers", "coffee", "egg", "cocoa", "sugar"],
+      "ingredients": [
+        "mascarpone",
+        "ladyfingers",
+        "coffee",
+        "egg",
+        "cocoa",
+        "sugar"
+      ],
       "labels": {
         "spicy": false,
         "vegetarian": true,
@@ -501,7 +556,11 @@
         "name": "Drinks"
       },
       "isAvailable": true,
-      "ingredients": ["carbonated water", "sugar", "caffeine"],
+      "ingredients": [
+        "carbonated water",
+        "sugar",
+        "caffeine"
+      ],
       "labels": {
         "spicy": false,
         "vegetarian": true,
@@ -528,20 +587,22 @@
     {
       "id": "e4d8f9a0-1b2c-3d4e-5f60-71829304c516",
       "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
-      "name": "Super-dish!",
+      "name": "Super-dish!+6",
       "description": "A good sandwich with cheese",
-      "price": "23.00",
+      "price": "23.01",
       "currency": "ILS",
       "category": {
-        "id": "cat-006",
-        "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
-        "name": "Sandwich"
+        "name": "Sandwich",
+        "restaurantId": "my",
+        "id": ""
       },
       "isAvailable": true,
-      "ingredients": ["cheese"],
+      "ingredients": [
+        "cheese"
+      ],
       "spicyLevel": 1,
       "createdAt": "2026-07-01T11:43:02.582Z",
-      "updatedAt": "2026-07-01T11:43:02.582Z"
+      "updatedAt": "2026-07-17T09:07:58.670Z"
     },
     {
       "id": "f5e9a0b1-2c3d-4e5f-6071-829304c516d7",
@@ -556,10 +617,51 @@
         "name": "Desserts"
       },
       "isAvailable": true,
-      "ingredients": ["cream cheese", "mango", "biscuit base", "sugar"],
+      "ingredients": [
+        "cream cheese",
+        "mango",
+        "biscuit base",
+        "sugar"
+      ],
       "spicyLevel": 0,
       "createdAt": "2026-07-01T11:45:02.582Z",
       "updatedAt": "2026-07-01T11:45:02.582Z"
+    },
+    {
+      "id": "461ihKX0zaw",
+      "name": "Test Dish",
+      "price": "12.50",
+      "currency": "ILS",
+      "isAvailable": true,
+      "spicyLevel": 0,
+      "ingredients": [],
+      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "createdAt": "2026-07-17T09:56:16.142Z",
+      "updatedAt": "2026-07-17T09:56:16.142Z"
+    },
+    {
+      "id": "WJPP4bgV5ak",
+      "name": "Controller Test",
+      "price": "5.00",
+      "currency": "ILS",
+      "isAvailable": true,
+      "spicyLevel": 0,
+      "ingredients": [],
+      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "createdAt": "2026-07-17T10:15:05.576Z",
+      "updatedAt": "2026-07-17T10:15:05.576Z"
+    },
+    {
+      "id": "kBf9_uqUQ20",
+      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "name": "Zod Test Dish",
+      "price": "7.25",
+      "currency": "ILS",
+      "isAvailable": true,
+      "spicyLevel": 0,
+      "ingredients": [],
+      "createdAt": "2026-07-17T10:36:51.829Z",
+      "updatedAt": "2026-07-17T10:36:51.829Z"
     }
   ],
   "orders": [
