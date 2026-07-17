@@ -18,10 +18,10 @@ export function RestaurantInfoPage() {
         try {
             setLoading(true)
             setError(null)
-            const [venueData, categoriesData] = await Promise.all([
-                apiGet<{ venue: Venue }>('/api/restaurants/my/info'),
-                apiGet<Category[]>('/api/restaurants/my/menu-item-categories')
-            ])
+            const venuePromise = apiGet<{ venue: Venue }>('/api/restaurants/my/info')
+            const categoriesPromise = apiGet<Category[]>('/api/restaurants/my/menu-item-categories')
+            const venueData = await venuePromise
+            const categoriesData = await categoriesPromise
             setVenue(venueData.venue)
             setCategories(categoriesData)
         } catch (err) {
