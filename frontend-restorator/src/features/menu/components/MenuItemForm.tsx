@@ -194,7 +194,7 @@ export function MenuItemForm({ defaultValues, isEditMode, saving, onSubmit, onCa
                         type="submit"
                         colorPalette="blue"
                         flex={1}
-                        isLoading={saving}
+                        loading={saving}
                     >
                         {isEditMode ? 'Save' : 'Add'}
                     </Button>
