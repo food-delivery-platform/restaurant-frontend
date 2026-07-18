@@ -11,12 +11,13 @@ permissions:
   id-token: write
 
 env:
-  AWS_REGION: us-east-1
+  AWS_REGION: ${{ vars.AWS_REGION }}
   STACK_NAME: restaurant-frontend-prod
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: YAROSLAV_TEST_STAGE
 
     steps:
       - name: Checkout
@@ -37,7 +38,7 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::995303881297:role/food-delivery-github-actions
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Deploy CloudFormation stack (S3 + CloudFront)
@@ -58,8 +59,17 @@ jobs:
             --stack-name "${{ env.STACK_NAME }}" \
             --query "Stacks[0].Outputs[?OutputKey=='DistributionId'].OutputValue | [0]" \
             --output text)"
+          distribution_domain="$(aws cloudformation describe-stacks \
+            --stack-name "${{ env.STACK_NAME }}" \
+            --query "Stacks[0].Outputs[?OutputKey=='DistributionDomainName'].OutputValue | [0]" \
+            --output text)"
           echo "bucket=$bucket" >> "$GITHUB_OUTPUT"
           echo "distribution_id=$distribution_id" >> "$GITHUB_OUTPUT"
+          echo "distribution_domain=$distribution_domain" >> "$GITHUB_OUTPUT"
+
+          echo "Site URL: https://$distribution_domain"
+          echo "### Deployed site" >> "$GITHUB_STEP_SUMMARY"
+          echo "https://$distribution_domain" >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload to S3
         env:
