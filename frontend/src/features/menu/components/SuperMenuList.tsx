@@ -17,8 +17,7 @@ export function SuperMenuList() {
                 <Heading size="md">Menu List</Heading>
 
                 <Button
-                    as={Link}
-                    to="/new"
+                    {...({ as: Link, to: '/new' } as any)}
                     colorPalette="green"
                     borderRadius="full"
                     w="40px"

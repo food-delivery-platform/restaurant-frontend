@@ -3,7 +3,7 @@ import type { MenuItem } from '../model/menu'
 
 
 export function getMenu(
-    venueId: string,
+    _venueId: string,
     onlyAvailable = false
 ): Promise<MenuItem[]> {
     const query = onlyAvailable ? '&available=true' : ''
