@@ -11,13 +11,12 @@ permissions:
   id-token: write
 
 env:
-  AWS_REGION: ${{ vars.AWS_REGION }}
+  AWS_REGION: ${{ secrets.AWS_REGION }}
   STACK_NAME: restaurant-frontend-prod
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: YAROSLAV_TEST_STAGE
 
     steps:
       - name: Checkout
