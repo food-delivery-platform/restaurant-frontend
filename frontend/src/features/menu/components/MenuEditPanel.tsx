@@ -223,7 +223,7 @@ export function MenuEditPanel() {
                             type="submit"
                             colorPalette="blue"
                             flex={1}
-                            isLoading={saving}
+                            loading={saving}
                         >
                             {isEditMode ? 'Save' : 'Add'}
                         </Button>
