@@ -1,34 +1,47 @@
 import { apiGet, apiPost, apiPatch } from '../../../shared/api/client'
-import type { MenuItem } from '../model/menu'
+import {
+    MenuItemSchema,
+    MenuItemListSchema,
+    CreateMenuItemRequestSchema,
+    UpdateMenuItemRequestSchema,
+    type MenuItem,
+    type CreateMenuItemRequest,
+    type UpdateMenuItemRequest,
+} from '../model/menu'
 
 
-export function getMenu(
+export async function getMenu(
     restaurantId: string,
     onlyAvailable = false
 ): Promise<MenuItem[]> {
     if (!restaurantId) {
-        return Promise.resolve([])
+        return []
     }
 
     const query = onlyAvailable ? '?available=true' : ''
 
-    return apiGet<MenuItem[]>(
+    const data = await apiGet<unknown>(
         `/api/restaurants/${restaurantId}/menu-items${query}`
     )
+    return MenuItemListSchema.parse(data)
 }
 
-export function getMenuItem(menuItemId: string): Promise<MenuItem> {
-    return apiGet<MenuItem>(`/api/menu-items/${menuItemId}`)
+export async function getMenuItem(menuItemId: string): Promise<MenuItem> {
+    const data = await apiGet<unknown>(`/api/menu-items/${menuItemId}`)
+    return MenuItemSchema.parse(data)
 }
 
-export function createMenuItem(item: Partial<MenuItem>): Promise<MenuItem> {
-    return apiPost<MenuItem>('/api/menu-items', item)
+export async function createMenuItem(item: CreateMenuItemRequest): Promise<MenuItem> {
+    const payload = CreateMenuItemRequestSchema.parse(item)
+    const data = await apiPost<unknown, CreateMenuItemRequest>('/api/menu-items', payload)
+    return MenuItemSchema.parse(data)
 }
 
-export function updateMenuItem(
+export async function updateMenuItem(
     menuItemId: string,
-    item: Partial<MenuItem>
+    item: UpdateMenuItemRequest
 ): Promise<MenuItem> {
-    return apiPatch<MenuItem>(`/api/menu-items/${menuItemId}`, item)
+    const payload = UpdateMenuItemRequestSchema.parse(item)
+    const data = await apiPatch<unknown, UpdateMenuItemRequest>(`/api/menu-items/${menuItemId}`, payload)
+    return MenuItemSchema.parse(data)
 }
-

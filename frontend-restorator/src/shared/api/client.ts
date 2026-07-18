@@ -1,6 +1,5 @@
 import axios from 'axios'
-
-const API_URL = 'http://localhost:3001'
+import { API_URL } from '../config'
 
 const client = axios.create({
     baseURL: API_URL,
@@ -14,12 +13,12 @@ export async function apiGet<T>(path: string): Promise<T> {
     return res.data
 }
 
-export async function apiPost<T>(path: string, body: any): Promise<T> {
+export async function apiPost<T, B = unknown>(path: string, body: B): Promise<T> {
     const res = await client.post<T>(path, body)
     return res.data
 }
 
-export async function apiPatch<T>(path: string, body: any): Promise<T> {
+export async function apiPatch<T, B = unknown>(path: string, body: B): Promise<T> {
     const res = await client.patch<T>(path, body)
     return res.data
 }

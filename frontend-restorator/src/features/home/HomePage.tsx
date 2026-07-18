@@ -1,5 +1,26 @@
-import { Box, Heading, Text, SimpleGrid, Card } from '@chakra-ui/react'
-import { Link as RouterLink } from 'react-router-dom'
+import { Box, Heading, Text, SimpleGrid } from '@chakra-ui/react'
+import { HomeNavCard } from './HomeNavCard'
+
+const NAV_CARDS = [
+    {
+        to: '/restaurant',
+        icon: '🏪',
+        title: 'Restaurant Info',
+        description: 'View and manage restaurant details and categories.',
+    },
+    {
+        to: '/menu_items',
+        icon: '🍽️',
+        title: 'Menu Items',
+        description: 'Browse, add and edit menu items.',
+    },
+    {
+        to: '/orders',
+        icon: '📋',
+        title: 'Orders',
+        description: 'View and manage incoming orders.',
+    },
+]
 
 export function HomePage() {
     return (
@@ -10,32 +31,9 @@ export function HomePage() {
             </Text>
 
             <SimpleGrid columns={{ base: 1, md: 3 }} gap={4}>
-                <Card.Root as={RouterLink} to="/restaurant" p={5} _hover={{ shadow: 'md' }}>
-                    <Card.Body>
-                        <Heading size="sm" mb={2}>🏪 Restaurant Info</Heading>
-                        <Text color="gray.500" fontSize="sm">
-                            View and manage restaurant details and categories.
-                        </Text>
-                    </Card.Body>
-                </Card.Root>
-
-                <Card.Root as={RouterLink} to="/menu_items" p={5} _hover={{ shadow: 'md' }}>
-                    <Card.Body>
-                        <Heading size="sm" mb={2}>🍽️ Menu Items</Heading>
-                        <Text color="gray.500" fontSize="sm">
-                            Browse, add and edit menu items.
-                        </Text>
-                    </Card.Body>
-                </Card.Root>
-
-                <Card.Root as={RouterLink} to="/orders" p={5} _hover={{ shadow: 'md' }}>
-                    <Card.Body>
-                        <Heading size="sm" mb={2}>📋 Orders</Heading>
-                        <Text color="gray.500" fontSize="sm">
-                            View and manage incoming orders.
-                        </Text>
-                    </Card.Body>
-                </Card.Root>
+                {NAV_CARDS.map((card) => (
+                    <HomeNavCard key={card.to} {...card} />
+                ))}
             </SimpleGrid>
         </Box>
     )

@@ -9,6 +9,8 @@ export function useMenu(restaurantId: string, onlyAvailable: boolean) {
 
     useEffect(() => {
         if (!restaurantId) {
+            // Standard fetch-on-param-change reset (react.dev/learn/you-might-not-need-an-effect#fetching-data).
+            // eslint-disable-next-line react-hooks/set-state-in-effect
             setItems([])
             return
         }
@@ -22,9 +24,9 @@ export function useMenu(restaurantId: string, onlyAvailable: boolean) {
                 if (!alive) return
                 setItems(data)
             })
-            .catch(e => {
+            .catch((e: unknown) => {
                 if (!alive) return
-                setError(e.message)
+                setError(e instanceof Error ? e.message : 'Failed to fetch menu')
             })
             .finally(() => {
                 if (!alive) return
