@@ -1,4 +1,159 @@
 {
+  "restaurants": [
+    {
+      "id": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "ownerId": "3f1d9b62-2c4e-4d9a-8f24-5d2f1f7c8a11",
+      "addressId": "address-venue-001",
+      "name": "Tokyo House",
+      "slug": "tokyo-house",
+      "description": "Modern Japanese kitchen with ramen, gyoza and pizza for the sample app.",
+      "isOpen": true,
+      "rating": 4.8,
+      "imageUrl": "https://example.com/images/venues/tokyo-house.jpg",
+      "createdAt": "2026-06-27T09:30:00Z",
+      "updatedAt": "2026-07-02T18:00:00Z"
+    },
+    {
+      "id": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
+      "ownerId": "4g2e9c21-3f5g-5d4c-0d5e-6f8g9h0i1j2k",
+      "addressId": "address-venue-002",
+      "name": "Pasta Paradise",
+      "slug": "pasta-paradise",
+      "description": "Authentic Italian restaurant with fresh pasta, pizzas and desserts.",
+      "isOpen": true,
+      "rating": 4.6,
+      "imageUrl": "https://example.com/images/venues/pasta-paradise.jpg",
+      "createdAt": "2026-06-28T10:00:00Z",
+      "updatedAt": "2026-07-02T19:00:00Z"
+    }
+  ],
+  "menu-item-categories": [
+    {
+      "id": "cat-001",
+      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "name": "Noodles"
+    },
+    {
+      "id": "cat-002",
+      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "name": "Starters"
+    },
+    {
+      "id": "cat-003",
+      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "name": "Drinks"
+    },
+    {
+      "id": "cat-006",
+      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "name": "Sandwich"
+    },
+    {
+      "id": "cat-007",
+      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "name": "Desserts"
+    },
+    {
+      "id": "cat-008",
+      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "name": "Main Courses"
+    },
+    {
+      "id": "cat-009",
+      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "name": "Breakfast"
+    },
+    {
+      "id": "cat-010",
+      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "name": "Burgers"
+    },
+    {
+      "id": "cat-011",
+      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "name": "Salads"
+    },
+    {
+      "id": "cat-012",
+      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "name": "Kebabs"
+    },
+    {
+      "id": "cat-013",
+      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "name": "Seafood"
+    },
+    {
+      "id": "cat-101",
+      "restaurantId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
+      "name": "Pizza"
+    },
+    {
+      "id": "cat-102",
+      "restaurantId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
+      "name": "Drinks"
+    },
+    {
+      "id": "cat-103",
+      "restaurantId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
+      "name": "Desserts"
+    },
+    {
+      "id": "cat-104",
+      "restaurantId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
+      "name": "Starters"
+    },
+    {
+      "id": "cat-105",
+      "restaurantId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
+      "name": "Main Courses"
+    },
+    {
+      "id": "cat-106",
+      "restaurantId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
+      "name": "Salads"
+    },
+    {
+      "id": "cat-107",
+      "restaurantId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
+      "name": "Sandwich"
+    },
+    {
+      "id": "cat-108",
+      "restaurantId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
+      "name": "Noodles"
+    },
+    {
+      "id": "cat-109",
+      "restaurantId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
+      "name": "Seafood"
+    },
+    {
+      "id": "cat-110",
+      "restaurantId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
+      "name": "Burgers"
+    },
+    {
+      "id": "cat-111",
+      "restaurantId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
+      "name": "Kebabs"
+    },
+    {
+      "id": "cat-112",
+      "restaurantId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
+      "name": "Breakfast"
+    },
+    {
+      "id": "pvEOELHb5No",
+      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "name": "Alcohol"
+    },
+    {
+      "id": "LAPmpOb37FI",
+      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "name": "Test Category Hook"
+    }
+  ],
   "venueProfile": {
     "venue": {
       "id": "64c1a2b3-0d4e-4f56-8901-234567890abc",
@@ -87,16 +242,18 @@
   },
   "menu_items": [
     {
-      "id": "mongo_menu_item_001",
-      "venueId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
-      "menuItemId": "665f9a8b-5e3f-4a1b-8c8d-9e0123456789",
+      "id": "665f9a8b-5e3f-4a1b-8c8d-9e0123456789",
+      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
       "name": "Spicy Chicken Ramen",
       "description": "Ramen with chicken, egg, scallions and spicy broth",
-      "price": 42.5,
+      "price": "42.50",
       "currency": "ILS",
-      "imageKey": "venues/64c1a2b3-0d4e-4f56-8901-234567890abc/menu/spicy-chicken-ramen.jpg",
-      "category": "Noodles",
-      "isActive": true,
+      "category": {
+        "id": "cat-001",
+        "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+        "name": "Noodles"
+      },
+      "isAvailable": true,
       "ingredients": [
         "ramen noodles",
         "chicken",
@@ -128,16 +285,18 @@
       "updatedAt": "2026-06-27T10:00:00Z"
     },
     {
-      "id": "mongo_menu_item_002",
-      "venueId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
-      "menuItemId": "7c1e2d3f-4a5b-6c7d-8e9f-0a1b2c3d4e5f",
+      "id": "7c1e2d3f-4a5b-6c7d-8e9f-0a1b2c3d4e5f",
+      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
       "name": "Pork Gyoza",
       "description": "Pan-fried dumplings filled with pork and cabbage, served with soy-vinegar dip",
-      "price": 18,
+      "price": "18.00",
       "currency": "ILS",
-      "imageKey": "venues/64c1a2b3-0d4e-4f56-8901-234567890abc/menu/pork-gyoza.jpg",
-      "category": "Starters",
-      "isActive": true,
+      "category": {
+        "id": "cat-002",
+        "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+        "name": "Starters"
+      },
+      "isAvailable": true,
       "ingredients": [
         "wheat wrapper",
         "pork",
@@ -170,16 +329,18 @@
       "updatedAt": "2026-06-27T10:05:00Z"
     },
     {
-      "id": "mongo_menu_item_003",
-      "venueId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
-      "menuItemId": "8d2f3e4a-5b6c-7d8e-9f0a-1b2c3d4e5f60",
+      "id": "8d2f3e4a-5b6c-7d8e-9f0a-1b2c3d4e5f60",
+      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
       "name": "Vegan Miso Ramen",
       "description": "Plant-based ramen with miso broth, tofu, corn and seaweed",
-      "price": 39,
+      "price": "39.00",
       "currency": "ILS",
-      "imageKey": "venues/64c1a2b3-0d4e-4f56-8901-234567890abc/menu/vegan-miso-ramen.jpg",
-      "category": "Noodles",
-      "isActive": false,
+      "category": {
+        "id": "cat-001",
+        "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+        "name": "Noodles"
+      },
+      "isAvailable": false,
       "ingredients": [
         "ramen noodles",
         "miso",
@@ -212,14 +373,18 @@
       "updatedAt": "2026-06-27T10:10:00Z"
     },
     {
-      "id": "mongo_menu_item_004",
-      "venueId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
-      "menuItemId": "9e3a4f5b-6c7d-8e9f-0a1b-2c3d4e5f6071",
+      "id": "9e3a4f5b-6c7d-8e9f-0a1b-2c3d4e5f6071",
+      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
       "name": "Green Tea",
       "description": "Hot Japanese sencha green tea",
-      "price": 9,
-      "category": "Drinks",
-      "isActive": false,
+      "price": "9.00",
+      "currency": "ILS",
+      "category": {
+        "id": "cat-003",
+        "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+        "name": "Drinks"
+      },
+      "isAvailable": false,
       "ingredients": [
         "green tea leaves",
         "water"
@@ -237,7 +402,7 @@
         "volumeMl": 300,
         "description": "1 cup"
       },
-      "spicyLevel": 1,
+      "spicyLevel": 0,
       "nutrition": {
         "calories": 2,
         "protein": 0,
@@ -248,15 +413,18 @@
       "updatedAt": "2026-06-27T10:15:00Z"
     },
     {
-      "id": "mongo_menu_item_005",
-      "venueId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
-      "menuItemId": "a0f4b5c6-7d8e-9f0a-1b2c-3d4e5f607182",
+      "id": "a0f4b5c6-7d8e-9f0a-1b2c-3d4e5f607182",
+      "restaurantId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
       "name": "Margherita Pizza",
       "description": "Classic pizza with tomato sauce, mozzarella and fresh basil",
-      "price": 35,
-      "imageKey": "venues/7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d/menu/margherita.jpg",
-      "category": "Pizza",
-      "isActive": true,
+      "price": "35.00",
+      "currency": "ILS",
+      "category": {
+        "id": "cat-004",
+        "restaurantId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
+        "name": "Pizza"
+      },
+      "isAvailable": true,
       "ingredients": [
         "pizza dough",
         "tomato sauce",
@@ -289,15 +457,18 @@
       "updatedAt": "2026-06-27T11:00:00Z"
     },
     {
-      "id": "mongo_menu_item_006",
-      "venueId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
-      "menuItemId": "b1a5c6d7-8e9f-0a1b-2c3d-4e5f60718293",
+      "id": "b1a5c6d7-8e9f-0a1b-2c3d-4e5f60718293",
+      "restaurantId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
       "name": "Pepperoni Pizza",
       "description": "Pizza with tomato sauce, mozzarella and spicy pepperoni",
-      "price": 41,
-      "imageKey": "venues/7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d/menu/pepperoni.jpg",
-      "category": "Pizza",
-      "isActive": true,
+      "price": "41.00",
+      "currency": "ILS",
+      "category": {
+        "id": "cat-004",
+        "restaurantId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
+        "name": "Pizza"
+      },
+      "isAvailable": true,
       "ingredients": [
         "pizza dough",
         "tomato sauce",
@@ -329,15 +500,18 @@
       "updatedAt": "2026-06-27T11:05:00Z"
     },
     {
-      "id": "mongo_menu_item_007",
-      "venueId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
-      "menuItemId": "c2b6d7e8-9f0a-1b2c-3d4e-5f6071829304",
+      "id": "c2b6d7e8-9f0a-1b2c-3d4e-5f6071829304",
+      "restaurantId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
       "name": "Tiramisu",
       "description": "Italian dessert with mascarpone, coffee-soaked ladyfingers and cocoa",
-      "price": 22,
-      "imageKey": "venues/7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d/menu/tiramisu.jpg",
-      "category": "Desserts",
-      "isActive": false,
+      "price": "22.00",
+      "currency": "ILS",
+      "category": {
+        "id": "cat-005",
+        "restaurantId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
+        "name": "Desserts"
+      },
+      "isAvailable": false,
       "ingredients": [
         "mascarpone",
         "ladyfingers",
@@ -370,14 +544,18 @@
       "updatedAt": "2026-06-27T11:10:00Z"
     },
     {
-      "id": "mongo_menu_item_008",
-      "venueId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
-      "menuItemId": "d3c7e8f9-0a1b-2c3d-4e5f-607182930415",
+      "id": "d3c7e8f9-0a1b-2c3d-4e5f-607182930415",
+      "restaurantId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
       "name": "Cola",
       "description": "Chilled cola, 0.5 L bottle",
-      "price": 8,
-      "category": "Drinks",
-      "isActive": true,
+      "price": "8.00",
+      "currency": "ILS",
+      "category": {
+        "id": "cat-003",
+        "restaurantId": "7a2b9c10-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
+        "name": "Drinks"
+      },
+      "isAvailable": true,
       "ingredients": [
         "carbonated water",
         "sugar",
@@ -407,39 +585,83 @@
       "updatedAt": "2026-06-27T11:15:00Z"
     },
     {
-      "name": "Super-dish!",
-      "price": 23,
-      "category": "sandwich",
-      "description": "a good sandwich with cheese",
-      "isActive": true,
-      "spicyLevel": 1,
+      "id": "e4d8f9a0-1b2c-3d4e-5f60-71829304c516",
+      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "name": "Super-dish!+6",
+      "description": "A good sandwich with cheese",
+      "price": "23.01",
+      "currency": "ILS",
+      "category": {
+        "name": "Sandwich",
+        "restaurantId": "my",
+        "id": ""
+      },
+      "isAvailable": true,
       "ingredients": [
         "cheese"
       ],
-      "id": "mjVajP24RSk",
-      "menuItemId": "8ea01797-7a71-433f-bcc5-1566b966fd96",
-      "venueId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "spicyLevel": 1,
       "createdAt": "2026-07-01T11:43:02.582Z",
-      "updatedAt": "2026-07-01T11:43:02.582Z"
+      "updatedAt": "2026-07-17T09:07:58.670Z"
     },
     {
+      "id": "f5e9a0b1-2c3d-4e5f-6071-829304c516d7",
+      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
       "name": "Mango Cheesecake",
-      "price": 27,
-      "category": "Desserts",
       "description": "Creamy cheesecake topped with mango sauce",
-      "isActive": true,
-      "spicyLevel": 0,
+      "price": "27.00",
+      "currency": "ILS",
+      "category": {
+        "id": "cat-005",
+        "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+        "name": "Desserts"
+      },
+      "isAvailable": true,
       "ingredients": [
         "cream cheese",
         "mango",
         "biscuit base",
         "sugar"
       ],
-      "id": "mjVajP24RSl",
-      "menuItemId": "b2e11c19-cc2e-4f11-9f8f-9f2b4f9d1a77",
-      "venueId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "spicyLevel": 0,
       "createdAt": "2026-07-01T11:45:02.582Z",
       "updatedAt": "2026-07-01T11:45:02.582Z"
+    },
+    {
+      "id": "461ihKX0zaw",
+      "name": "Test Dish",
+      "price": "12.50",
+      "currency": "ILS",
+      "isAvailable": true,
+      "spicyLevel": 0,
+      "ingredients": [],
+      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "createdAt": "2026-07-17T09:56:16.142Z",
+      "updatedAt": "2026-07-17T09:56:16.142Z"
+    },
+    {
+      "id": "WJPP4bgV5ak",
+      "name": "Controller Test",
+      "price": "5.00",
+      "currency": "ILS",
+      "isAvailable": true,
+      "spicyLevel": 0,
+      "ingredients": [],
+      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "createdAt": "2026-07-17T10:15:05.576Z",
+      "updatedAt": "2026-07-17T10:15:05.576Z"
+    },
+    {
+      "id": "kBf9_uqUQ20",
+      "restaurantId": "64c1a2b3-0d4e-4f56-8901-234567890abc",
+      "name": "Zod Test Dish",
+      "price": "7.25",
+      "currency": "ILS",
+      "isAvailable": true,
+      "spicyLevel": 0,
+      "ingredients": [],
+      "createdAt": "2026-07-17T10:36:51.829Z",
+      "updatedAt": "2026-07-17T10:36:51.829Z"
     }
   ],
   "orders": [
@@ -469,6 +691,7 @@
           "unit_price": 42.5,
           "special_instructions": "Extra spicy",
           "menu_item_name": "Spicy Chicken Ramen",
+          "status": "READY",
           "created_at": "2026-07-02T17:30:00Z",
           "line_total": 85
         },
@@ -480,6 +703,7 @@
           "unit_price": 18,
           "special_instructions": null,
           "menu_item_name": "Pork Gyoza",
+          "status": "NEED_COOK",
           "created_at": "2026-07-02T17:30:00Z",
           "line_total": 54
         }
@@ -511,6 +735,7 @@
           "unit_price": 35,
           "special_instructions": null,
           "menu_item_name": "Margherita Pizza",
+          "status": "NEED_COOK",
           "created_at": "2026-07-02T18:00:00Z",
           "line_total": 35
         }
@@ -543,6 +768,7 @@
           "unit_price": 41,
           "special_instructions": "No onions please",
           "menu_item_name": "Pepperoni Pizza",
+          "status": "READY",
           "created_at": "2026-07-02T17:15:00Z",
           "line_total": 41
         }
@@ -569,22 +795,24 @@
         {
           "id": "7a0d8d4c-6d02-4f4f-9a27-1a1a4db5d001",
           "order_id": "444c3a0f-9d2d-4f20-bf0c-1d7b8f7d3d11",
-          "menu_item_id": "8ea01797-7a71-433f-bcc5-1566b966fd96",
+          "menu_item_id": "e4d8f9a0-1b2c-3d4e-5f60-71829304c516",
           "quantity": 1,
           "unit_price": 23,
           "special_instructions": null,
           "menu_item_name": "Super-dish!",
+          "status": "NEED_COOK",
           "created_at": "2026-07-02T18:20:00Z",
           "line_total": 23
         },
         {
           "id": "7a0d8d4c-6d02-4f4f-9a27-1a1a4db5d002",
           "order_id": "444c3a0f-9d2d-4f20-bf0c-1d7b8f7d3d11",
-          "menu_item_id": "b2e11c19-cc2e-4f11-9f8f-9f2b4f9d1a77",
+          "menu_item_id": "f5e9a0b1-2c3d-4e5f-6071-829304c516d7",
           "quantity": 1,
           "unit_price": 27,
           "special_instructions": null,
           "menu_item_name": "Mango Cheesecake",
+          "status": "NEED_COOK",
           "created_at": "2026-07-02T18:20:00Z",
           "line_total": 27
         }
@@ -616,6 +844,7 @@
           "unit_price": 35,
           "special_instructions": null,
           "menu_item_name": "Margherita Pizza",
+          "status": "READY",
           "created_at": "2026-07-02T19:00:00Z",
           "line_total": 70
         }
@@ -647,6 +876,7 @@
           "unit_price": 18,
           "special_instructions": null,
           "menu_item_name": "Pork Gyoza",
+          "status": "NEED_COOK",
           "created_at": "2026-07-02T18:55:00Z",
           "line_total": 18
         }

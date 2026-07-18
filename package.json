@@ -3,13 +3,14 @@
   "private": true,
   "type": "module",
   "workspaces": [
-    "frontend",
+    "frontend-restorator",
     "serverstub"
   ],
   "scripts": {
-    "dev": "npm run dev -w frontend",
+    "dev:restorator": "npm run dev -w frontend-restorator",
     "dev:stub": "npm run dev -w serverstub",
-    "build": "npm run build -w frontend",
-    "lint": "npm run lint -w frontend"
+    "build:restorator": "npm run build -w frontend-restorator",
+    "build": "npm run build -w frontend-restorator",
+    "lint": "npm run lint -w frontend-restorator"
   }
 }
