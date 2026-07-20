@@ -29,8 +29,8 @@ export function RestaurantDetailsCard({ venue }: Props) {
 
                     <Box>
                         <Text fontWeight="semibold" mb={1}>Status</Text>
-                        <Badge colorPalette={venue.is_active ? 'green' : 'red'}>
-                            {venue.is_active ? 'Active' : 'Inactive'}
+                        <Badge colorPalette={venue.isOpen ? 'green' : 'red'}>
+                            {venue.isOpen ? 'Active' : 'Inactive'}
                         </Badge>
                     </Box>
                 </HStack>

@@ -65,16 +65,16 @@ app.get('/', (_req, res) =>
       'GET /api/restaurants/:restaurantId',
       'POST /api/restaurants',
       'PATCH /api/restaurants/:restaurantId',
-      'GET /api/restaurants/:restaurantId/menu-items',
-      'GET /api/restaurants/:restaurantId/menu-item-categories',
-      'POST /api/restaurants/:restaurantId/menu-item-categories',
-      'POST /api/menu-item-categories/batch'
+      'GET /api/menu-items?restaurantId=',
+      'GET /api/categories?restaurantId=',
+      'POST /api/categories',
+      'POST /api/categories/batch'
     ],
   }),
 )
 
 const DEFAULT_VENUE_ID =
-    '64c1a2b3-0d4e-4f56-8901-234567890abc'
+    'f0269ebd-2868-4cfd-ba46-e29d11324fd9'
 
 const getMenu = (req, res) => {
     const rawId = req.params.venueId
@@ -124,9 +124,7 @@ app.post('/api/menu-items', async (req, res) => {
   const data = req.body ?? {}
   const id = crypto.randomUUID()
 
-  const restaurantId = !data.restaurantId || data.restaurantId === 'my'
-    ? DEFAULT_VENUE_ID
-    : data.restaurantId
+  const restaurantId = data.restaurantId || DEFAULT_VENUE_ID
 
   const newItem = {
     id,
@@ -137,7 +135,7 @@ app.post('/api/menu-items', async (req, res) => {
   }
 
   const created = await service.create(COLLECTION, newItem)
-  res.status(201).json(created)
+  res.status(201).json({ item: created })
 })
 
 // Edit menu item (new API)
@@ -152,7 +150,7 @@ app.patch('/api/menu-items/:id', async (req, res) => {
     ...req.body,
     updatedAt: new Date().toISOString()
   })
-  res.json(updated)
+  res.json({ item: updated })
 })
 
 // Get menu items by IDs
@@ -294,8 +292,10 @@ function findRestaurant(restaurantId) {
   return Array.isArray(list) ? list[0] : undefined
 }
 
+const CATEGORIES_COLLECTION = 'menu-item-categories'
+
 app.get('/api/restaurants', (_req, res) => {
-  res.json(service.find(RESTAURANTS_COLLECTION, { where: {} }))
+  res.json({ restaurants: service.find(RESTAURANTS_COLLECTION, { where: {} }) })
 })
 
 app.get('/api/restaurants/:restaurantId', (req, res) => {
@@ -304,7 +304,15 @@ app.get('/api/restaurants/:restaurantId', (req, res) => {
     res.status(404).json({ error: 'Restaurant not found' })
     return
   }
-  res.json(restaurant)
+
+  const categories = service.find(CATEGORIES_COLLECTION, {
+    where: { restaurantId: eq(restaurant.id) },
+  })
+  const menuItems = service.find(COLLECTION, {
+    where: { restaurantId: eq(restaurant.id) },
+  })
+
+  res.json({ restaurant: { ...restaurant, categories, menuItems } })
 })
 
 app.post('/api/restaurants', async (req, res) => {
@@ -319,7 +327,7 @@ app.post('/api/restaurants', async (req, res) => {
   }
 
   const created = await service.create(RESTAURANTS_COLLECTION, newRestaurant)
-  res.status(201).json(created)
+  res.status(201).json({ restaurant: created })
 })
 
 app.patch('/api/restaurants/:restaurantId', async (req, res) => {
@@ -333,16 +341,11 @@ app.patch('/api/restaurants/:restaurantId', async (req, res) => {
     ...req.body,
     updatedAt: new Date().toISOString()
   })
-  res.json(updated)
+  res.json({ restaurant: updated })
 })
 
-app.get('/api/restaurants/:restaurantId/menu-items', (req, res) => {
-  const rawId = req.params.restaurantId
-
-  const restaurantId =
-      !rawId || rawId === 'my'
-          ? DEFAULT_VENUE_ID
-          : rawId
+app.get('/api/menu-items', (req, res) => {
+  const restaurantId = req.query.restaurantId || DEFAULT_VENUE_ID
 
   const where = { restaurantId: eq(restaurantId) }
 
@@ -351,54 +354,31 @@ app.get('/api/restaurants/:restaurantId/menu-items', (req, res) => {
   }
 
   const items = service.find(COLLECTION, { where })
-  res.json(items)
-})
-
-// --- restaurant info endpoint ---
-app.get('/api/restaurants/:restaurantId/info', (req, res) => {
-  const rawId = req.params.restaurantId
-  const restaurantId = !rawId || rawId === 'my' ? DEFAULT_VENUE_ID : rawId
-
-  const venueProfile = db.data?.venueProfile
-  if (!venueProfile) {
-    res.status(404).json({ error: 'Restaurant info not found' })
-    return
-  }
-
-  res.json({
-    venue: venueProfile.venue
-  })
+  res.json({ restaurantId, items })
 })
 
 // --- category endpoints ---
-const CATEGORIES_COLLECTION = 'menu-item-categories'
 
-app.get('/api/restaurants/:restaurantId/menu-item-categories', (req, res) => {
-  const rawId = req.params.restaurantId
-  const restaurantId = !rawId || rawId === 'my' ? DEFAULT_VENUE_ID : rawId
-  const where = { restaurantId: eq(restaurantId) }
-
-  const categories = service.find(CATEGORIES_COLLECTION, { where })
-  res.json(categories)
+app.get('/api/categories', (req, res) => {
+  const restaurantId = req.query.restaurantId || DEFAULT_VENUE_ID
+  const categories = service.find(CATEGORIES_COLLECTION, {
+    where: { restaurantId: eq(restaurantId) },
+  })
+  res.json({ restaurantId, categories })
 })
 
-app.post('/api/restaurants/:restaurantId/menu-item-categories', async (req, res) => {
-  const rawId = req.params.restaurantId
-  const restaurantId = !rawId || rawId === 'my' ? DEFAULT_VENUE_ID : rawId
-  const data = req.body ?? {}
+app.post('/api/categories', async (req, res) => {
+  const restaurantId = req.body?.restaurantId || DEFAULT_VENUE_ID
+  const name = req.body?.name
   const id = crypto.randomUUID()
 
-  const newCategory = {
-    id,
-    restaurantId,
-    ...data
-  }
+  const newCategory = { id, restaurantId, name }
 
   const created = await service.create(CATEGORIES_COLLECTION, newCategory)
-  res.status(201).json(created)
+  res.status(201).json({ category: created })
 })
 
-app.post('/api/menu-item-categories/batch', async (req, res) => {
+app.post('/api/categories/batch', async (req, res) => {
   const restaurantId = req.body?.restaurantId
   const names = req.body?.names ?? []
 
@@ -425,7 +405,7 @@ app.post('/api/menu-item-categories/batch', async (req, res) => {
     categories.push(created)
   }
 
-  res.status(201).json(categories)
+  res.status(201).json({ categories })
 })
 
 app.listen(PORT, () =>

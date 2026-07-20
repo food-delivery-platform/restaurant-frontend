@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import type { Category } from '../model/restaurant'
 import { getCategories } from './restaurant'
+import { FIXED_RESTAURANT_ID } from '../../../shared/config'
 
 export function useCategories() {
     const [categories, setCategories] = useState<Category[]>([])
@@ -15,7 +16,7 @@ export function useCategories() {
         // eslint-disable-next-line react-hooks/set-state-in-effect
         setLoading(true)
 
-        getCategories()
+        getCategories(FIXED_RESTAURANT_ID)
             .then((data) => {
                 if (!alive) return
                 setCategories(data)

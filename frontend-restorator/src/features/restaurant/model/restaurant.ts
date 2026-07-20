@@ -1,11 +1,15 @@
 export type Venue = {
     id: string
+    ownerId: string
+    addressId: string
     name: string
-    slug: string
-    description: string
-    is_active: boolean
-    rating: number
-    image_url: string
+    slug?: string
+    description?: string
+    isOpen: boolean
+    rating?: number
+    imageUrl?: string
+    createdAt: string
+    updatedAt: string
 }
 
 export type Category = {
