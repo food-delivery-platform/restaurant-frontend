@@ -1,7 +1,8 @@
 import { apiGet, apiPost, apiPatch } from '../../../shared/api/client'
 import {
     MenuItemSchema,
-    MenuItemListSchema,
+    GetMenuItemsResponseSchema,
+    MenuItemResponseSchema,
     CreateMenuItemRequestSchema,
     UpdateMenuItemRequestSchema,
     type MenuItem,
@@ -18,12 +19,13 @@ export async function getMenu(
         return []
     }
 
-    const query = onlyAvailable ? '?available=true' : ''
+    const params = new URLSearchParams({ restaurantId })
+    if (onlyAvailable) {
+        params.set('available', 'true')
+    }
 
-    const data = await apiGet<unknown>(
-        `/api/restaurants/${restaurantId}/menu-items${query}`
-    )
-    return MenuItemListSchema.parse(data)
+    const data = await apiGet<unknown>(`/api/menu-items?${params.toString()}`)
+    return GetMenuItemsResponseSchema.parse(data).items
 }
 
 export async function getMenuItem(menuItemId: string): Promise<MenuItem> {
@@ -34,7 +36,7 @@ export async function getMenuItem(menuItemId: string): Promise<MenuItem> {
 export async function createMenuItem(item: CreateMenuItemRequest): Promise<MenuItem> {
     const payload = CreateMenuItemRequestSchema.parse(item)
     const data = await apiPost<unknown, CreateMenuItemRequest>('/api/menu-items', payload)
-    return MenuItemSchema.parse(data)
+    return MenuItemResponseSchema.parse(data).item
 }
 
 export async function updateMenuItem(
@@ -43,5 +45,5 @@ export async function updateMenuItem(
 ): Promise<MenuItem> {
     const payload = UpdateMenuItemRequestSchema.parse(item)
     const data = await apiPatch<unknown, UpdateMenuItemRequest>(`/api/menu-items/${menuItemId}`, payload)
-    return MenuItemSchema.parse(data)
+    return MenuItemResponseSchema.parse(data).item
 }

@@ -62,6 +62,15 @@ export type MenuItem = z.infer<typeof MenuItemSchema>
 
 export const MenuItemListSchema = z.array(MenuItemSchema)
 
+export const GetMenuItemsResponseSchema = z.object({
+    restaurantId: z.string(),
+    items: MenuItemListSchema,
+})
+
+export const MenuItemResponseSchema = z.object({
+    item: MenuItemSchema,
+})
+
 // --- API requests (what we send) ---
 
 const MenuItemCategoryInputSchema = z.object({
