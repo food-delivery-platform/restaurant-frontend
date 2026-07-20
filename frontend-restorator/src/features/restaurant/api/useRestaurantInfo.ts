@@ -1,8 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import type { Venue, Category } from '../model/restaurant'
 import { getRestaurantInfo, getCategories, addCategory } from './restaurant'
-
-const RESTAURANT_ID = 'my'
+import { FIXED_RESTAURANT_ID } from '../../../shared/config'
 
 export function useRestaurantInfo() {
     const [venue, setVenue] = useState<Venue | null>(null)
@@ -16,8 +15,8 @@ export function useRestaurantInfo() {
         try {
             setLoading(true)
             setError(null)
-            const venuePromise = getRestaurantInfo()
-            const categoriesPromise = getCategories()
+            const venuePromise = getRestaurantInfo(FIXED_RESTAURANT_ID)
+            const categoriesPromise = getCategories(FIXED_RESTAURANT_ID)
             const venueData = await venuePromise
             const categoriesData = await categoriesPromise
             setVenue(venueData.venue)
@@ -47,7 +46,7 @@ export function useRestaurantInfo() {
         setError(null)
 
         try {
-            await addCategory(RESTAURANT_ID, newCategoryName.trim())
+            await addCategory(FIXED_RESTAURANT_ID, newCategoryName.trim())
             setNewCategoryName('')
             await loadData()
         } catch (err) {

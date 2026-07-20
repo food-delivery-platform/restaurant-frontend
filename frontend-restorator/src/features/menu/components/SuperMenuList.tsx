@@ -4,10 +4,11 @@ import { useMenu } from '../api/useMenu'
 import { MenuList } from './MenuList'
 import { MenuItemsHeader } from './MenuItemsHeader'
 import { AvailabilityFilter } from './AvailabilityFilter'
+import { FIXED_RESTAURANT_ID } from '../../../shared/config'
 
 export function SuperMenuList() {
     const [onlyAvailable, setOnlyAvailable] = useState(false)
-    const restaurantId = 'my'
+    const restaurantId = FIXED_RESTAURANT_ID
 
     const { items, loading, error } = useMenu(restaurantId, onlyAvailable)
 

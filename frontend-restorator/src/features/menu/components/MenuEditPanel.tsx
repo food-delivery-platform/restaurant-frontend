@@ -5,6 +5,7 @@ import { Box, Heading, Spinner, Text } from '@chakra-ui/react'
 import { getMenuItem, createMenuItem, updateMenuItem } from '../api/menu'
 import type { CreateMenuItemRequest, UpdateMenuItemRequest } from '../model/menu'
 import { MenuItemForm, type MenuItemFormValues } from './MenuItemForm'
+import { FIXED_RESTAURANT_ID } from '../../../shared/config'
 
 const DEFAULT_VALUES: MenuItemFormValues = {
     name: '',
@@ -24,7 +25,7 @@ export function MenuEditPanel({ menuItemId }: Props) {
     const navigate = useNavigate()
 
     const isEditMode = !!menuItemId
-    const restaurantId = 'my'
+    const restaurantId = FIXED_RESTAURANT_ID
 
     const [loading, setLoading] = useState(false)
     const [saving, setSaving] = useState(false)
